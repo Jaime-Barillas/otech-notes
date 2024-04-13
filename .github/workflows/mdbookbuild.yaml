@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Download mdbook
+        run: mkdir mdbook && curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.37/mdbook-v0.4.37-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=mdbook
+
+      # mdbook-admonish writes the wrong path for its CSS during install unless the command is issued from within the book's folder.
+      - name: Download mdbook-admonish
+        run: |
+          curl -sSL https://github.com/tommilligan/mdbook-admonish/releases/download/v1.15.0/mdbook-admonish-v1.15.0-x86_64-unknown-linux-musl.tar.gz | tar -xz --directory=mdbook
+          cd y1s2/systems-programming
+          ../../mdbook/mdbook-admonish install
+          sed -i -e 's/command = "mdbook-admonish"/command = "..\/..\/mdbook\/mdbook-admonish"/' book.toml
+
+      - name: Download mdbook-mermaid
+        run: |
+          curl -sSL https://github.com/badboy/mdbook-mermaid/releases/download/v0.13.0/mdbook-mermaid-v0.13.0-x86_64-unknown-linux-musl.tar.gz | tar -xz --directory=mdbook
+          mdbook/mdbook-mermaid install y1s2/systems-programming
+          cd y1s2/systems-programming
+          sed -i -e 's/command = "mdbook-admonish"/command = "..\/..\/mdbook\/mdbook-admonish"/' book.toml
+
+      - name: Download mdbook-katex
+        run: curl -sSL https://github.com/lzanini/mdbook-katex/releases/download/v0.8.0/mdbook-katex-v0.8.0-x86_64-unknown-linux-musl.tar.gz | tar -xz --directory=mdbook
+
+      - name: Build the book
+        run: cd y1s2/systems-programming && ../../mdbook/mdbook build
