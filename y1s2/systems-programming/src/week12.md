@@ -38,3 +38,17 @@ message. The private and public key pair are generated at the same time, but
 it is not possible to derive one from the other.
 
 ## TLS
+
+```mermaid
+sequenceDiagram
+  participant C as Client
+  participant S as Server
+  C->>S: 1. Client Hello
+  S->>C: 2. Server Hello
+  S->>C: 3. Client Certificate Request
+  C->>S: 4. Client Certificate
+  C->>S: 5. Client Sends Key Info (Encrypted with server's public key)
+  C->>S: 6. Certificate Verify
+  C->>S: 7. Finished Message
+  S->>C: 8. Finished Message
+```

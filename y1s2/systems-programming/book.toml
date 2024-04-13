@@ -8,10 +8,10 @@ title = "Systems Programming"
 [preprocessor]
 
 [preprocessor.mermaid]
-command = "../../mdbook-extensions/mdbook-mermaid"
+command = "../../mdbook/mdbook-mermaid"
 
 [preprocessor.admonish]
-command = "../../mdbook-extensions/mdbook-admonish"
+command = "../../mdbook/mdbook-admonish"
 assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 
 [output]
