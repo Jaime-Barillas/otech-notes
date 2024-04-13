@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Operating Systems - Systems Programming</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+        <link rel="stylesheet" href="./css/mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="week1.html" class="active"><strong aria-hidden="true">1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="week2.html"><strong aria-hidden="true">2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="week3.html"><strong aria-hidden="true">3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="week4.html"><strong aria-hidden="true">4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="week5.html"><strong aria-hidden="true">5.</strong> Week 5</a></li><li class="chapter-item expanded "><a href="week6.html"><strong aria-hidden="true">6.</strong> Week 6</a></li><li class="chapter-item expanded "><a href="week9.html"><strong aria-hidden="true">7.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="week12.html"><strong aria-hidden="true">8.</strong> Security</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Systems Programming</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="what-is-an-operating-system"><a class="header" href="#what-is-an-operating-system">What is an Operating System</a></h1>
+<ul>
+<li>Software that controls hardware to perform various operations.</li>
+<li>Can be a collection of software.</li>
+<li>Can be simple or complex.</li>
+</ul>
+<p>Modern OS's contain several complex functions:</p>
+<ul>
+<li>Manage processes.</li>
+<li>Manage memory.</li>
+<li>Interact with hardware.</li>
+<li>Manage multiple concurrently running software.</li>
+</ul>
+<h1 id="os-modes"><a class="header" href="#os-modes">OS "Modes"</a></h1>
+<p>OS software can run in different modes:</p>
+<ul>
+<li>User mode - Apps and the UI run in this mode. Applications must request the
+OS to perform hardware actions on their behalf.</li>
+<li>Kernel mode - The OS runs in this mode. Also called "Supervisor Mode". Code
+that runs in kernel mode has direct access to hardware allowing it to perform
+any operations on the hardware.</li>
+</ul>
+<h1 id="some-functions-of-the-os"><a class="header" href="#some-functions-of-the-os">Some Functions of the OS</a></h1>
+<ul>
+<li>Read/Write Disk/Memory.</li>
+<li>Pure computations.</li>
+<li>Network communication.</li>
+<li>Media playback.</li>
+<li>I/O peripheral communication.</li>
+<li>General OS security.</li>
+</ul>
+<h1 id="the-os-manages-resources"><a class="header" href="#the-os-manages-resources">The OS Manages Resources</a></h1>
+<ul>
+<li>Hardware.</li>
+<li>Software.</li>
+<li>The file system.</li>
+<li>In memory data.</li>
+</ul>
+<p>Modern OS's are capable of managing multitasking and multiprocessing resources.</p>
+<h1 id="common-os-hardware"><a class="header" href="#common-os-hardware">Common OS Hardware</a></h1>
+<h2 id="cpu"><a class="header" href="#cpu">CPU</a></h2>
+<blockquote>
+<p>The brain of the computer</p>
+</blockquote>
+<p>Fetches instructions and data from memory to execute and operate on them. CPU
+family specific instructions exist.</p>
+<h2 id="memory"><a class="header" href="#memory">Memory</a></h2>
+<p>General storage for the computer. Ranges from fast to quick:</p>
+<ul>
+<li>Hardware registers.</li>
+<li>CPU local cache.</li>
+<li>Main Memory (RAM).</li>
+<li>SSD's.</li>
+<li>HDD's.</li>
+<li>Optical disks.</li>
+<li>Magnetic tapes.</li>
+</ul>
+<h2 id="io-devices"><a class="header" href="#io-devices">I/O Devices</a></h2>
+<ul>
+<li>Monitors.</li>
+<li>Keyboards+</li>
+<li>Mice.</li>
+<li>USB flash drives.</li>
+<li>etc.</li>
+</ul>
+<h1 id="the-layers-of-an-os"><a class="header" href="#the-layers-of-an-os">The Layers of an OS</a></h1>
+<ol>
+<li>[App] User and other system programs.</li>
+<li>[OS] The UI.</li>
+<li>[OS] System calls - How apps interact with the hardware.</li>
+<li>[OS] OS services - Ongoing OS processes, such as, I/O operations.</li>
+<li>Hardware.</li>
+</ol>
+<hr />
+<h1 id="os-architectures"><a class="header" href="#os-architectures">OS Architectures</a></h1>
+<p>OS's are, generally, very large programs. Here are a few ways they are
+structured:</p>
+<h2 id="the-simple-structure"><a class="header" href="#the-simple-structure">The Simple Structure</a></h2>
+<ul>
+<li>Not divided into modules</li>
+<li>Interfaces and levels of functionality are not well separated.</li>
+</ul>
+<h2 id="the-layered-structure"><a class="header" href="#the-layered-structure">The Layered Structure</a></h2>
+<ul>
+<li>Divided into a number of layers. Each is built ontop of the last.</li>
+<li>Hardware is layer 0.</li>
+<li>The user interface is the highest layer.</li>
+<li>Layers are defined such that each only uses the functions services of the
+next lower layer.</li>
+</ul>
+<h2 id="microkernels"><a class="header" href="#microkernels">Microkernels</a></h2>
+<ul>
+<li>Moves as many services from the kernel into user space.</li>
+<li>Communication between user modules typically uses message passing.</li>
+<li>Easy to extend.</li>
+<li>Easy to port.</li>
+<li>Often more reliable.</li>
+<li>Often more secure.</li>
+<li>There is performance overhead when the various user space modules communicate
+with their kernel space dependencies.</li>
+</ul>
+<h2 id="modules"><a class="header" href="#modules">Modules</a></h2>
+<p>Many OS's implement loadable kernel modules.</p>
+<ul>
+<li>Typically uses an Object-Oriented approach.</li>
+<li>Core components are separate.</li>
+<li>Modules communicate over known interfaces.</li>
+<li>Loaded as needed.</li>
+<li>Similar to layers, but more flexible.</li>
+</ul>
+<h2 id="a-hybrid-approach"><a class="header" href="#a-hybrid-approach">A Hybrid Approach</a></h2>
+<p>Most modern OS's use a hybrid approach to address various concerns, such as,
+security, preformance, usability, etc.</p>
+<h1 id="linux-kernel-modules"><a class="header" href="#linux-kernel-modules">Linux Kernel Modules</a></h1>
+<p>Each kernel module usually has an initializing function specified with the
+<code>module_init()</code> function (macro?). Similarly there is a deinitializing function
+specified with the <code>module_exit()</code> function.
+Here is a simple kernel module:</p>
+<pre><code class="language-c">#include &lt;linux/init.h&gt;
+#include &lt;linux/module.h&gt;
+#include &lt;linux/kernel.h&gt;
+
+MODULE_LICENSE("GPL"); // Needed.
+
+static int __init init_kernel_mod(void) {
+    printk(KERN_ALERT "Initializing kernel mod!\n");
+    return 0;
+}
+
+static void __exit exit_kernel_mod(void) {
+    printk(KERN_ALERT "Releasing kernel mod resources!\n");
+}
+
+module_init(init_kernel_mod);
+module_exit(exit_kernel_mod);
+</code></pre>
+<p>And the associated Makefile:</p>
+<pre><code class="language-makefile">CONFIG_MODULE_SIG=n
+obj-m += my_kernel_mod.o
+
+default:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+</code></pre>
+<p>Review the Linux kernel module development documentation for details.</p>
+<h2 id="relevant-cli-commands"><a class="header" href="#relevant-cli-commands">Relevant CLI Commands</a></h2>
+<ul>
+<li><code>lsmod</code> - List currently loaded mods.</li>
+<li><code>modinfo &lt;mod-name&gt;</code> - Prints info about a specific kernel module.</li>
+<li><code>rmmod &lt;mod-name&gt;</code> - Removes a currently loaded module.</li>
+<li><code>insmod &lt;mod-name&gt;</code> - Loads a new module (no dependencies on unloaded modules
+allowed).</li>
+<li><code>modprobe &lt;mod-name&gt;</code> - Loads a new module and its dependencies.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="week2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="week2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
