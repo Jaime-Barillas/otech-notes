@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Black Holes - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.12.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html" class="active"><strong aria-hidden="true">2.13.</strong> Black Holes</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/23-exam-review.html"><strong aria-hidden="true">2.14.</strong> Exam Review</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> TBD</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="visualization-2"><a class="header" href="#visualization-2">Visualization 2</a></h1>
+<ul>
+<li>Can't see black holes - dust absorbs visible wavelengths.</li>
+<li>This around the black hole we can see at radio wavelengths.
+<ul>
+<li>Requires radio telescope, 1.3mm wavelength</li>
+</ul>
+</li>
+</ul>
+<h2 id="black-holes"><a class="header" href="#black-holes">Black Holes</a></h2>
+<ul>
+<li>Bends space-time</li>
+<li>Since space-time is curved, light rays bend near a black hole</li>
+</ul>
+<p><strong>Schwarzschild radius</strong><br />
+Non-rotating, non-charged black hole. Defines the event horizon.
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.10903em;">GM</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> is the gravitational constant. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> is the mass of the black hole. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> is
+the speed of light.</p>
+<p><strong>photon sphere</strong><br />
+Sphere of zero thickness where photons orbit the black hole.</p>
+<ul>
+<li>unstable, photons either escape or fall into the black hole.</li>
+</ul>
+<p>Inner most stable orbit of black hole is at 3 times <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. At greater distance,
+you can safely orbit the black hole.</p>
+<p><strong>accretion disk</strong> - gasses spiralling into the black hole. They emit radiation
+in the process. This is what we see of black holes.</p>
+<h2 id="visualization-of-m87"><a class="header" href="#visualization-of-m87">Visualization of M87*</a></h2>
+<ul>
+<li>From Earth M87* is small. It covers an angle of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">40</span><span class="mord mathnormal">μ</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span></span></span></span></li>
+<li>resolution of a radio telescope is proportional to the wavelength divided by
+its diameter</li>
+<li>Would need a dish with a diameter the size of the Earth.</li>
+<li>Can't do that (obviously.)</li>
+<li>Instead build several telescopes at different locations.
+<ul>
+<li>If they are seperated by the diameter of the earth, they are almost as good
+as a telescope that large.</li>
+</ul>
+</li>
+<li>How does this work? Interference.</li>
+<li>2 telescopes pointed at same location recieve slightly different signals due to
+different distances to object.</li>
+<li>Led to EHT</li>
+</ul>
+<h2 id="eht---event-horizon-telescope"><a class="header" href="#eht---event-horizon-telescope">EHT - Event Horizon Telescope</a></h2>
+<ul>
+<li>network of telescopes</li>
+<li>cover diameter of Earth</li>
+<li>each telescope has an atomic clock, synchronized</li>
+<li>data recorded during observation saved to disk + timestamp</li>
+<li>sent to MIT for processing</li>
+<li>data is raw signals from pairs of telescopes, not an image.</li>
+<li>what does a correct visualization look like? (no one's seen a black hole
+before.)</li>
+</ul>
+<h2 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h2>
+<ol>
+<li><strong>CLEAN</strong> - start with data -&gt; compute pixel values.</li>
+<li><strong>RML</strong> - start with pixel values -&gt; use optimization process to match the
+pixel values to the data.</li>
+</ol>
+<ul>
+<li>multi-step process was used to build visualization</li>
+<li>Step one:
+<ul>
+<li>take 4 independent teams, no communication allowed</li>
+<li>multiple weeks to build their pictures</li>
+<li>results were similar not too bad</li>
+<li>allowed estimation of black hole properties</li>
+<li>produced approximation of good parameters for visualization techniques.</li>
+</ul>
+</li>
+<li>Step two:
+<ul>
+<li>use math models w/ estimations to simulate what it should look like.</li>
+<li>four possible geometries chosen and modeled</li>
+<li>EHT signals were computed for the chosen geometries</li>
+<li>the new data was used to find better parameters for the algos</li>
+</ul>
+</li>
+<li>Step three:
+<ul>
+<li>introduce additional simulation to ensure overfitting of data did not ocurr.</li>
+</ul>
+</li>
+</ul>
+<p>Or just see slide 32.</p>
+<h2 id="simulation"><a class="header" href="#simulation">Simulation</a></h2>
+<ul>
+<li>Einstein developed equations of general relativity.</li>
+<li>Others developed equations for black holes.</li>
+<li>Maths understood by 1930s but visualizations came 40 years later.</li>
+<li>Equations are complicated.</li>
+<li>Couldn't do it until sufficiently powerful computers existed.</li>
+<li>We would see the accretion disk or stars behind it, not the black hole itself.</li>
+<li>Use <em>ray tracing</em>.</li>
+<li>rays do not follow straight line near black hole
+<ul>
+<li>compute the paths</li>
+<li>if intersecting a star, work illumination back along the curved path to the
+viewer</li>
+</ul>
+</li>
+<li>ray tracing previously ignored what light was made of.</li>
+<li>now, light consists of particles which interact with gravitational field.</li>
+<li>observer is likely moving at high speed around black hole.</li>
+<li>How to handle this?</li>
+</ul>
+<h2 id="approach"><a class="header" href="#approach">Approach</a></h2>
+<ul>
+<li>develop differential equations for path of photons starting at observer
+<ul>
+<li>non-trivial equations</li>
+<li>solved numerically</li>
+<li>compute path photon would take</li>
+</ul>
+</li>
+<li><strong>Termination Conditions</strong>:
+<ul>
+<li>Photon intersects star or accretion disk</li>
+<li>Photon goes to infinity w/out intersection</li>
+<li>Photon absorbed by block hole</li>
+</ul>
+</li>
+<li>starts could be very far away, long path to trace</li>
+</ul>
+<h3 id="star-intersection"><a class="header" href="#star-intersection">Star Intersection</a></h3>
+<ul>
+<li>map the stars onto large sphere enclosing observer and black hole:
+<strong>celestial sphere</strong>.</li>
+<li>intersect ray w/ sphere to see if it strikes a star</li>
+<li>stars are point light sources, rays infinitely thin, almost impossible to
+have intersection.
+<ul>
+<li>assume ray has diameter, look for intersections w/in diameter.</li>
+</ul>
+</li>
+<li>one star is intersected, propegate light back to observer
+<ul>
+<li>requires second set of differential equations that model light transport</li>
+<li>gravitational field effects the frequency of light, could shift it red or
+blue</li>
+</ul>
+</li>
+<li>star light can appear in multiple positions</li>
+<li>computed path can circle the black hole multiple times</li>
+</ul>
+<h3 id="interstellar-movie"><a class="header" href="#interstellar-movie">Interstellar (Movie)</a></h3>
+<ul>
+<li>film needed high quality image, physics simulations aliased badly.</li>
+<li>instead of ray tracing, trace light beams (give ray some volume.)</li>
+<li>beam starts as circle at camera, projects as ellipse on celestial sphere.</li>
+<li>stars w/in ellipse averaged together -&gt; stars no longer pop between frames.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y1s2/computer-graphics/21-volume-visualization.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y1s2/computer-graphics/23-exam-review.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y1s2/computer-graphics/21-volume-visualization.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y1s2/computer-graphics/23-exam-review.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

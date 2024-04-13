@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Implicit and Parametric Equations - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html" class="active"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.12.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">2.13.</strong> Black Holes</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/23-exam-review.html"><strong aria-hidden="true">2.14.</strong> Exam Review</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> TBD</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="implicit-and-parametric-equations"><a class="header" href="#implicit-and-parametric-equations">Implicit and Parametric Equations</a></h1>
+<h2 id="implicit-representations"><a class="header" href="#implicit-representations">Implicit Representations</a></h2>
+<ul>
+<li>f(x,y) = 0</li>
+<li>points that satisfy the above are <em>on the curve</em>.</li>
+</ul>
+<h2 id="implicit-line"><a class="header" href="#implicit-line">Implicit Line</a></h2>
+<ul>
+<li>direction of line: d = p1 -p0</li>
+<li>every point on the line must be parallel to d</li>
+<li>every point has perpendicular vector: n = (d.y, -d.x)</li>
+<li>See that d dot n = 0</li>
+</ul>
+<p>So what is f(x, y)?</p>
+<ul>
+<li>given p0 = (x0, y0) and p1 = (x1, y1)
+<ul>
+<li>n = (y1 - y0, -(x1 - x0))</li>
+<li>f(q) = n dot (q - p0) = 0  Where q is any point <em>on</em> the line.</li>
+</ul>
+</li>
+</ul>
+<h1 id="implicit-circle"><a class="header" href="#implicit-circle">Implicit Circle</a></h1>
+<p>(x - xcenter)^2 + (y - ycenter)^2 -r^2 = 0<br />
+or<br />
+|| p - pcenter ||^2 = r^2</p>
+<h1 id="3d"><a class="header" href="#3d">3D</a></h1>
+<p>Implicit reprsentations for spheres:
+(x - xcenter)^2 + (y - ycenter)^2 + (z - zcenter)^2 - r^2 = 0</p>
+<h1 id="display"><a class="header" href="#display">Display</a></h1>
+<p>To display these we need to know their normal vectors.
+For implicit surfaces it is the gradient:</p>
+<p>gradient( f ) = [ die( f, x) die( f, y) die( f, z) ]</p>
+<p>Follow the gradient to the intersection point of the surface.
+Once a point is found, use the gradients and tangents to find
+more points on the surface. Not the easiest.</p>
+<h1 id="parametric-representations"><a class="header" href="#parametric-representations">Parametric Representations</a></h1>
+<p>Easier to draw than Implicit representations.</p>
+<ul>
+<li>Have a parameter (t) that varies along the curve.</li>
+<li>Use a function of that parameter to generate points along the curve.</li>
+</ul>
+<p>Example of a Circle parametric equation:</p>
+<p>x = r * cos(t)
+y = r * sin(t)
+for 0 &lt;= t &lt;= 2pi</p>
+<p><strong>Parameterization is NOT unique</strong></p>
+<blockquote>
+<p>Arc length parameterization</p>
+<ul>
+<li>not common</li>
+<li>| derivative (f, s) |^2 = c   For some constant c.</li>
+<li>s is distance along the curve.</li>
+</ul>
+</blockquote>
+<h3 id="unit-parameterization"><a class="header" href="#unit-parameterization">Unit Parameterization</a></h3>
+<p>Use 0 &lt;= t &lt;= 1</p>
+<p>For circle:</p>
+<p>x = r * cos(2pi * t)
+y = r * sin(2pi * t)</p>
+<h2 id="3d-1"><a class="header" href="#3d-1">3D</a></h2>
+<p>(x, y, z) = p
+f(u, v) = (x, y, z) = p</p>
+<p>We use two parameters to trace out the surface.</p>
+<p>A 3D object's surface has n-1 dimensions (i.e. 2D)
+Therefore, we need only n-1 parameters to draw its surface.</p>
+<h1 id="piecewise-curves"><a class="header" href="#piecewise-curves">Piecewise Curves</a></h1>
+<ul>
+<li>For simple shapes, the above parametric is fine.</li>
+<li>For complex shapes it's not.</li>
+<li>Use a piecewise representation for more complex curves.
+<ul>
+<li>disadvantage: Needs more functions.</li>
+<li>advantage: simpler functions.</li>
+<li>advantage: easier to work with/program.</li>
+<li>advantage: You can get any curve w/ enough pieces.</li>
+</ul>
+</li>
+</ul>
+<h2 id="piecewise-curve-continuity"><a class="header" href="#piecewise-curve-continuity">Piecewise Curve Continuity</a></h2>
+<p>"How the pieces fit together."
+<strong>Parametric Continuity</strong>:</p>
+<ul>
+<li>C^n continuous: Its nth derivative is continuous.
+<ul>
+<li>Affects: shape and speed.</li>
+<li>for curves and <em>particularly</em> where the connect.</li>
+</ul>
+</li>
+</ul>
+<p>C^0 continuous: a corner
+The curve segments match up, there are no gaps but it might not be smooth.</p>
+<p>C^1: first derivative is equal at the join points.
+C^n: nth derivative is equal at join points.</p>
+<h3 id="parametric-representations-continuity"><a class="header" href="#parametric-representations-continuity">Parametric Representations Continuity</a></h3>
+<p>Derivatives may have the same direction, but different magnitude due
+to the parameterization.</p>
+<p>This is <strong>Geometric Continuity</strong>:
+The curve segments match up and their tangents (nth derivatives) have the
+same direction but different magnitudes.</p>
+<p>Two curves are G^1 continuous if:
+f'1 = k * f'2    k is a scalar constant.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y1s2/computer-graphics/05-transformations.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y1s2/computer-graphics/10-advanced-curves.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y1s2/computer-graphics/05-transformations.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y1s2/computer-graphics/10-advanced-curves.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

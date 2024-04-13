@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introduction To Modeling - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html" class="active"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.12.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">2.13.</strong> Black Holes</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/23-exam-review.html"><strong aria-hidden="true">2.14.</strong> Exam Review</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> TBD</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="introduction-to-modeling"><a class="header" href="#introduction-to-modeling">Introduction To Modeling</a></h1>
+<p>Vectors:</p>
+<ul>
+<li>It makes sense to transform points (positions)</li>
+<li>It does not make sense to transform directions.</li>
+</ul>
+<p>OpenGL user right handed coord system:
+Y is up, X is to the right, z is out of the screen.</p>
+<p>Winding order: CCW
+determines which side is the inside, and which is outside.</p>
+<p>Polygons must be planar for efficiency and simplicity.</p>
+<p><code>ax+by+cz+d = 0</code> &lt;- plane equation.
+(a, b, c) is normal to the plane.</p>
+<p>Meshes
+store each vertex once and reference it per face.
+Advantages:</p>
+<ul>
+<li>Save memory, each vertex is stored once.</li>
+<li>Each vertex is processed once -&gt; faster</li>
+<li>Helps reduce gaps in model</li>
+<li>easily maps to OpenGL
+Data is typically stored in 2 tables:</li>
+</ul>
+<h1 id="vertex-table"><a class="header" href="#vertex-table">Vertex table</a></h1>
+<ul>
+<li>location (pos)</li>
+<li>normal</li>
+<li>colour</li>
+<li>etc.</li>
+</ul>
+<p>Like an array buffer.</p>
+<h1 id="face-table"><a class="header" href="#face-table">Face Table</a></h1>
+<ul>
+<li>list of vertex indicies per face.</li>
+</ul>
+<p>Like an element buffer.</p>
+<p>Mesh Normals</p>
+<ul>
+<li>Each vertex should have its own normal for smooth render.</li>
+<li>Two steps: calc normal for each polygon face, then average all normals of a
+face a vertex is connected to.</li>
+</ul>
+<p>Normal per Face</p>
+<ul>
+<li>cross product of vectors that lie on plane of face.</li>
+<li>vectors can be made from the vertices of each face.</li>
+<li>Must construct them (use the verticies) in CCW order or the normals will have
+the wrong orientation.</li>
+<li>Could cause problems if the vectors end up being near co-linear. Incredibly
+unlikely with triangles.</li>
+<li>Polygons are easy to see with this method.</li>
+</ul>
+<p>Normals per Vertex</p>
+<ul>
+<li>As mentioned above
+Efficient method:
+table w/ 4 cols
+normal x, normal y, normal z, count of polygons vertex is in.
+loop through polygons and calc normal
+add normal components to corresponding entry in table (i.e. for each vertex)
+increment polygon count
+divide all components by count
+normalize.
+done!</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y1s2/computer-graphics/01-graphics-pipeline.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y1s2/computer-graphics/05-transformations.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y1s2/computer-graphics/01-graphics-pipeline.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y1s2/computer-graphics/05-transformations.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Ray Tracing - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html" class="active"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.12.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">2.13.</strong> Black Holes</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/23-exam-review.html"><strong aria-hidden="true">2.14.</strong> Exam Review</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> TBD</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="ray-tracing"><a class="header" href="#ray-tracing">Ray Tracing</a></h1>
+<ul>
+<li>Global illumination model</li>
+</ul>
+<h2 id="radiosity"><a class="header" href="#radiosity">Radiosity</a></h2>
+<ul>
+<li>Not used much anymore.</li>
+<li>Ideas incorporated into other techniques.</li>
+</ul>
+<h2 id="properties-of-light"><a class="header" href="#properties-of-light">Properties of Light</a></h2>
+<ul>
+<li>Law of conservation of energy.</li>
+<li>CG light is special case
+<ul>
+<li>light energy may convert to other form.</li>
+<li>other forms may convert to light energy.</li>
+</ul>
+</li>
+<li>Light is a wave (see light model lecture)</li>
+<li>Light is a particle (carries amount of energy, used in raytracing)</li>
+<li>CG light follows straight paths.</li>
+</ul>
+<h2 id="towards-ray-tracing"><a class="header" href="#towards-ray-tracing">Towards Ray Tracing</a></h2>
+<ul>
+<li>Phong is coarse approximation.</li>
+<li>Goal: Look at real physical conditions.
+<ul>
+<li>Use particle model of light.</li>
+<li>Derive reflected amount of light from:
+<ul>
+<li>Incoming light from different directions.</li>
+<li>More realistically modeled reflection properties.</li>
+<li>Own emitted light.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="basic-ideas---rays-in-ray-tracing"><a class="header" href="#basic-ideas---rays-in-ray-tracing">Basic Ideas - Rays in Ray Tracing</a></h2>
+<ul>
+<li>One ray per pixel.</li>
+<li>Rays originate at the pixel, directed towards the eye.</li>
+<li>How to determine the pixel colour?</li>
+<li>Reverse the ray, trace it into the scene.
+<ul>
+<li>The ray starts at the pixel and goes into the scene.</li>
+<li>It hits an object or goes into the background</li>
+</ul>
+</li>
+<li>Compute the colour of the object where the ray hits it.
+<ul>
+<li>Don't forget the light contributions from other objects in the scene.</li>
+</ul>
+</li>
+</ul>
+<p>So:</p>
+<ul>
+<li>Trace a ray from each intersection point to each of the light sources.
+<ul>
+<li>If a clear path to the light, compute the diffuse and specular light
+produced by that light.</li>
+<li>If there isn't a clear path, that object is in shadow from the light source
+and only the ambient component of light is used.</li>
+</ul>
+</li>
+<li>The ray can also reflect off of surfaces that it hits.</li>
+<li>Trace the ray to any object it may intersect. Compute that colour as the
+reflected colour for the original object.
+<ul>
+<li>If the object is transparent, trace the ray through the object to find the
+colour on the other side (refract the ray). Then follow the ray to its next
+intersection and compute the colour there.</li>
+</ul>
+</li>
+<li>This process can be recursive. Usually a couple levels until stopping.</li>
+</ul>
+<h2 id="the-math"><a class="header" href="#the-math">The Math</a></h2>
+<p>TODO</p>
+<h2 id="forward-ray-tracing"><a class="header" href="#forward-ray-tracing">Forward Ray Tracing</a></h2>
+<p>We trace from eye to object (through pixels) to light source. Forward ray
+tracing traces rays from light source to object (eventually to eye).</p>
+<ul>
+<li>Lots of work (rays) for little return.</li>
+<li>Some of the rays will reflect in such a way that they don't intersect with
+the pixels of the screen and the eye.</li>
+</ul>
+<h2 id="backwards-ray-tracing"><a class="header" href="#backwards-ray-tracing">Backwards Ray Tracing</a></h2>
+<ul>
+<li>What we do.</li>
+<li>From the eye to (eventually) the light source.</li>
+<li>"Do work where it matters".</li>
+</ul>
+<h2 id="efficiency-of-backwards-ray-tracing"><a class="header" href="#efficiency-of-backwards-ray-tracing">Efficiency of Backwards Ray Tracing</a></h2>
+<ul>
+<li>Each of the original rays can generate more rays.</li>
+<li>The final result of the original ray is the pixel colour.</li>
+<li>Can be modeled as a tree of rays, pixels are the root.</li>
+<li>Each intersection is a node in the tree. The generated rays lead to the
+children.</li>
+<li>Called a <strong>Ray Tree</strong>.</li>
+<li>Contribution of child rays to colour lessens each intersection.</li>
+<li>The Ray Tree can quickly grow large.</li>
+<li>Ray Tracing can become expensive to compute.</li>
+<li>We want to control number of rays.</li>
+<li>Intersection computations must be efficient.</li>
+</ul>
+<h2 id="stopping-conditions-for-ray-tracing"><a class="header" href="#stopping-conditions-for-ray-tracing">Stopping Conditions for Ray Tracing</a></h2>
+<ul>
+<li>Two options
+<ol>
+<li>Stop when the tree reaches a maximum depth.</li>
+<li>Stop when the contribution to colour goes below a certain level.</li>
+</ol>
+</li>
+<li>Usually, both are used.</li>
+</ul>
+<h2 id="finding-intersections"><a class="header" href="#finding-intersections">Finding Intersections</a></h2>
+<ul>
+<li>When tracing rays, we want the closest intersection.</li>
+<li>Other objects are hidden by the closest, so only the closest matter to the pixel colour.</li>
+<li>Naive approach is to test every object in the scene.</li>
+</ul>
+<h2 id="coordinate-systems"><a class="header" href="#coordinate-systems">Coordinate Systems</a></h2>
+<p>First we need to put everything in a common coord system before generating
+rays.</p>
+<h3 id="eye-coordinates"><a class="header" href="#eye-coordinates">Eye Coordinates</a></h3>
+<p>When using eye coords, transform the models so they are in the eye coordinate
+system. Only needs to be done once, so not a performance concern.</p>
+<h3 id="model-coordinates"><a class="header" href="#model-coordinates">Model Coordinates</a></h3>
+<p>Place the eye and display screen in model coordinates. Needs to be applied to
+each of the original rays. Still not an efficiency concern.</p>
+<h2 id="intersections"><a class="header" href="#intersections">Intersections</a></h2>
+<p>The most expensive operation. The mathematical representation of a ray:
+p(t) = e + td, t &gt; 0  (Slide 45)</p>
+<p><code>t</code> must always be greater than 0, otherwise, any intersections will be at or
+behind the eye.</p>
+<h2 id="sphere-intersection"><a class="header" href="#sphere-intersection">Sphere Intersection</a></h2>
+<ul>
+<li>One of the easiest objects to intersect.</li>
+</ul>
+<p>See the math: Slide 45 onwards.</p>
+<p>!!! Slide 49 !!! Smallest of the two roots -&gt; Smallest <em>positive</em> root.
+(otherwise <code>t</code> in equation above would be negative.)</p>
+<h1 id="ray-tracing-part-2"><a class="header" href="#ray-tracing-part-2">Ray Tracing Part 2</a></h1>
+<p>Review of <strong>raycasting</strong>:</p>
+<ul>
+<li>Light rays, for each intersection -&gt; compute local illumination using Phong
+model.</li>
+<li>Shadow rays, for testing if intersection points have line-of-sight to light
+source.</li>
+<li>True raytracing: Recursive, follow reflected and refracted rays.</li>
+</ul>
+<h2 id="adapted-illumination-model"><a class="header" href="#adapted-illumination-model">Adapted Illumination Model</a></h2>
+<p>See slide 8.
+I = ambient + sum(diffuse + specular) + reflected-ray-values + refracted-ray-values.</p>
+<h2 id="intersection"><a class="header" href="#intersection">Intersection</a></h2>
+<ul>
+<li>The most expensive operation in raytracing.</li>
+<li>A ray is: p(t) = e + td    t &gt; 0
+<ul>
+<li>e is the starting point of the ray.</li>
+<li>d is a unit vector in the ray direction.</li>
+<li>t is will always be <strong>greater than 0</strong>, otherwise the intersection is behind
+the eye.</li>
+</ul>
+</li>
+</ul>
+<h2 id="intersecting-a-sphere"><a class="header" href="#intersecting-a-sphere">Intersecting a Sphere</a></h2>
+<ul>
+<li>One of the easiest objects to intersect.</li>
+<li>Use implicit representation of sphere eq'n.
+<ul>
+<li>(ray)   e+td</li>
+<li>(sphere)   (p-c) * (p-c) - R^2</li>
+<li>Substitute the ray eq'n into the sphere eq'n as the point to test <code>p</code></li>
+<li>(e+td - c) * (e+td - c) - R^2</li>
+<li>Slide 11</li>
+</ul>
+</li>
+<li>This results in a quadratic equation:
+(d * d)t^2 + 2(d * (e - c))t + (e - c)^2 - R^2 = 0
+<ul>
+<li>Use the quadratic formula.</li>
+<li>Imaginary roots only? -&gt; No intersection. (check the descriminant)</li>
+</ul>
+</li>
+</ul>
+<h2 id="general-intersections"><a class="header" href="#general-intersections">General Intersections</a></h2>
+<p>General polygon intersection.</p>
+<ul>
+<li>Two steps
+<ul>
+<li>Where does the ray intersect the polygon's plane? (Is it parallel or not?)</li>
+<li>Is the intersection point inside or outside the polygon?</li>
+</ul>
+</li>
+<li>Polygon plane eq'n, Slide 15:
+(p - p1) * n = 0,   n is normal.<br />
+(e + td - p1) * n = 0.<br />
+After rearranging: t = ((p1 - e) * n) / (d * n)</li>
+<li>If (d * n) is 0, the ray is parallel to the plane.</li>
+<li>Project the polygon and intersection point to one of the coordinate planes.</li>
+<li>Draw a line from the intersection point to infinity, Count the number of times
+it intersects a polygon edge.
+<ul>
+<li>Odd -&gt; inside polygon</li>
+<li>Even -&gt; outside polygon</li>
+</ul>
+</li>
+</ul>
+<p>So which line to infinity should we use? (This selects the coordinate plane
+to project onto)</p>
+<ul>
+<li>
+<p>An easy choice is the x-axis.</p>
+<ul>
+<li>Intersection calculation
+is easy, check y values only.</li>
+</ul>
+</li>
+<li>
+<p>Slide 19: If one end point is above the line (x-axis in this case) and the
+other below,   we have an intersection.</p>
+</li>
+<li>
+<p>If the projection results in a horizontal line, choose one of the other
+planes.</p>
+</li>
+<li>
+<p>See also page: 20</p>
+</li>
+<li>
+<p>More efficient computations in the case of triangles.</p>
+</li>
+<li>
+<p>Efficiency is a major concern in raytracing.</p>
+</li>
+<li>
+<p>Key observation: <em>Most objects will not be hit by a particular ray</em>.</p>
+</li>
+<li>
+<p>Want: Compute <strong>non-intersections</strong> as quickly as possible.</p>
+</li>
+<li>
+<p>Sol'n: Bounding volumes.</p>
+</li>
+</ul>
+<h2 id="bonuding-volumes"><a class="header" href="#bonuding-volumes">Bonuding Volumes</a></h2>
+<ul>
+<li>Enclose complex objects in a simpler shape.</li>
+<li>Test intersection against the simpler shape first (e.g. a sphere).</li>
+<li>Use a sphere, axis-aligned bounding box, rectangular prism.</li>
+<li>Prefer:
+<ul>
+<li>Bounding volume closely contains the object.
+<ul>
+<li>Reduce possibility of false positives.</li>
+</ul>
+</li>
+<li>Add to modeling heirarchy for heirarchy of bounding volumes.</li>
+</ul>
+</li>
+</ul>
+<h2 id="accelerating-raytracing"><a class="header" href="#accelerating-raytracing">Accelerating RayTracing</a></h2>
+<p>Parallelizeable - raytracing is emberassingly parallel.
+Space Partitioning - Bounding Volume heirarchies, BSP, uniform subdivision trees
+(Octrees)</p>
+<h2 id="space-partitioning"><a class="header" href="#space-partitioning">Space Partitioning</a></h2>
+<ul>
+<li>
+<p>Want closest intersection to start of ray</p>
+</li>
+<li>
+<p>More likely desired intersection occurs near start of the ray.</p>
+</li>
+<li>
+<p>Intersection will not occur behind the ray or in a direction the array doesn't go.</p>
+</li>
+<li>
+<p>The ray passes through a small portion of space, don't look elsewhere.</p>
+</li>
+<li>
+<p>So we need a way of organizing the objects in the scene so we only look at the
+ones where the ray will pass and ignore the rest of them.</p>
+</li>
+<li>
+<p>Want to test objects in smart order, most likely first, but make sure you don't
+miss closer ones.</p>
+</li>
+<li>
+<p>Inefficient to sort objects by distance since they would need to be sorted
+for <em>each</em> ray.</p>
+</li>
+<li>
+<p>A Sol'n:</p>
+<ul>
+<li>Build grid on top of scene.</li>
+<li>Assign objects to the grid cells they are in.</li>
+<li>Each cell should hold a small number of objects (ideally 3 - 5)</li>
+<li>Start intersection testing at cell where ray starts</li>
+<li>Find first cell the ray hits</li>
+<li>Objects in that cell are closest to ray origin, test them.</li>
+<li>If no intersection, move on to next cell.</li>
+<li>Worst Case (n x n x n 3D grid): Have to check n * sqrt(3) cells.</li>
+<li>For evenly distributed objects: Speed up on order of 1/n^2 (if n = 10 -&gt; 100 times faster)</li>
+<li>In practice, objects are rarely evenly distributed.</li>
+<li>Problems:
+<ul>
+<li>As n is increased data structure grows by n^3</li>
+<li>As cell size gets smaller, an object may appear in multiple cells causing
+multiple intersection calculations for that model.</li>
+<li>Many cells will be empty, computing next cell to visit takes time so we
+waste efficiency on empty cells.</li>
+<li>Lower limit on cell size exists.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="adaptive-space-partitioning"><a class="header" href="#adaptive-space-partitioning">Adaptive Space Partitioning</a></h2>
+<ul>
+<li>We want cells to be as large as possible so we can chew through them quickly.</li>
+<li>Use an <em>adaptive grid with cells of varying size</em>.</li>
+<li>May improve performance by reducing the number of empty cells.</li>
+</ul>
+<h2 id="recursive-raytracing"><a class="header" href="#recursive-raytracing">Recursive RayTracing</a></h2>
+<p>Slide 36</p>
+<p>TODO: A bunch of slides.</p>
+<h2 id="distributed-raytracing"><a class="header" href="#distributed-raytracing">Distributed RayTracing</a></h2>
+<p>Two main problems w/ classical raytracing:</p>
+<ol>
+<li>Images are too clean, sharp, and always in focus.</li>
+<li>Lot's of aliasing around edges of objects and shadows.</li>
+</ol>
+<p>These problems are caused by point sampling:</p>
+<ul>
+<li>1 ray per pixel</li>
+<li>1 ray to light source</li>
+<li>1 reflected ray</li>
+<li>1 refracted ray</li>
+</ul>
+<p>Consider a row of pixels and their rays:
+Rays are shot through a point on the pixel. but we ideally want to sample the
+<em>whole</em> pixel, not just a point on it. a ray may hit an object while the next
+misses it.</p>
+<ul>
+<li>a ray for one pixel may hit an object, but the ray for the next pixel might
+not (imagine the edge of the object is diagonal.)</li>
+</ul>
+<p>The basic solution:</p>
+<ul>
+<li>Use more than one ray per pixel</li>
+<li>Easiest approach is to divide the pixel into smaller squares and use one
+array for each cell. This only delays (minimizes) the problem. Not a sol'n</li>
+<li>Next approach is to randomly select a position within a pixel. Use a large
+number of rays per pixel. Average the result.
+<ul>
+<li>Not uniform without lots of rays.</li>
+<li>Inefficient, needs large number of rays to get a good sample for each
+pixel.</li>
+</ul>
+</li>
+<li>Next approach: Combine both. Divide the pixel into a grid of smaller cells.
+<ul>
+<li>Within each cell, randomly sample.</li>
+<li>pixels are sampled more uniformly.</li>
+<li>but still somewhat random so aliasing isn't as noticable.</li>
+<li>Adds a bit of noise in exchange for eliminating aliasing.</li>
+<li>5x5 grid is usually good enough.</li>
+</ul>
+</li>
+</ul>
+<h3 id="shadows"><a class="header" href="#shadows">Shadows</a></h3>
+<p>Dark == umbra, transition/light == penumbra.</p>
+<ul>
+<li>
+<p>Light source must have finite area, cannot be a single point.</p>
+</li>
+<li>
+<p>Surface of light source is divided into a grid similar to the pixel stuff
+above.</p>
+</li>
+<li>
+<p>Instead of one shadow ray, use multiple, one for each of the cells on the
+light source.</p>
+</li>
+<li>
+<p>The rays intersect a random point in each cell, also like above.</p>
+</li>
+<li>
+<p>The values of the different shadow rays are averaged.</p>
+</li>
+<li>
+<p>If a point is in the Umbra: all rays are blocked, same result as without
+distributed rays.</p>
+</li>
+<li>
+<p>If a point is in the penumbra: only some rays blocked, average result with
+give desired affect.</p>
+</li>
+<li>
+<p>Distributed rays also works for:</p>
+<ul>
+<li>depth of field</li>
+<li>glossy reflections</li>
+<li>motion blur</li>
+</ul>
+</li>
+</ul>
+<h3 id="efficiency"><a class="header" href="#efficiency">Efficiency</a></h3>
+<ul>
+<li>The number of rays increases rapidly.</li>
+<li>Using 25 rays (for example) for a pixel, with <em>one</em> light source w/ 25 cells,
+number of rays increase by factor of 625 at least.</li>
+</ul>
+<h2 id="path-tracing"><a class="header" href="#path-tracing">Path Tracing</a></h2>
+<p>The branching of subsequent rays in distributed raytracing leads to rays
+contributing only a fraction of the colour of the pixel. We could get away with
+fewer rays.</p>
+<p>With PathTracing:</p>
+<ul>
+<li>each of the initial multiple rays follows <em>only one</em> path through the scene.</li>
+<li>a number of rays for each pixel is still used (usually in the range of
+several hundreds to thousands.)</li>
+<li>when a ray hits an object, randomly decide to generate a
+shadow/reflection/refraction ray.
+<ul>
+<li>Also, randomly generate a direction for the ray using the techniques as
+distributed ray tracing.</li>
+<li>Continues until the ray leaves the scene or goes through enough levels.</li>
+</ul>
+</li>
+</ul>
+<h3 id="advantagesdisadvantages"><a class="header" href="#advantagesdisadvantages">Advantages/Disadvantages</a></h3>
+<ul>
+<li>No explosive growth of rays</li>
+<li>Deep in the tree, a large number of rays is wasteful since each contributes
+little to the final colour of a pixel.
+<ul>
+<li>Path tracing only uses one ray throughout.</li>
+</ul>
+</li>
+<li>Will need lots of rays to get a good average value.</li>
+<li>Basically a Monte Carlo simulation of light transfer.
+<ul>
+<li>needs a large number of samples</li>
+<li>We know that there are ways for controlling the sampling, so we can do
+this reasonably efficiently.</li>
+</ul>
+</li>
+</ul>
+<p>Photon Mapping:</p>
+<ul>
+<li>both forward and backwards path tracing.</li>
+<li>forwards from light "deposits" photons on surface of objects.</li>
+<li>backwards from eye picks up these photons.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y1s2/computer-graphics/16-texture-mapping2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y1s2/computer-graphics/21-volume-visualization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y1s2/computer-graphics/16-texture-mapping2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y1s2/computer-graphics/21-volume-visualization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

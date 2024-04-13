@@ -1,0 +1,2757 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>OTech Notes</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li></ol></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.12.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">2.13.</strong> Black Holes</a></li><li class="chapter-item expanded "><a href="y1s2/computer-graphics/23-exam-review.html"><strong aria-hidden="true">2.14.</strong> Exam Review</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> TBD</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="ontario-tech-university---notes"><a class="header" href="#ontario-tech-university---notes">Ontario Tech University - Notes</a></h1>
+<p>See the side bar for the list of available pages.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="systems-programming"><a class="header" href="#systems-programming">Systems Programming</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="what-is-an-operating-system"><a class="header" href="#what-is-an-operating-system">What is an Operating System</a></h1>
+<ul>
+<li>Software that controls hardware to perform various operations.</li>
+<li>Can be a collection of software.</li>
+<li>Can be simple or complex.</li>
+</ul>
+<p>Modern OS's contain several complex functions:</p>
+<ul>
+<li>Manage processes.</li>
+<li>Manage memory.</li>
+<li>Interact with hardware.</li>
+<li>Manage multiple concurrently running software.</li>
+</ul>
+<h1 id="os-modes"><a class="header" href="#os-modes">OS "Modes"</a></h1>
+<p>OS software can run in different modes:</p>
+<ul>
+<li>User mode - Apps and the UI run in this mode. Applications must request the
+OS to perform hardware actions on their behalf.</li>
+<li>Kernel mode - The OS runs in this mode. Also called "Supervisor Mode". Code
+that runs in kernel mode has direct access to hardware allowing it to perform
+any operations on the hardware.</li>
+</ul>
+<h1 id="some-functions-of-the-os"><a class="header" href="#some-functions-of-the-os">Some Functions of the OS</a></h1>
+<ul>
+<li>Read/Write Disk/Memory.</li>
+<li>Pure computations.</li>
+<li>Network communication.</li>
+<li>Media playback.</li>
+<li>I/O peripheral communication.</li>
+<li>General OS security.</li>
+</ul>
+<h1 id="the-os-manages-resources"><a class="header" href="#the-os-manages-resources">The OS Manages Resources</a></h1>
+<ul>
+<li>Hardware.</li>
+<li>Software.</li>
+<li>The file system.</li>
+<li>In memory data.</li>
+</ul>
+<p>Modern OS's are capable of managing multitasking and multiprocessing resources.</p>
+<h1 id="common-os-hardware"><a class="header" href="#common-os-hardware">Common OS Hardware</a></h1>
+<h2 id="cpu"><a class="header" href="#cpu">CPU</a></h2>
+<blockquote>
+<p>The brain of the computer</p>
+</blockquote>
+<p>Fetches instructions and data from memory to execute and operate on them. CPU
+family specific instructions exist.</p>
+<h2 id="memory"><a class="header" href="#memory">Memory</a></h2>
+<p>General storage for the computer. Ranges from fast to quick:</p>
+<ul>
+<li>Hardware registers.</li>
+<li>CPU local cache.</li>
+<li>Main Memory (RAM).</li>
+<li>SSD's.</li>
+<li>HDD's.</li>
+<li>Optical disks.</li>
+<li>Magnetic tapes.</li>
+</ul>
+<h2 id="io-devices"><a class="header" href="#io-devices">I/O Devices</a></h2>
+<ul>
+<li>Monitors.</li>
+<li>Keyboards+</li>
+<li>Mice.</li>
+<li>USB flash drives.</li>
+<li>etc.</li>
+</ul>
+<h1 id="the-layers-of-an-os"><a class="header" href="#the-layers-of-an-os">The Layers of an OS</a></h1>
+<ol>
+<li>[App] User and other system programs.</li>
+<li>[OS] The UI.</li>
+<li>[OS] System calls - How apps interact with the hardware.</li>
+<li>[OS] OS services - Ongoing OS processes, such as, I/O operations.</li>
+<li>Hardware.</li>
+</ol>
+<hr />
+<h1 id="os-architectures"><a class="header" href="#os-architectures">OS Architectures</a></h1>
+<p>OS's are, generally, very large programs. Here are a few ways they are
+structured:</p>
+<h2 id="the-simple-structure"><a class="header" href="#the-simple-structure">The Simple Structure</a></h2>
+<ul>
+<li>Not divided into modules</li>
+<li>Interfaces and levels of functionality are not well separated.</li>
+</ul>
+<h2 id="the-layered-structure"><a class="header" href="#the-layered-structure">The Layered Structure</a></h2>
+<ul>
+<li>Divided into a number of layers. Each is built ontop of the last.</li>
+<li>Hardware is layer 0.</li>
+<li>The user interface is the highest layer.</li>
+<li>Layers are defined such that each only uses the functions services of the
+next lower layer.</li>
+</ul>
+<h2 id="microkernels"><a class="header" href="#microkernels">Microkernels</a></h2>
+<ul>
+<li>Moves as many services from the kernel into user space.</li>
+<li>Communication between user modules typically uses message passing.</li>
+<li>Easy to extend.</li>
+<li>Easy to port.</li>
+<li>Often more reliable.</li>
+<li>Often more secure.</li>
+<li>There is performance overhead when the various user space modules communicate
+with their kernel space dependencies.</li>
+</ul>
+<h2 id="modules"><a class="header" href="#modules">Modules</a></h2>
+<p>Many OS's implement loadable kernel modules.</p>
+<ul>
+<li>Typically uses an Object-Oriented approach.</li>
+<li>Core components are separate.</li>
+<li>Modules communicate over known interfaces.</li>
+<li>Loaded as needed.</li>
+<li>Similar to layers, but more flexible.</li>
+</ul>
+<h2 id="a-hybrid-approach"><a class="header" href="#a-hybrid-approach">A Hybrid Approach</a></h2>
+<p>Most modern OS's use a hybrid approach to address various concerns, such as,
+security, preformance, usability, etc.</p>
+<h1 id="linux-kernel-modules"><a class="header" href="#linux-kernel-modules">Linux Kernel Modules</a></h1>
+<p>Each kernel module usually has an initializing function specified with the
+<code>module_init()</code> function (macro?). Similarly there is a deinitializing function
+specified with the <code>module_exit()</code> function.
+Here is a simple kernel module:</p>
+<pre><code class="language-c">#include &lt;linux/init.h&gt;
+#include &lt;linux/module.h&gt;
+#include &lt;linux/kernel.h&gt;
+
+MODULE_LICENSE("GPL"); // Needed.
+
+static int __init init_kernel_mod(void) {
+    printk(KERN_ALERT "Initializing kernel mod!\n");
+    return 0;
+}
+
+static void __exit exit_kernel_mod(void) {
+    printk(KERN_ALERT "Releasing kernel mod resources!\n");
+}
+
+module_init(init_kernel_mod);
+module_exit(exit_kernel_mod);
+</code></pre>
+<p>And the associated Makefile:</p>
+<pre><code class="language-makefile">CONFIG_MODULE_SIG=n
+obj-m += my_kernel_mod.o
+
+default:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+</code></pre>
+<p>Review the Linux kernel module development documentation for details.</p>
+<h2 id="relevant-cli-commands"><a class="header" href="#relevant-cli-commands">Relevant CLI Commands</a></h2>
+<ul>
+<li><code>lsmod</code> - List currently loaded mods.</li>
+<li><code>modinfo &lt;mod-name&gt;</code> - Prints info about a specific kernel module.</li>
+<li><code>rmmod &lt;mod-name&gt;</code> - Removes a currently loaded module.</li>
+<li><code>insmod &lt;mod-name&gt;</code> - Loads a new module (no dependencies on unloaded modules
+allowed).</li>
+<li><code>modprobe &lt;mod-name&gt;</code> - Loads a new module and its dependencies.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="processes"><a class="header" href="#processes">Processes</a></h1>
+<ul>
+<li>A program in execution.</li>
+<li>Contains program code. (Stored in the "text" section within a binary.)</li>
+<li>Data section containing global variables. (This is a feature of the binary format, no?)</li>
+<li>Has its own program counter and set of registers.</li>
+<li>Has its own stack.</li>
+<li>Has associated heap memory.</li>
+</ul>
+<p>A program is a passive entity stored on disk. When it is loaded into memory
+and executed, it becomes an active entity called a Process. A program on disk
+can become multiple processes in memory.</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Process</th></tr></thead><tbody>
+<tr><td style="text-align: center">Stack</td></tr>
+<tr><td style="text-align: center">.....</td></tr>
+<tr><td style="text-align: center">Heap</td></tr>
+<tr><td style="text-align: center">Data</td></tr>
+<tr><td style="text-align: center">Text</td></tr>
+</tbody></table>
+</div>
+<p>The Stack grows downwards and the Heap grows Upwards.</p>
+<h1 id="process-states"><a class="header" href="#process-states">Process States</a></h1>
+<ul>
+<li><strong>new</strong> - The process is being created.</li>
+<li><strong>running</strong> - Instructions are being executed.</li>
+<li><strong>waiting</strong> - Execution is paused waiting for some event to occur.</li>
+<li><strong>ready</strong> - The process is specifically waiting to be assigned CPU time.</li>
+<li><strong>terminated</strong> - The process has finished execution.</li>
+</ul>
+<pre class="mermaid">---
+title: Process States
+---
+stateDiagram-v2
+direction LR
+[*] --&gt; New
+New --&gt; Ready: admitted
+Ready --&gt; Running: scheduler dispatch
+Running --&gt; Ready: interrupt
+Running --&gt; Waiting: I/O or event wait
+Waiting --&gt; Ready: I/O or event completion
+Running --&gt; Terminated: exit
+Terminated --&gt; [*]
+</pre>
+<h1 id="process-scheduling"><a class="header" href="#process-scheduling">Process Scheduling</a></h1>
+<ul>
+<li>It is considered bad to have process wait for a long time before they get
+assigned some CPU time.</li>
+<li>Effective process management translates to a "performant" computer.</li>
+<li>We want to maximize CPU usage, quickly swapping in processes as others
+finish or their allocated time slice expires.</li>
+</ul>
+<h1 id="process-scheduler"><a class="header" href="#process-scheduler">Process Scheduler</a></h1>
+<ul>
+<li>Selects which process executes next on the CPU.</li>
+<li>Maintains a queue of processes.</li>
+<li>Various queues:
+<ul>
+<li><strong>Job Queue</strong> - All processes.</li>
+<li><strong>Ready Queue</strong> - All processes in Main Memory in the ready state.</li>
+<li><strong>Device Queues</strong> - Processes waiting for an I/O device.</li>
+</ul>
+</li>
+</ul>
+<p>With a single CPU core, process must wait for their turn as only one process
+can run at a time. There are various <strong>Scheduling Argorithms</strong> to determine
+when and which process runs.</p>
+<h1 id="two-different-schedulers"><a class="header" href="#two-different-schedulers">Two Different Schedulers</a></h1>
+<h2 id="the-short-term-scheduler-aka-cpu-scheduler"><a class="header" href="#the-short-term-scheduler-aka-cpu-scheduler">The Short-Term Scheduler (a.k.a. CPU Scheduler)</a></h2>
+<p>Selects which process should next be allocated some CPU time. This is sometimes
+the only scheduler in the system. Invoked frequently so it should be fast.</p>
+<h2 id="the-long-term-scheduler-aka-job-scheduler"><a class="header" href="#the-long-term-scheduler-aka-job-scheduler">The Long-Term Scheduler (a.k.a. Job Scheduler)</a></h2>
+<p>Selects which processes should be brought into the <em>ready queue</em>. Invoked
+relatively infrequently, need not be fast.</p>
+<h1 id="process-creation"><a class="header" href="#process-creation">Process Creation</a></h1>
+<p>Processes are identified by a <code>process identifier</code> (pid). The parent and child
+can execute concurrently or the parent can wait for the child to terminate
+before continuing to execute.</p>
+<p>Parent and child processes have options when it comes to sharing resources:</p>
+<ul>
+<li>Parent and children can share all resources.</li>
+<li>Children share only a subset of resources.</li>
+<li>Parent and children share no resources.</li>
+</ul>
+<p>In terms of the address space:</p>
+<ul>
+<li>The child can recieve a duplicate of the parent's.</li>
+<li>The child can have a fresh program loaded into it. (<code>exec()</code>)</li>
+</ul>
+<pre class="mermaid">---
+title: Process Creation
+---
+stateDiagram-v2
+direction LR
+[*] --&gt; fork()
+fork() --&gt; exec(): child
+exec() --&gt; exit()
+exit() --&gt; wait
+fork() --&gt; wait: parent
+wait --&gt; [*]: resumes
+</pre>
+<h1 id="process-termination"><a class="header" href="#process-termination">Process Termination</a></h1>
+<ul>
+<li>Process resources are deallocated by the OS.</li>
+<li>A parent may terminate a child process by using the <code>abort()</code> syscall.</li>
+<li>Some OS's may not allow children processes to exist if their parent
+terminates.</li>
+<li>A <strong>zombie process</strong> is a process who's parent is not waiting for its
+termination.</li>
+<li>An <strong>orphan process</strong> is a process who's parent has terminated.</li>
+</ul>
+<h1 id="inter-process-communication---ipc"><a class="header" href="#inter-process-communication---ipc">Inter-Process Communication - IPC</a></h1>
+<p>Process may be independent or cooperative. If they are cooperative they need
+some form of communication. This is what IPC is about. We look at two types
+of IPC:</p>
+<h2 id="shared-memory"><a class="header" href="#shared-memory">Shared Memory</a></h2>
+<ul>
+<li>An area of memory shared among processes.</li>
+<li>Communication is under control of the user processes.</li>
+<li>Requires manual synchronization of communication.</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Shared Memory</th></tr></thead><tbody>
+<tr><td style="text-align: center">Process A</td></tr>
+<tr><td style="text-align: center"><em>shared memory</em></td></tr>
+<tr><td style="text-align: center">Process B</td></tr>
+<tr><td style="text-align: center">.....</td></tr>
+<tr><td style="text-align: center">.....</td></tr>
+</tbody></table>
+</div>
+<h2 id="message-passing"><a class="header" href="#message-passing">Message Passing</a></h2>
+<p>A system for processes to communicate and synchronize their actions. There are
+two main operations in message passing: <strong>send</strong> and <strong>recieve</strong>. Message sizes
+can be fixed or variable. If two processes wish to communicate, they must
+establish a communication link between them. There are physical and logical
+concerns for communication link implementations, here are some:</p>
+<ul>
+<li>Physical - specifically, the medium over which message passing occurs.
+<ul>
+<li>Shared Memory</li>
+<li>A Hardware Bus</li>
+<li>The Network</li>
+</ul>
+</li>
+<li>Logical - We look at these in more detail.
+<ul>
+<li>Direct or indirect.</li>
+<li>Synchronous or asynchronous.</li>
+<li>automatic or explicit buffering.</li>
+</ul>
+</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Message Passing</th></tr></thead><tbody>
+<tr><td style="text-align: center">Process A</td></tr>
+<tr><td style="text-align: center">Process B</td></tr>
+<tr><td style="text-align: center">.....</td></tr>
+<tr><td style="text-align: center">.....</td></tr>
+<tr><td style="text-align: center">Message Queue</br>m1, m2, m3, ...</td></tr>
+</tbody></table>
+</div>
+<h3 id="direct-communication"><a class="header" href="#direct-communication">Direct Communication</a></h3>
+<ul>
+<li>Processes must name each other directly when sending and receiving.</li>
+<li>"Links" are established automatically.</li>
+<li>Links are between exactly one pair of processes and there is only one link
+between a pair.</li>
+<li>May be unidirectional but are usually bi-directional.</li>
+</ul>
+<h3 id="indirect-communication"><a class="header" href="#indirect-communication">Indirect Communication</a></h3>
+<ul>
+<li>Messages are sent to and received from mailboxes (or ports.)</li>
+<li>Each port has a unique id.</li>
+<li>Processes must share this port.</li>
+<li>A port or mailbox may be associated with multiple processes.</li>
+<li>unidirectional or bi-directional.</li>
+</ul>
+<h3 id="synchronous-or-asynchronous"><a class="header" href="#synchronous-or-asynchronous">Synchronous or Asynchronous</a></h3>
+<ul>
+<li>Message passing may be blocking or non-blocking.</li>
+</ul>
+<h3 id="automatic-or-explicit-buffering"><a class="header" href="#automatic-or-explicit-buffering">Automatic or Explicit Buffering</a></h3>
+<p>Each link has a queue of messages with differing capacities and behaviours:</p>
+<ul>
+<li>Zero capacity - No buffering, the sender must wait for the receiver to
+receive.</li>
+<li>Bounded Capacity - Finite buffering, the sender must wait if the queue is
+full.</li>
+<li>Unbounded Capacity - Infinite buffering, the sender never waits.</li>
+</ul>
+<h2 id="relevant-functions"><a class="header" href="#relevant-functions">Relevant Functions</a></h2>
+<ul>
+<li><code>fork()</code></li>
+<li><code>exec()</code></li>
+<li><code>wait()</code></li>
+<li><code>abort()</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="threads"><a class="header" href="#threads">Threads</a></h1>
+<p>A thread is the basic unit of CPU utilization. Thread creation is lightweight
+compared to process creation. Threads have their Parents’ PCB, its own Thread
+Control Block, register set, Stack and common Address space</p>
+<p>Threads contain:</p>
+<ul>
+<li>ID</li>
+<li>Program Counter</li>
+<li>Register Set</li>
+<li>Stack</li>
+</ul>
+<h1 id="multicore-programming"><a class="header" href="#multicore-programming">Multicore Programming</a></h1>
+<p>Parallelism, concurrency. Tasks for developers include:</p>
+<ul>
+<li>Identifying parallelizable/concurrent tasks.</li>
+<li>Balancing parallelism/concurrency.</li>
+<li>Data splitting.</li>
+<li>Data dependencies.</li>
+<li>Testing, debugging.</li>
+</ul>
+<h1 id="threads-1"><a class="header" href="#threads-1">Threads</a></h1>
+<p>User level thread libraries and kernel level threads exist.
+We use <code>pthread</code> in this course.</p>
+<p>pthreads can be implemented at the user level or kernel level.
+pthreads is primarily a standard. OS's may implement this standard.</p>
+<ul>
+<li><code>#include &lt;pthread.h&gt;</code></li>
+<li><code>pthread_create()</code></li>
+<li><code>pthread_join()</code></li>
+<li><code>pthread_self()</code></li>
+</ul>
+<hr />
+<h1 id="producer-consumer-pattern"><a class="header" href="#producer-consumer-pattern">Producer, Consumer Pattern</a></h1>
+<p>self explanatory.</p>
+<h2 id="problems"><a class="header" href="#problems">Problems</a></h2>
+<p>Producer may produce more than the buffer can hold. (possible buffer overflow).
+Consumer may attempt to retrieve data after the buffer is emptied. This is
+known as the "Bounded Buffer Problem".</p>
+<p>The solution: ensure both the consumer + producer know the capacity and current
+size of the buffer. The producer will wait to produce if needed, the consumer
+will wait to retrieve if the buffer is empty.</p>
+<h2 id="race-conditions"><a class="header" href="#race-conditions">Race Conditions</a></h2>
+<p>Non-deterministic order of execution of concurrent/parallel code with shared
+mutable state.</p>
+<p>Or</p>
+<p>Race Conditions ocurr when two or more threads/processes can access shared data
+and attempt to access and change that data at the same time. The currently
+active thread/process can change at any time in between executions of
+individual instructions potentially causing the threads/processes to access the
+shared data in an arbitrary order. The typical solution is to place a lock
+around the shared data.</p>
+<h2 id="critical-sections"><a class="header" href="#critical-sections">Critical Sections</a></h2>
+<p>Sections of code where shared mutable data is either read or written to.</p>
+<p>Can be broken down into the following subsections:</p>
+<ul>
+<li>entry - The thread/process checks if it is okay to enter its critical section.</li>
+<li>critical - The dangerous area.</li>
+<li>exit</li>
+<li>remainder</li>
+</ul>
+<p>The entry and critical sections are the most important.</p>
+<h2 id="supporting-critical-sections"><a class="header" href="#supporting-critical-sections">Supporting Critical Sections</a></h2>
+<h3 id="mutual-exclusions"><a class="header" href="#mutual-exclusions">Mutual Exclusions</a></h3>
+<p>Only one process should execute code in their critical section at a time.</p>
+<h4 id="mutexes"><a class="header" href="#mutexes">Mutexes</a></h4>
+<p>Mutexes facilitate this: first <code>acquire()</code> a lock, later <code>release()</code> the lock.
+These two functions need to be atomic and may require hardware support. Trying
+to acquire an already acquired lock will cause "busy" waiting. this kind of
+behaviour is also called a <em>spinlock</em>.</p>
+<h3 id="progress-guaranteed"><a class="header" href="#progress-guaranteed">Progress Guaranteed</a></h3>
+<p>If no process is in its critical section, and a process wants to enter its
+critical section, <em>selection</em> of the next process to enter its critical section
+cannot be postponed indefinitely.</p>
+<h3 id="bounded-waiting"><a class="header" href="#bounded-waiting">Bounded Waiting</a></h3>
+<p>There is a bound on the number of process's that can cut in line when multiple
+are waiting to enter their critical sections.</p>
+<h3 id="semaphores"><a class="header" href="#semaphores">Semaphores</a></h3>
+<p>Binary Semaphore - Same as Mutex.
+Counting Semaphore - internal counter can range over an unrestricted domain.
+Use atomic 'wait' and 'signal' functions.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="cpu-scheduling"><a class="header" href="#cpu-scheduling">CPU Scheduling</a></h1>
+<h2 id="the-cpu-io-burst-cycle"><a class="header" href="#the-cpu-io-burst-cycle">The CPU-I/O Burst Cycle</a></h2>
+<p>During a CPU burst, the CPU performs computations that don't rely on I/O. Each
+CPU burst can be of arbitrary length, but is usually followed by an I/O burst.
+I/O bursts are sections of time where the CPU waits for I/O (Though, the CPU
+<em>could</em> swap processes at this time to keep itself busy.) Our concern is to
+distribute CPU bursts efficiently.</p>
+<h2 id="cpu-scheduler"><a class="header" href="#cpu-scheduler">CPU Scheduler</a></h2>
+<p>Selects processes among those in the ready queue, and allocates them CPU time.
+Scheduling decisions may take place when a process:</p>
+<ol>
+<li>Switches from running to waiting state</li>
+<li>Switches from running to ready state</li>
+<li>Switches from waiting to ready</li>
+<li>Terminates</li>
+</ol>
+<h2 id="criteria--good-things"><a class="header" href="#criteria--good-things">Criteria &amp; Good Things</a></h2>
+<p><strong>CPU utilization</strong> – We want to max this. Keep the CPU as busy as possible.<br />
+<strong>Throughput</strong> – We want to max this. # of processes that complete their
+execution per time unit.<br />
+<strong>Turnaround time</strong> – We want to min this. Amount of time to execute a
+particular process.<br />
+<strong>Waiting time</strong> – We want to min this. Amount of time a process has been
+waiting in the ready queue.<br />
+<strong>Response time</strong> – We want to min this. Amount of time it takes from when a
+request was submitted until the first response is produced, not output (for
+time-sharing environment). wait time + response time.</p>
+<h2 id="cpu-scheduling-algos"><a class="header" href="#cpu-scheduling-algos">CPU Scheduling Algos</a></h2>
+<ul>
+<li>First Come First Serve - Non-preemptive, processes are run until finished.</li>
+<li>Shortest Job First - Needs to know CPU burst time of process.</li>
+<li>Priority Scheduling - Smallest integer means highest priority. Possible
+"starvation": Low priority tasks may never execute. the solution? Aging:
+priority increases w/ time.</li>
+<li>Round Robin - Round robin. 1/n of CPU time for n processes in chuncks of q
+(usually 10-100ms.) Preemptive.</li>
+<li>Multi-Level Queue Scheduling - Ready queue is partitioned into separate
+queues, e.g.:
+<ul>
+<li>foreground</li>
+<li>background<br />
+Processes are permanently in a given queue. Each queue has its own scheduling
+algorithm:</li>
+<li>Foreground – Round Robin</li>
+<li>Background – FCFS (FIFO)<br />
+Plus scheduling between queues (e.g. fixed priority (foreground first, then
+background), timeslice (70% fg, 30 bg))</li>
+</ul>
+</li>
+</ul>
+<h2 id="common-priority-levels-for-multi-level-queue-scheduling"><a class="header" href="#common-priority-levels-for-multi-level-queue-scheduling">common priority levels for multi-level queue scheduling</a></h2>
+<ol>
+<li>system</li>
+<li>interactive</li>
+<li>interactive editing</li>
+<li>batch</li>
+<li>student</li>
+</ol>
+<h2 id="real-time-cpu-scheduling"><a class="header" href="#real-time-cpu-scheduling">Real Time CPU Scheduling</a></h2>
+<ul>
+<li><strong>Soft Real-Time</strong> - No guarantee when critical real-time processes will be
+scheduled and finished.</li>
+<li><strong>Hard Real-Time</strong> - Task must be serviced by deadline.</li>
+</ul>
+<p>The following types of latencies can affect performance of real-time systems:</p>
+<ul>
+<li><strong>Interrupt latency</strong> – Time from arrival of interrupt to start of routine
+that services the interrupt.</li>
+<li><strong>Dispatch latency</strong> – Time for the scheduler to take the current process off
+the CPU and switch to another.</li>
+</ul>
+<h2 id="earliest-deadline-first-scheduling"><a class="header" href="#earliest-deadline-first-scheduling">Earliest Deadline First Scheduling</a></h2>
+<p>A real-time scheduling algorithm. Priorities are assigned according to
+deadlines: The earlier the deadline, the higher the priority; the later the
+deadline, the lower the priority.</p>
+<h1 id="deadlocks"><a class="header" href="#deadlocks">Deadlocks</a></h1>
+<p>Cyclic waiting on resources used by processes.</p>
+<p>Four conditions are required for Deadlocks to occur:</p>
+<ul>
+<li><strong>Mutual Exclusion</strong> of resources.</li>
+<li><strong>Hold and Wait</strong> - A process w/ a resource waits for another resource held
+by some other process.</li>
+<li><strong>No Preemption</strong> - Resources can only be released voluntarily after a
+process has completed its task.</li>
+<li><strong>Circular Wait</strong> - see first sentence of this section.</li>
+</ul>
+<pre class="mermaid">---
+title: Deadlocks
+---
+flowchart TB
+  A((P_A)) --&gt; R1
+  R1 --&gt; B((P_B))
+  B --&gt; R2
+  R2 --&gt; A
+</pre>
+<h2 id="handling-deadlocks"><a class="header" href="#handling-deadlocks">Handling Deadlocks</a></h2>
+<p>We look at three different ways to handle deadlocks:</p>
+<ul>
+<li>Ensure the system never enters a deadlock state.
+<ul>
+<li>Through deadlock prevention.</li>
+<li>Through deadlock avoidance.</li>
+</ul>
+</li>
+<li>Allow the system to enter a deadlock state, then recover.</li>
+<li>Ignore the problem; protend it doesn't exist.</li>
+</ul>
+<h3 id="deadlock-prevention"><a class="header" href="#deadlock-prevention">Deadlock Prevention</a></h3>
+<p>To manage:</p>
+<ul>
+<li><strong>Mutal Exclusion</strong> - It is only necessary for non-safely sharable resources.</li>
+<li><strong>Hold and Wait</strong> - Guarantee that whenever a process requests a resource, it
+does not hold any other resource (or have all resources allocated to it prior
+to execution.) This has the potential to cause low resource utilization.</li>
+<li><strong>No Preemption</strong> - If a process requests a resource while it holds another,
+release <em>all</em> resources that process holds.</li>
+<li><strong>Circular Wait</strong> - Impose total ordering, blah, blah, yada, yada.</li>
+</ul>
+<h3 id="deadlock-avoidance"><a class="header" href="#deadlock-avoidance">Deadlock Avoidance</a></h3>
+<p>Smart(er) allocation of resources to processes to avoid deadlocks.</p>
+<ul>
+<li>Processes are in a <strong>safe state</strong> if it is possible for them to complete
+using the available resources.</li>
+<li>Processes are in an <strong>unsafe state</strong> if it is not possible for them to
+complete using the available resources.</li>
+</ul>
+<p>Consider the following process/resource matrix:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">Process</th><th style="text-align: center">X Resource Held</th><th style="text-align: center">X Resource Required</th><th style="text-align: center">Y Resource Held</th><th style="text-align: center">Y Resource Required</th></tr></thead><tbody>
+<tr><td style="text-align: right">A</td><td style="text-align: center">1</td><td style="text-align: center">8</td><td style="text-align: center">2</td><td style="text-align: center">9</td></tr>
+<tr><td style="text-align: right">B</td><td style="text-align: center">2</td><td style="text-align: center">6</td><td style="text-align: center">3</td><td style="text-align: center">9</td></tr>
+<tr><td style="text-align: right">C</td><td style="text-align: center">2</td><td style="text-align: center">6</td><td style="text-align: center">2</td><td style="text-align: center">3</td></tr>
+</tbody></table>
+</div>
+<p>Available X Resources: 4<br />
+Available Y Resources: 4</p>
+<p>Is the system above, as a whole, in a safe state? Answer: Yes, the "safe state
+sequence" is C -&gt; B -&gt; A.</p>
+<h3 id="deadlock-recovery"><a class="header" href="#deadlock-recovery">Deadlock Recovery</a></h3>
+<p>Deadlocks are allowed to happen. Apropriate actions are taken to recover from
+the deadlock state. Given a graph of processes and the resources they
+hold/request, if the graph contains a cycle, we have a deadlock. We talk about
+three ways of recovering from deadlocks:</p>
+<ul>
+<li><strong>Preemption</strong> - Preemptive resources (resources that can be taken away) are
+given to a process that requests them from a process that currently holds
+them.</li>
+<li><strong>Rollback</strong> - Each process is check-pointed. The state of both processes and
+resources are saved. When a deadlock ocurrs, recover to a previous checkpoint.</li>
+<li><strong>Killing (Processes)</strong> - Processes holding contested resources will be killed
+so other processes can use those resources.</li>
+</ul>
+<h3 id="deadlock-ignorance"><a class="header" href="#deadlock-ignorance">Deadlock Ignorance</a></h3>
+<p>Simply ignore the possibility of deadlocks. In systems where deadlocks are
+rare, this is a valid strategy.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="networking---models"><a class="header" href="#networking---models">Networking - Models</a></h1>
+<p>The OSI Reference Model (for fun!):</p>
+<pre class="mermaid">---
+title: OSI
+---
+flowchart TB
+  A[Application Layer] --&gt; B
+  B[Presentation Layer] --&gt; C
+  C[Session Layer] --&gt; D
+  D[Transport Layer] --&gt; E
+  E[Network Layer] --&gt; F
+  F[Data Link Layer] --&gt; G[Physical Layer]
+</pre>
+<h2 id="signals"><a class="header" href="#signals">Signals</a></h2>
+<p>Different modulation schemes are used to encode data over signals. Signals can
+be multiplexed to share it among multiple users. There are two types of signals
+used in networks:</p>
+<ul>
+<li>Digital</li>
+<li>Analog</li>
+</ul>
+<h2 id="digital-signals"><a class="header" href="#digital-signals">Digital Signals</a></h2>
+<ul>
+<li>Discrete values</li>
+<li>Consist of "On/Off" or 1/0.</li>
+</ul>
+<p>We look at two different encoding techniques:</p>
+<ul>
+<li><strong>Current State Encoding</strong>.</li>
+<li><strong>State-Transition Encoding</strong>.</li>
+</ul>
+<h2 id="current-state-encoding"><a class="header" href="#current-state-encoding">Current State Encoding</a></h2>
+<p>Data is encoded by the presence or absence of a signal. 3 types:</p>
+<ul>
+<li><strong>Unipolar</strong>.</li>
+<li><strong>Polar</strong>.</li>
+<li><strong>Return to zero</strong>.</li>
+</ul>
+<h3 id="unipolar"><a class="header" href="#unipolar">Unipolar</a></h3>
+<p>One polarity (positive or negative) is used. The middle zero state represents
+a binary 0 while the positive/negative polarity represents a binary 1 (or
+vice-versa).</p>
+<p><img src="y1s2/systems-programming/assets/signals-unipolar.png" alt="Unipolar signal diagram" /></p>
+<h3 id="polar"><a class="header" href="#polar">Polar</a></h3>
+<p>Similar to unipolar except both poles are used. Either positive or negative can
+represent binary 1 (or 0.)</p>
+<p><img src="y1s2/systems-programming/assets/signals-polar.png" alt="Polar signal diagram" /></p>
+<h3 id="return-to-zero"><a class="header" href="#return-to-zero">Return to Zero</a></h3>
+<p>After the transmition of each <em>bit</em>, the voltage returns to 0. The zero state
+is considered a rest state.</p>
+<p><img src="y1s2/systems-programming/assets/signals-rt0.png" alt="Return to Zero diagram" /></p>
+<h2 id="state-transition-encoding"><a class="header" href="#state-transition-encoding">State-Transition Encoding</a></h2>
+<p>Data is encoded by the <em>transition</em> of a high voltage to a low voltage (or
+vice-versa.) The transition is observed <em>mid bit</em>.</p>
+<h3 id="manchester"><a class="header" href="#manchester">Manchester</a></h3>
+<p>Transition form high to low is 1, low to high 0 (or vice-versa.)</p>
+<p><img src="y1s2/systems-programming/assets/signals-manchester.png" alt="Manchester diagram" /></p>
+<h2 id="analog-signals"><a class="header" href="#analog-signals">Analog Signals</a></h2>
+<p>Electro-magnetic waves! Sine waves! There are two types of modulation
+techniques we look at:</p>
+<ul>
+<li><strong>Amplitude Modulation</strong> - The amplitude of the wave encodes the bit value.
+For example: Higher amplitudes encode a 1, while lower amplitudes encode a 0.</li>
+<li><strong>Frequency Modulation</strong> - The frequency of the wave encodes the bit value.
+For example: Higher frequencies encode a 1, while lower frequencies encode a
+0.</li>
+</ul>
+<h2 id="the-data-link-layer"><a class="header" href="#the-data-link-layer">The Data Link Layer</a></h2>
+<p>This is where bits are framed into packets and hardware level addressing (e.g.
+MAC addresses) ocurrs. And, importantly, Error detection and correction.</p>
+<h2 id="parity-checks"><a class="header" href="#parity-checks">Parity Checks</a></h2>
+<ul>
+<li>Considered the simplest form of error detection.</li>
+<li>Two types:
+<ul>
+<li>Even parity.</li>
+<li>Odd parity.</li>
+</ul>
+</li>
+</ul>
+<h3 id="even-parity"><a class="header" href="#even-parity">Even Parity</a></h3>
+<p>The number of on bits in a chunk of data is checked. If odd, the additional
+parity bit at the end of the data is set to 1. If even, the additional parity
+bit is set to 0.</p>
+<h3 id="odd-parity"><a class="header" href="#odd-parity">Odd Parity</a></h3>
+<p>The opposite of even parity. We check the number of on bits and set the parity
+bit so that the number of 1s is odd.</p>
+<h2 id="checksums"><a class="header" href="#checksums">Checksums</a></h2>
+<p>Changing an even amount of bits in the data can fool our parity checks. The
+simple checksum is an improvement over flimsy parity checks:</p>
+<ol>
+<li>Consider all the "words" in the chunk of data to checksum.</li>
+<li>Sum them all up.</li>
+<li>Take the 1's complement (binary NOT).</li>
+<li>Send the original data along with the 1's complement of the sum.</li>
+<li>On the receiver side, take the sum of the words in the received data. Add
+the checksum (the 1's complement sent by the sender) and check that the
+result contains all bits set to 1.</li>
+</ol>
+<h2 id="the-tcp-model-exists"><a class="header" href="#the-tcp-model-exists">The TCP Model Exists!</a></h2>
+<h2 id="ip-addresses"><a class="header" href="#ip-addresses">IP Addresses</a></h2>
+<p>IP Addresses are allocated in blocks called "prefixes". The prefix refers to
+the network portion of an IP address. It is followed by the host portion.
+You'll occasionally see IPv4 address written in the 192.168.0.1/24 notation.
+The <code>/24</code> part specifies how large the network portion is in terms of bits. The
+corresponding subnet mask has the same number of 1 bits.</p>
+<h3 id="classful-addressing"><a class="header" href="#classful-addressing">Classful Addressing</a></h3>
+<p>Older addresses came in blocks of fixed size:</p>
+<ul>
+<li>Class A - For regular use.</li>
+<li>Class B - For regular use.</li>
+<li>Class C - For regular use.</li>
+<li>Class D - For <strong>multicast</strong>.</li>
+<li>Class E - Reserved.</li>
+</ul>
+<p>The class of an IP Address can be determined from the number of consecutive 1
+bits at the beginning of the address:</p>
+<ul>
+<li>0 consecutive 1s: class A.</li>
+<li>1 consecutive 1s: class B.</li>
+<li>2 consecutive 1s: class C.</li>
+<li>3 consecutive 1s: class D.</li>
+<li>4 consecutive 1s: class E.</li>
+</ul>
+<h2 id="ipv4-header"><a class="header" href="#ipv4-header">IPv4 Header</a></h2>
+<p><img src="y1s2/systems-programming/assets/ipv4-header.png" alt="IPv4 header diagram" /></p>
+<p><strong>IHL</strong> - Internet Header Length. The size of the internet header in 32-bit
+words.</p>
+<p><strong>Differentiated Services</strong> - Specifies the differentiated service this packet
+is for. Includes <em>Explicit Congestion Notification</em>.</p>
+<p><strong>Total Length</strong> - Size of the entire packet.</p>
+<p><strong>Identification</strong> - Used for uniquely identifying the group of fragments for a
+single IP datagram.</p>
+<p><strong>DF</strong> - Don't Fragment. Do not fragment the packet. The packet is dropped if
+fragmentation is required to route the packet.</p>
+<p><strong>MF</strong> - More Fragments. For fragmented packets, all fragment except the last
+have this flag set.</p>
+<p><strong>Fragment Offset</strong> - Offset of a fragment relative to the beginning of the
+original IP datagram. Specified in units of 8 bytes.</p>
+<p><strong>Time To Live</strong> - In practice, hop-count.</p>
+<p><strong>Protocol</strong> - Protocol used in the data portion of the IP datagram.</p>
+<p><strong>Header Checksum</strong> - Checksum for the header only.</p>
+<p><strong>Options</strong> - Optional parameters.</p>
+<h2 id="ipv6-header"><a class="header" href="#ipv6-header">IPv6 Header</a></h2>
+<p><img src="y1s2/systems-programming/assets/ipv6-header.png" alt="IPv6 header diagram" /></p>
+<p><strong>Traffic Class</strong> - Contains both the Differentiated Service field and the
+Explicit Congestion Notification field.</p>
+<p><strong>Flow Label</strong> - An identifier for a group of packets.</p>
+<p><strong>Payload Length</strong> - Size of the payload in octets. Includes extension headers.</p>
+<p><strong>Next Header</strong> - Type of the next header. Usually the transport layer protocol
+used by the packet's payload.</p>
+<p><strong>Hop Limit</strong> - A.K.A. Time to Live.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="security"><a class="header" href="#security">Security</a></h1>
+<h2 id="encryption"><a class="header" href="#encryption">Encryption</a></h2>
+<ul>
+<li>A method of encoding data so that only authorized parties can access it.</li>
+<li>Does not prevent interception or interference.</li>
+<li>Encryption algorithms are called <strong>ciphers</strong>.</li>
+<li>Unencrypted data is called <strong>plaintext</strong>.</li>
+<li>Encrypted data is called <strong>ciphertext</strong>.</li>
+<li>A cipher takes plaintext and produces ciphertext.</li>
+<li>The act of encoding plaintext with a cipher is called <strong>encryption</strong>.</li>
+<li>Decoding ciphertext into plaintext is called <strong>decryption</strong>.</li>
+<li>Used to send sensitive data over an insecure channel.</li>
+</ul>
+<h2 id="key-based-encryption"><a class="header" href="#key-based-encryption">Key Based Encryption</a></h2>
+<p><strong>Keys</strong> are relatively short, pseudo-random data sequences. They are used to
+both encrypt and decrypt data. There are two broad types of key based
+encryption algorithms: <strong>Symmetric</strong> and <strong>Asymmetric</strong>.</p>
+<h2 id="symmetric-ciphers"><a class="header" href="#symmetric-ciphers">Symmetric Ciphers</a></h2>
+<p>A secret key is used by ciphers to produce the encrypted data, which can then
+be sent over an insecure channel. The receiver uses the same secret key to
+decrypt the ciphertext. But, how do we securely share the key between two or
+more people? If a third party intercepts the key exchange, they can easily pose
+as the sender since they now have the secret key.</p>
+<h2 id="asymmetric-ciphers"><a class="header" href="#asymmetric-ciphers">Asymmetric Ciphers</a></h2>
+<p>A.K.A. <strong>Public-Key Encryption</strong>, tries to solve the key exchange issue by
+creating two mathematically related keys. One is the <strong>public key</strong>, which can
+be openly distributed and is used to encrypt messages to the receiver. The
+other is the <strong>private key</strong>, which only the receiver knows. It is used to
+decrypt the encrypted message. This allows anyone with the public key to send
+encrypted messages to the receiver, but <em>only</em> the receiver can decrypt the
+message. The private and public key pair are generated at the same time, but
+it is not possible to derive one from the other.</p>
+<h2 id="tls"><a class="header" href="#tls">TLS</a></h2>
+<pre class="mermaid">sequenceDiagram
+  participant C as Client
+  participant S as Server
+  C-&gt;&gt;S: 1. Client Hello
+  S-&gt;&gt;C: 2. Server Hello
+  S-&gt;&gt;C: 3. Client Certificate Request
+  C-&gt;&gt;S: 4. Client Certificate
+  C-&gt;&gt;S: 5. Client Sends Key Info (Encrypted with server's public key)
+  C-&gt;&gt;S: 6. Certificate Verify
+  C-&gt;&gt;S: 7. Finished Message
+  S-&gt;&gt;C: 8. Finished Message
+</pre>
+<p>Once a TLS connection is established, the TLS handshake occurs. The client
+sends to the server, among other things, the versions of SSL/TLS it supports,
+which ciphers it knows, and which compression methods it can use. The server
+selects the highest mutually supported SSL/TLS version and a cipher suite and
+compression method from the list provided by the client.</p>
+<h2 id="certificates"><a class="header" href="#certificates">Certificates</a></h2>
+<ul>
+<li>Each HTTPS server uses one or more certificates to verify their identity.</li>
+<li>The certificate must be trusted by the client or a third party the client
+trusts.</li>
+<li>"This trust is proven using digital signatures."</li>
+</ul>
+<h1 id="os-security-and-protection"><a class="header" href="#os-security-and-protection">OS Security and Protection</a></h1>
+<h2 id="dont-forget-protection"><a class="header" href="#dont-forget-protection">Don't Forget Protection</a></h2>
+<ul>
+<li>A mechanism for controlling the access of programs/processes or users to the
+resources provided by a computer system.</li>
+<li>A protection-oriented system provides means to distinguish between authorized
+and unauthorized usage.</li>
+</ul>
+<h2 id="principals-of-protection"><a class="header" href="#principals-of-protection">Principals of Protection</a></h2>
+<ul>
+<li>The time-tested <strong>Principle of Least Privilage</strong>.
+<ul>
+<li>Programs, users, and system processes should be given <em>just</em> enough
+privileges to perform their tasks.</li>
+</ul>
+</li>
+</ul>
+<h2 id="domain-of-protection"><a class="header" href="#domain-of-protection">Domain of Protection</a></h2>
+<ul>
+<li>A computer system is a collection of processes and objects/resources.</li>
+<li>Each object has a unique name and can only be accessed through well-defined
+and meaningful operations.
+<ul>
+<li>e.g. A CPU can execute, Memory can be read/written.</li>
+</ul>
+</li>
+<li>A process should only be able to access the resources it currently requires
+to complete its task. This is known as the <strong>Need-to-Know Principle</strong>.</li>
+</ul>
+<h2 id="linux-permissions"><a class="header" href="#linux-permissions">Linux Permissions</a></h2>
+<ul>
+<li>Determines whether a user or group has access to files, programs, or other
+resources on the system.</li>
+<li>Four access types/rules:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Symbol</th><th style="text-align: center">Meaning</th></tr></thead><tbody>
+<tr><td style="text-align: center">r</td><td style="text-align: center">Read permissions</td></tr>
+<tr><td style="text-align: center">w</td><td style="text-align: center">Write permissions</td></tr>
+<tr><td style="text-align: center">x</td><td style="text-align: center">Execute permissions</td></tr>
+<tr><td style="text-align: center">-</td><td style="text-align: center">No permissions</td></tr>
+</tbody></table>
+</div>
+<p>These permissions are specified for three times for each file: For the owner of
+the file, the user group associated with the file, and everyone else. You can
+see the permissions on a file by running <code>ls -l</code> in a terminal. One trio of
+permissions (<code>rwx</code>) is read right-to-left. You'll often see them specified in
+octal notation (e.g. <code>chmod 766 ...</code>), in which case, convert each digit into
+binary and interpret it as a bitflag, on binary digit for each <code>r</code>, <code>w</code>, or <code>x</code>.</p>
+<h2 id="security-violations"><a class="header" href="#security-violations">Security Violations</a></h2>
+<ul>
+<li><strong>Breach of Confidentiality</strong> - Unauthorized reading of data.</li>
+<li><strong>Breach of Integrity</strong> - Unauthorized modification of data.</li>
+<li><strong>Breach of Availability</strong> - Unauthorized destruction of data.</li>
+<li><strong>Theft of Services</strong> - Unauthorized use of resources.</li>
+<li><strong>Denial of Service (DOS)</strong> - Not MS-DOS, Prevention of legitimate use.</li>
+</ul>
+<h2 id="security-violation-methods"><a class="header" href="#security-violation-methods">Security Violation Methods</a></h2>
+<ul>
+<li><strong>Masquerading</strong> (breach authentication) - Pretending to be an authorized
+user to escelate privileges.</li>
+<li><strong>Replay Attack</strong> - Valid data transmission is maliciously or fraudulently
+repeated. See Wikipedia's exellent
+<a href="https://en.wikipedia.org/wiki/Replay_attack">example</a>.</li>
+<li><strong>Man-in-The-Middle Attack</strong> - An intruder sits in the middle of data flow,
+masquerading as the sender and receiver to both sides of the connection.</li>
+<li><strong>Session Hijacking</strong> - Intercept an already established session to bypass
+authentication.</li>
+</ul>
+<h2 id="security-measure-levels"><a class="header" href="#security-measure-levels">Security Measure Levels</a></h2>
+<p>Security must occur at four levels to be effective:</p>
+<ul>
+<li>Physical - e.g. At data centers, servers, terminals.</li>
+<li>Human - Consider social engineering.</li>
+<li>OS - Protection mechanisms.</li>
+<li>Network - (D)DOS, intercepted communications.</li>
+</ul>
+<h2 id="program-level-threats"><a class="header" href="#program-level-threats">Program Level Threats</a></h2>
+<h3 id="trojan-horse"><a class="header" href="#trojan-horse">Trojan Horse</a></h3>
+<p>Code segment that misuses its environment. Exploits mechanisms for allowing
+programs written by users to be executed by other users. (spyware, covert
+channels.)</p>
+<h3 id="stack--buffer-overflow"><a class="header" href="#stack--buffer-overflow">Stack &amp; Buffer Overflow</a></h3>
+<ul>
+<li>Allows writing past argument on the stack into the return address.
+<ul>
+<li>When a routine returns from a call, it'll return to the inject address
+instead of the intended original call location.</li>
+</ul>
+</li>
+<li>Can cause unauthorized user or privilege escelation.</li>
+</ul>
+<h3 id="viruses"><a class="header" href="#viruses">Viruses</a></h3>
+<ul>
+<li>Code fragment embedded in legitimate program.</li>
+<li>Often self replicating, designed to infect other systems.</li>
+</ul>
+<h2 id="system--network-threats"><a class="header" href="#system--network-threats">System &amp; Network Threats</a></h2>
+<h3 id="port-scanning"><a class="header" href="#port-scanning">Port Scanning</a></h3>
+<ul>
+<li>Automated attempt to connect to a range of ports.</li>
+<li>Detects available protocols.</li>
+<li>Detects OS (and its version).</li>
+</ul>
+<h3 id="denial-of-service"><a class="header" href="#denial-of-service">Denial of Service</a></h3>
+<ul>
+<li>Overload the targeted computer.</li>
+<li>Prevents it from doing any useful work.</li>
+<li>Often used as part of extortion or punishment.</li>
+</ul>
+<h2 id="firewalls"><a class="header" href="#firewalls">FireWalls</a></h2>
+<ul>
+<li>Hardware or Software that inspects packets going into or out of a network or
+computer.</li>
+<li>Packets are discarded or forwarded base on a set of predefined rules.</li>
+<li>Conceptually, just a router with specialized software for creating rules to
+permit or deny packets.</li>
+<li>Routers are more open by default, whereas FireWalls are intended to be more
+restrictive.</li>
+<li>Network Admins create <strong>access control lists</strong> to deny certain types of
+packets.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="computer-graphics--visualization"><a class="header" href="#computer-graphics--visualization">Computer Graphics &amp; Visualization</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<h1 id="what-is-computer-graphics"><a class="header" href="#what-is-computer-graphics">What is Computer Graphics?</a></h1>
+<ul>
+<li>Visual communication</li>
+<li>Storage, manipulation, production, and display of geometrical information.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="the-graphics-pipeline"><a class="header" href="#the-graphics-pipeline">The Graphics Pipeline</a></h1>
+<h2 id="lcd-displays"><a class="header" href="#lcd-displays">LCD Displays</a></h2>
+<p>"Liquid Crystal Displays" - large molecules that change their optical
+properties when an electrical field is applied to them.</p>
+<ul>
+<li>
+<p>Many different types of LCDs.</p>
+</li>
+<li>
+<p>LCDs are made up of many small cells containing these liquid crystals.</p>
+</li>
+<li>
+<p>LCDs are a rectangular array of these cells with small wires running through
+the cells to apply the electrical field.</p>
+</li>
+<li>
+<p>The size of the array (width and height) is called the <strong>resolution</strong> of the
+display.</p>
+</li>
+<li>
+<p>Each cell is a pixel.</p>
+</li>
+<li>
+<p>Each cell is capable of displaying one colour.</p>
+</li>
+<li>
+<p>We display an image by specifying the colour of each pixel on the screen.</p>
+</li>
+<li>
+<p>Approx 1-2 Million pixels, so this is a lot of information to specify.</p>
+</li>
+<li>
+<p>Fixed resolution, CRT's could handle a range of resolutions.</p>
+</li>
+</ul>
+<h2 id="rasters"><a class="header" href="#rasters">Rasters</a></h2>
+<ul>
+<li>The graphics card has a 2D array of memory with one entry for each pixel.</li>
+<li>The entry is typically the colour of the pixel.</li>
+<li>This array is called a <strong>framebuffer</strong>.</li>
+</ul>
+<h2 id="representing-colour"><a class="header" href="#representing-colour">Representing Colour</a></h2>
+<ul>
+<li>Human response to light intensity is logarithmic not linear.</li>
+<li>This impacts display design.</li>
+<li>Several different wavelength of light can produce the same colour.</li>
+<li>We approximate colour based on the RGB colour space.</li>
+<li>The total colour space is called a gamut (range of colours that can be
+represented.)</li>
+<li>RGB is a close match to the colours produced by monitors, so it is used in
+computer graphics.</li>
+<li><strong>Note:</strong> We cannot use a primary based system to get <em>all</em> colours, unless
+we allow <em>negative colours</em>.</li>
+</ul>
+<h2 id="sending-the-pixels"><a class="header" href="#sending-the-pixels">Sending the Pixels</a></h2>
+<ul>
+<li>Need an organized way of getting the pixels onto the screen (The info carried
+by VGA/HDMI/etc. protocols).</li>
+<li>Use a <strong>Scanning Pattern</strong>. The pixels are sent one at a time in some order.</li>
+<li>Typically: start with the pixel in the top left corner and go pixel by pixel,
+row by row.</li>
+<li>Once the bottom row is reached, start over.</li>
+<li>At the end of each line and screen, there is a small amount of time that is
+used by CRTs to return their beam to the start of the line or the top of the
+screen (this is called <strong>horizontal</strong> and <strong>vertical retrace</strong>.)</li>
+<li>We also need a <strong>synchronization signal</strong> to tell the monitor when we are at
+the top of the screen and when we are about to start each line.</li>
+</ul>
+<h2 id="refresh-rate"><a class="header" href="#refresh-rate">Refresh Rate</a></h2>
+<p>The graphics card handles this, we don't need to worry about it in terms of
+hardware.</p>
+<h2 id="rendering"><a class="header" href="#rendering">Rendering</a></h2>
+<ul>
+<li>The process of converting geometrical information into pixels in the
+framebuffer.</li>
+<li>Can be real-time or non real-time.</li>
+<li>Techniques such as Global Illumination are for non real-time rendering.</li>
+<li>OpenGL focuses on real-time rendering.</li>
+</ul>
+<h2 id="the-graphics-pipeline-1"><a class="header" href="#the-graphics-pipeline-1">The Graphics Pipeline</a></h2>
+<h3 id="models"><a class="header" href="#models">Models</a></h3>
+<ul>
+<li>Representation of an object.</li>
+<li>Usually mathematical in nature.</li>
+<li>Made up of triangles.</li>
+<li>Each triangle has 3 associated vertices.</li>
+<li>Models may have millions of triangles.</li>
+</ul>
+<blockquote>
+<p>We currently have 2 parts of the Graphics Pipeline:</p>
+<ol>
+<li>The model - triangles</li>
+<li>The display - pixels</li>
+</ol>
+</blockquote>
+<p>The graphics pipeline tries to efficiently convert triangles to pixels.</p>
+<ul>
+<li>Need to project 3D triangles to a 2D image.</li>
+<li>Use a view transformation (perspective):
+<ul>
+<li>type: perspective.</li>
+<li>eye location needed.</li>
+<li>viewing direction needed.</li>
+<li>up direction needed.</li>
+</ul>
+</li>
+<li>Perspective projection defiens a <strong>viewing frustum</strong>.</li>
+<li>The viewing frustum essentially clips all the triangles.</li>
+<li>If triangles are not clipped they will appear in incorret positions.</li>
+<li>The process of eliminating the triangles is called <strong>clipping</strong>.</li>
+</ul>
+<h3 id="local-and-global-axes"><a class="header" href="#local-and-global-axes">Local and Global Axes</a></h3>
+<p><strong>Local</strong> - Local to the model.<br />
+<strong>Global</strong> - "Local" to the "world".</p>
+<h3 id="adding-colour-to-triangles"><a class="header" href="#adding-colour-to-triangles">Adding Colour to Triangles</a></h3>
+<p>We do this by defining a <strong>lighting model</strong> and <strong>material properties</strong> for our
+models.</p>
+<ul>
+<li>Lights have a position.</li>
+<li>Lights have a direction.</li>
+<li>Lights can have a colour.</li>
+<li>We need to assign material properties to the light: How much of the light
+gets reflected and how.</li>
+<li>Normal vectors determine how light is reflected off of a <em>triangle</em> surface.</li>
+<li>Vertecies get a normal vector that is the average of the normal vectors of
+the triangles it is connected to.</li>
+</ul>
+<h3 id="shading"><a class="header" href="#shading">Shading</a></h3>
+<p><strong>Gouraud Shading</strong> use the material properties, vertex position, and vertex
+normal to calculate the colour of the vertex and interpolate it accross the
+triangels of the model.</p>
+<p><strong>Phong Shading</strong> instead interpolates the <em>normal vector</em> across the surface
+and computes the colour at each pixel.</p>
+<p>The current stages of the graphics pipeline. For each triangle:</p>
+<blockquote>
+<p>Transform the vertices into global "world" coordinates.
+Project the vertices.
+Clip the triangles to the viewing frustum.</p>
+</blockquote>
+<h3 id="pixel-filling"><a class="header" href="#pixel-filling">Pixel Filling</a></h3>
+<p><strong>Filling</strong> is determining the pixels inside of a triangle's outline.</p>
+<ul>
+<li>There are efficient algorithms for this implemented in GPU hardware.</li>
+<li>As we fill each pixel we compute its colour as mentioned above (Phong style.)</li>
+<li>Issue: What about triangles behind or infront of other triangles?</li>
+<li>We don't want to draw triangles behind others. This is called the <strong>Hidden
+Surface Problem</strong>.</li>
+<li>Current graphics cards solve it in hardware. We use a depth buffer.</li>
+<li>The depth buffer holds the "depth" of the corresponding pixel.</li>
+<li>If a pixel is potentially closer to the viewer (because a triangle is in
+front of another one), draw that pixel and update the depth buffer.</li>
+<li>The x, y, z coords of an entire triangle (including pixels on its surface)
+are interpolated from the vertices.</li>
+<li>For our course pixels are also called fragments.</li>
+</ul>
+<h2 id="overall-pipeline-steps"><a class="header" href="#overall-pipeline-steps">Overall Pipeline Steps</a></h2>
+<blockquote>
+<p>Geometrical Proccessing:
+Transform the vertices into global "world" coordinates.
+Project the vertices.
+Clip the triangles to the viewing frustum.
+Fragment Processing:
+Compute the pixels covered by the triangle.
+Compute the colour of the pixel.
+Interpolate the depth value.
+Deal with hidden surfaces using the Z buffer.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="introduction-to-modeling"><a class="header" href="#introduction-to-modeling">Introduction To Modeling</a></h1>
+<p>Vectors:</p>
+<ul>
+<li>It makes sense to transform points (positions)</li>
+<li>It does not make sense to transform directions.</li>
+</ul>
+<p>OpenGL user right handed coord system:
+Y is up, X is to the right, z is out of the screen.</p>
+<p>Winding order: CCW
+determines which side is the inside, and which is outside.</p>
+<p>Polygons must be planar for efficiency and simplicity.</p>
+<p><code>ax+by+cz+d = 0</code> &lt;- plane equation.
+(a, b, c) is normal to the plane.</p>
+<p>Meshes
+store each vertex once and reference it per face.
+Advantages:</p>
+<ul>
+<li>Save memory, each vertex is stored once.</li>
+<li>Each vertex is processed once -&gt; faster</li>
+<li>Helps reduce gaps in model</li>
+<li>easily maps to OpenGL
+Data is typically stored in 2 tables:</li>
+</ul>
+<h1 id="vertex-table"><a class="header" href="#vertex-table">Vertex table</a></h1>
+<ul>
+<li>location (pos)</li>
+<li>normal</li>
+<li>colour</li>
+<li>etc.</li>
+</ul>
+<p>Like an array buffer.</p>
+<h1 id="face-table"><a class="header" href="#face-table">Face Table</a></h1>
+<ul>
+<li>list of vertex indicies per face.</li>
+</ul>
+<p>Like an element buffer.</p>
+<p>Mesh Normals</p>
+<ul>
+<li>Each vertex should have its own normal for smooth render.</li>
+<li>Two steps: calc normal for each polygon face, then average all normals of a
+face a vertex is connected to.</li>
+</ul>
+<p>Normal per Face</p>
+<ul>
+<li>cross product of vectors that lie on plane of face.</li>
+<li>vectors can be made from the vertices of each face.</li>
+<li>Must construct them (use the verticies) in CCW order or the normals will have
+the wrong orientation.</li>
+<li>Could cause problems if the vectors end up being near co-linear. Incredibly
+unlikely with triangles.</li>
+<li>Polygons are easy to see with this method.</li>
+</ul>
+<p>Normals per Vertex</p>
+<ul>
+<li>As mentioned above
+Efficient method:
+table w/ 4 cols
+normal x, normal y, normal z, count of polygons vertex is in.
+loop through polygons and calc normal
+add normal components to corresponding entry in table (i.e. for each vertex)
+increment polygon count
+divide all components by count
+normalize.
+done!</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="transformations"><a class="header" href="#transformations">Transformations</a></h1>
+<p>In Euler angles rotations are about a single axis at a time.
+different versions of Euler angles depends on the order of the axis (rotations?)
+none of those orders work in general.
+Euler proved you can't specify arbitrary rotation in 3D with just 3 numbers.</p>
+<p>Euler angles don't work sometimes:
+90deg rotation about X-axis will rotate Y-axis to the Z-axis. Can't
+use the original Y-axis anymore. This is called a Gimbal lock.</p>
+<p>A rotation matrix rotates its own rows onto the X, y, z axis.</p>
+<p>The inverse of a rotation matrix is its Transpose.</p>
+<p>R^t will rotate the different axis onto its rows.</p>
+<p>An easy way to construct a rotation matrix to rotate
+3 orthogonal vectors (u, v, w):</p>
+<ul>
+<li>Rotate onto x, y, z axis with R</li>
+<li>For example, the rotate about some u vector: Use basic x-axis rotation matrix to rotate about u</li>
+<li>Rotate axes back onto (u, v, w) vectors with R^t</li>
+<li>NOTE: (u, v , w) must be unit vectors! normalize first!
+Construct R as:</li>
+<li>first row is u vector</li>
+<li>second row is v vector</li>
+<li>third row is w vector</li>
+<li>its 4x4 matrix.</li>
+</ul>
+<h1 id="rotate-about-arbitrary-axis"><a class="header" href="#rotate-about-arbitrary-axis">Rotate about arbitrary axis</a></h1>
+<ul>
+<li>
+<p>rotate axis a onto the z-axis.</p>
+</li>
+<li>
+<p>perform rotation about z-axis.</p>
+</li>
+<li>
+<p>rotate back to original fram of reference with transpose of original
+rotation.</p>
+</li>
+<li>
+<p>a should be normalized.</p>
+</li>
+<li>
+<p>a is the third row of the rotation matrix</p>
+</li>
+<li>
+<p>But what about the other two rows, they need orthogonal vectors.
+for an orthogonal vector u:</p>
+<ul>
+<li>make a vector t that is equal to a</li>
+<li>change the smallest component to 1</li>
+<li>take the cross-product of t and a</li>
+<li>normalize it.</li>
+<li>To get the final vector v, take the cross-product of u and a.</li>
+<li>The Rotation matrix has <strong>u as the first row, v as the second row, a as the
+third row</strong>. It's also a 4x4 matrix.</li>
+</ul>
+</li>
+</ul>
+<p>It is possible that transforming a surface and then its normal will result
+in a normal that is not perpendicular to the transformed surface!
+Affine transforms including scale do not preserve angles between lines.</p>
+<h1 id="transforming-the-normal"><a class="header" href="#transforming-the-normal">Transforming the Normal</a></h1>
+<p>the relationship between the normal and a vector tangent to the surface (call
+it t):</p>
+<p>(matrix-vector multiplication)
+n^t * t = 0</p>
+<p>For transoformation M:
+n'^t * (M * t) = 0    &lt;-- What is n'?</p>
+<p>See the math in the slides</p>
+<p><strong>The matrix to transform the normal is the transpose of the inverse of the
+original transformation matrix</strong>:
+n' = M^-1^t * n</p>
+<p><strong>Note:</strong> n' may no longer be unit length so normalize to be safe.</p>
+<p><strong>Note:</strong> If M contains only translations and rotations then we can just use M
+instead of the above math. (Rotations and translations are considered rigid body
+transformations which preserve the normal vector.) (The inverse of a rotation
+matrix is just its transpose so we are essentially transposing the M twice in this
+case.)</p>
+<p>Careful with reflections in 3D! they can change the handed-ness of the coord system.
+An odd number of 1's =&gt; change in handedness.</p>
+<h1 id="decomposing-transformations"><a class="header" href="#decomposing-transformations">Decomposing Transformations</a></h1>
+<p>All transforms can be broken down into a translation, 2 rotations, and a scale.</p>
+<ul>
+<li>The translation is on always placed on the left side in a multiply:
+<code>translation-matrix * partially-broken-down-matrix = original-transform-matrix</code></li>
+<li>If the partially-broken-down-matrix that remains is symmetric:
+eigen value decomposition can be done to get a RSR^t (rotation-scale-rotationTranspose)
+matrix.
+<ul>
+<li>S is a diagonal matrix with the entries being the eigen values of the partially-broken-down-matrix.</li>
+<li>R gets its columns from the eigen vectors.</li>
+</ul>
+</li>
+<li>If not symmetric:
+Use SVD (single value decomposition.) Not taught it seems.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="implicit-and-parametric-equations"><a class="header" href="#implicit-and-parametric-equations">Implicit and Parametric Equations</a></h1>
+<h2 id="implicit-representations"><a class="header" href="#implicit-representations">Implicit Representations</a></h2>
+<ul>
+<li>f(x,y) = 0</li>
+<li>points that satisfy the above are <em>on the curve</em>.</li>
+</ul>
+<h2 id="implicit-line"><a class="header" href="#implicit-line">Implicit Line</a></h2>
+<ul>
+<li>direction of line: d = p1 -p0</li>
+<li>every point on the line must be parallel to d</li>
+<li>every point has perpendicular vector: n = (d.y, -d.x)</li>
+<li>See that d dot n = 0</li>
+</ul>
+<p>So what is f(x, y)?</p>
+<ul>
+<li>given p0 = (x0, y0) and p1 = (x1, y1)
+<ul>
+<li>n = (y1 - y0, -(x1 - x0))</li>
+<li>f(q) = n dot (q - p0) = 0  Where q is any point <em>on</em> the line.</li>
+</ul>
+</li>
+</ul>
+<h1 id="implicit-circle"><a class="header" href="#implicit-circle">Implicit Circle</a></h1>
+<p>(x - xcenter)^2 + (y - ycenter)^2 -r^2 = 0<br />
+or<br />
+|| p - pcenter ||^2 = r^2</p>
+<h1 id="3d"><a class="header" href="#3d">3D</a></h1>
+<p>Implicit reprsentations for spheres:
+(x - xcenter)^2 + (y - ycenter)^2 + (z - zcenter)^2 - r^2 = 0</p>
+<h1 id="display"><a class="header" href="#display">Display</a></h1>
+<p>To display these we need to know their normal vectors.
+For implicit surfaces it is the gradient:</p>
+<p>gradient( f ) = [ die( f, x) die( f, y) die( f, z) ]</p>
+<p>Follow the gradient to the intersection point of the surface.
+Once a point is found, use the gradients and tangents to find
+more points on the surface. Not the easiest.</p>
+<h1 id="parametric-representations"><a class="header" href="#parametric-representations">Parametric Representations</a></h1>
+<p>Easier to draw than Implicit representations.</p>
+<ul>
+<li>Have a parameter (t) that varies along the curve.</li>
+<li>Use a function of that parameter to generate points along the curve.</li>
+</ul>
+<p>Example of a Circle parametric equation:</p>
+<p>x = r * cos(t)
+y = r * sin(t)
+for 0 &lt;= t &lt;= 2pi</p>
+<p><strong>Parameterization is NOT unique</strong></p>
+<blockquote>
+<p>Arc length parameterization</p>
+<ul>
+<li>not common</li>
+<li>| derivative (f, s) |^2 = c   For some constant c.</li>
+<li>s is distance along the curve.</li>
+</ul>
+</blockquote>
+<h3 id="unit-parameterization"><a class="header" href="#unit-parameterization">Unit Parameterization</a></h3>
+<p>Use 0 &lt;= t &lt;= 1</p>
+<p>For circle:</p>
+<p>x = r * cos(2pi * t)
+y = r * sin(2pi * t)</p>
+<h2 id="3d-1"><a class="header" href="#3d-1">3D</a></h2>
+<p>(x, y, z) = p
+f(u, v) = (x, y, z) = p</p>
+<p>We use two parameters to trace out the surface.</p>
+<p>A 3D object's surface has n-1 dimensions (i.e. 2D)
+Therefore, we need only n-1 parameters to draw its surface.</p>
+<h1 id="piecewise-curves"><a class="header" href="#piecewise-curves">Piecewise Curves</a></h1>
+<ul>
+<li>For simple shapes, the above parametric is fine.</li>
+<li>For complex shapes it's not.</li>
+<li>Use a piecewise representation for more complex curves.
+<ul>
+<li>disadvantage: Needs more functions.</li>
+<li>advantage: simpler functions.</li>
+<li>advantage: easier to work with/program.</li>
+<li>advantage: You can get any curve w/ enough pieces.</li>
+</ul>
+</li>
+</ul>
+<h2 id="piecewise-curve-continuity"><a class="header" href="#piecewise-curve-continuity">Piecewise Curve Continuity</a></h2>
+<p>"How the pieces fit together."
+<strong>Parametric Continuity</strong>:</p>
+<ul>
+<li>C^n continuous: Its nth derivative is continuous.
+<ul>
+<li>Affects: shape and speed.</li>
+<li>for curves and <em>particularly</em> where the connect.</li>
+</ul>
+</li>
+</ul>
+<p>C^0 continuous: a corner
+The curve segments match up, there are no gaps but it might not be smooth.</p>
+<p>C^1: first derivative is equal at the join points.
+C^n: nth derivative is equal at join points.</p>
+<h3 id="parametric-representations-continuity"><a class="header" href="#parametric-representations-continuity">Parametric Representations Continuity</a></h3>
+<p>Derivatives may have the same direction, but different magnitude due
+to the parameterization.</p>
+<p>This is <strong>Geometric Continuity</strong>:
+The curve segments match up and their tangents (nth derivatives) have the
+same direction but different magnitudes.</p>
+<p>Two curves are G^1 continuous if:
+f'1 = k * f'2    k is a scalar constant.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="advanced-curves"><a class="header" href="#advanced-curves">Advanced Curves</a></h1>
+<h2 id="bezier-curves"><a class="header" href="#bezier-curves">Bezier Curves</a></h2>
+<p>Made up of 3 control points in 2D</p>
+<ul>
+<li>
+<p>Good local control properties</p>
+</li>
+<li>
+<p>Changes affect at most two segments</p>
+</li>
+<li>
+<p>Bounded by <strong>convex hull</strong>: smallest polygon that contains all control
+points.</p>
+</li>
+<li>
+<p><strong>variation diminishing property</strong>: A line intersects the curve <em>no more</em>
+(ie. this many or less) times than it intersects the lines connecting the
+control points.</p>
+</li>
+<li>
+<p><strong>affine invariant</strong>: Can translate, rotate, scale, and skew the control
+points and the curve will be transformed in the same way.</p>
+</li>
+<li>
+<p>ergo, transform the control points to transform the curve.</p>
+</li>
+<li>
+<p>Bezier curves are symmetric, reverse the control points and you get the same
+curve.</p>
+</li>
+<li>
+<p>Usually a shared control point scheme is used where the last control point of
+one piece is the first control point of the next.</p>
+<ul>
+<li>Guarantees C^0 continuity, the derivatives are controlled by other control
+points.</li>
+<li>To get G^1: The 3 control points at a join must be collinear.</li>
+<li>To get C^1: The 3 control points must be, additionally, of equal distance
+from the center control point.</li>
+</ul>
+</li>
+<li>
+<p>Main disadvantage: Only guarantee C^0 continuity.</p>
+<ul>
+<li>With additional constraints above: C^1 can be reached.</li>
+</ul>
+</li>
+</ul>
+<h2 id="cubic-bezier-curves"><a class="header" href="#cubic-bezier-curves">Cubic Bezier Curves</a></h2>
+<p>4 Control points.</p>
+<ul>
+<li>Interpolates the first and fourth.</li>
+<li>approximating the second and third.</li>
+<li>derivative at start (u = 0): value is 3 times the vector from the first to
+the second control point.</li>
+<li>derivative at the end (u = 1): value is 3 times the vector from the third to
+fourth control point.</li>
+<li>position of curve is controlled by first and fourth control point.</li>
+<li>shape of curve is controlled by the second and third.</li>
+</ul>
+<p>See math slide 18</p>
+<p>p0 = a0
+p1 = a0 + (1/3)a1
+p2 = a0 + (2/3)a1 + (1/3)a2
+p3 = a0 + a1 + a2 + a3</p>
+<p><strong>Cubic Bezier Constraint matrix (C):</strong></p>
+<p>1  0   0   0
+1  1/3 0   0
+1  2/3 1/3 0
+1  1   1   1</p>
+<p><strong>Blending Matrix (B):</strong></p>
+<p>Inverse of the Constraint matrix.</p>
+<p><strong>Bernstien Polynomials</strong></p>
+<p>Multiply <em>out</em> uBp -&gt; get bernstien polynomials.</p>
+<ul>
+<li>They are all cubic.</li>
+<li>Labelled with subscripts:
+<ul>
+<li>b_0,3</li>
+<li>b_1,3</li>
+<li>b_2,3</li>
+<li>b_3,3</li>
+</ul>
+</li>
+</ul>
+<h2 id="evaluating-a-point-on-a-cubic-bezier-curve"><a class="header" href="#evaluating-a-point-on-a-cubic-bezier-curve">Evaluating a Point on a Cubic Bezier Curve</a></h2>
+<ul>
+<li>p(t) = (p0 * b_0,3) + (p1 * b_1,3) + (p2 * b_2,3) + (p3 * b_3,3)</li>
+<li>See slides(22) for definitions of functions b_0,3 to b_3,3</li>
+</ul>
+<h2 id="bezier-surfacespatches"><a class="header" href="#bezier-surfacespatches">Bezier Surfaces/Patches</a></h2>
+<ul>
+<li>application of bezier curves to two parametric directions.</li>
+<li>(m * n) Control points.</li>
+<li>P(u, v) = sumj-to-m( sumi-to-n( p_j,i * B_j,m * v * B_i,n * u ) )</li>
+</ul>
+<h2 id="how-to-render-freeform-surfaces"><a class="header" href="#how-to-render-freeform-surfaces">How to render (freeform surfaces)</a></h2>
+<p>freeform surface spec (presumably bezier surfaces above.):</p>
+<ul>
+<li>points on surface by evaluating the sums above.</li>
+<li>order of points, through param order.</li>
+<li>Can extract polygon mesh
+<ul>
+<li>choose param stepping size for u &amp; v</li>
+<li>compute points for each step</li>
+<li>create polygon mesh using inherent order</li>
+</ul>
+</li>
+<li>Can be as detailed as needed.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="viewing-and-perspective"><a class="header" href="#viewing-and-perspective">Viewing and Perspective</a></h1>
+<h2 id="photorealistic-rendering"><a class="header" href="#photorealistic-rendering">Photorealistic rendering</a></h2>
+<ul>
+<li>Goal for over 40 years</li>
+<li>produce image as close to a camera as possible</li>
+</ul>
+<h2 id="non-photorealistic-rendering"><a class="header" href="#non-photorealistic-rendering">Non-Photorealistic rendering</a></h2>
+<ul>
+<li>illustrations</li>
+<li>visualizations</li>
+<li>art</li>
+<li>image has purpose
+<ul>
+<li>illustrate concept or process</li>
+</ul>
+</li>
+<li>draw attention to particular parts of image.</li>
+</ul>
+<h2 id="rendering-process"><a class="header" href="#rendering-process">Rendering Process</a></h2>
+<ol>
+<li>Viewing and Projection</li>
+<li>Hidden Surface Removal</li>
+<li>Determining Surface colour</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="hidden-surface-removal"><a class="header" href="#hidden-surface-removal">Hidden Surface Removal</a></h1>
+<p>Three standard steps in rendering:</p>
+<ol>
+<li>Viewing and Projection</li>
+<li>Hidden Surface Removal &lt;&lt;&lt;&lt;- This one</li>
+<li>Determining Surface Colour</li>
+</ol>
+<h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
+<ul>
+<li>Show front parts only</li>
+<li>Avoid unnecessary processing</li>
+</ul>
+<h2 id="backface-culling"><a class="header" href="#backface-culling">Backface culling</a></h2>
+<p>Remove polygons where dot product of surface normal and view direction &gt; (or &lt;) 0.</p>
+<ul>
+<li>
+<p>for closed objects</p>
+</li>
+<li>
+<p>remove faces early in pipeline</p>
+</li>
+<li>
+<p>reduce polygon count by ~half</p>
+</li>
+<li>
+<p>Sign depends on how view direction vector is defined:</p>
+<ul>
+<li>v is view direction (from camera to polygon): &gt; 0 (pos)</li>
+<li>v is polygon to camera: &lt; 0 (neg)</li>
+</ul>
+</li>
+<li>
+<p>usually not sufficient due to partial overlaps</p>
+</li>
+<li>
+<p>reliable only if no overlaps occur</p>
+</li>
+<li>
+<p>order of objects depends on rendering sequence still.</p>
+</li>
+<li>
+<p>Can reduce rendering time by up to half.</p>
+</li>
+</ul>
+<h2 id="hidden-surface-elimination"><a class="header" href="#hidden-surface-elimination">Hidden surface elimination</a></h2>
+<ul>
+<li>Mostly done in hardware</li>
+<li>3 main algos
+<ul>
+<li>Painter's</li>
+<li>Z buffer</li>
+<li>BSP Tree</li>
+</ul>
+</li>
+</ul>
+<h3 id="painters-algorithm"><a class="header" href="#painters-algorithm">Painter's Algorithm</a></h3>
+<ul>
+<li>sort scene's triangles from back to front</li>
+<li>Draw back to front</li>
+<li>Problems
+<ul>
+<li>cyclic overlaps</li>
+<li>sort is O(n * log(n))</li>
+<li>wasted time drawing invisible (covered) items.</li>
+</ul>
+</li>
+</ul>
+<h3 id="z-buffer-algorithms"><a class="header" href="#z-buffer-algorithms">Z Buffer Algorithms</a></h3>
+<ul>
+<li>depth buffer</li>
+<li>used in hardware</li>
+<li>Post viewing transforms</li>
+<li>z-depth is distance from viewer to point.</li>
+<li>projection of 3D to 2D polygon</li>
+<li>Efficient algos for computing pixels covered by a polygon exist
+<ul>
+<li>can interpolate z-values from projected verticies.
+See math slide 20</li>
+</ul>
+</li>
+</ul>
+<p>projection is non-linear (looks logarithmic.)</p>
+<ul>
+<li>Process:
+<ul>
+<li>z-buffer size of screen</li>
+<li>all positions initialized to furthest point (far-plane f)</li>
+<li>check current pos' z-buffer val
+<ul>
+<li>If current pos' z-val is smaller, draw and update z-buffer</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Efficient?
+<ul>
+<li>May draw a pixel multiple times</li>
+<li>No sorting</li>
+<li>simplicity and hardware implementation make up for inefficiency</li>
+</ul>
+</li>
+<li>Points
+<ul>
+<li>memory required for z-buffer</li>
+<li>No cyclic overlaps</li>
+</ul>
+</li>
+<li>Must scale z-values to fit within 32/64 bit ints/floats
+<ul>
+<li>For Ortho projection @ 32 bits:
+<ul>
+<li>B possible values = 2^32</li>
+<li>ie. B bins with size (f - n)/B each (this is delta-z, surfaces delta-z or
+less close together give same z-buffer value)</li>
+<li>Want polygons to be more than delta-z apart after transformations.</li>
+<li>Otherwise: z-fighting.</li>
+</ul>
+</li>
+<li>Perspective:
+<ul>
+<li>See math in slide 34</li>
+<li>closer to the eye = more precision</li>
+<li>further from the eye = z-buffer value loses precision.</li>
+<li>delta-z-world is bin size in <em>world coordinates</em> = (z-world^2 * delta-z) / (f * n)</li>
+<li>In model or world space, bins <em>aren't uniform size</em></li>
+<li>Never set n = 0, bins become extremely large far away from the eye.</li>
+<li>High precision near the near-plane can be wasted if not used.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="bsp-tree"><a class="header" href="#bsp-tree">BSP Tree</a></h3>
+<ul>
+<li>No way to sort polygon without splitting (think overlap or intersection)</li>
+<li>use data structure that works for <em>all eye positions</em></li>
+<li>BSP Binary Space Partitioning.</li>
+<li>Each polygon lies on plane: f(x, y, z) = 0</li>
+<li>above formula can partition space into two parts: &lt; 0 &amp;  &gt; 0</li>
+<li>One side will be positive, other negative</li>
+<li>If eye is on plus side, draw negative polygons first then current polygon
+then positiv polygons.</li>
+<li>Just like a binary search tree!</li>
+<li>Can split up polygons into smaller pieces if needed.
+<ul>
+<li>increases polygon count (dramatically?)</li>
+</ul>
+</li>
+<li>DOOM used this before most hardware had a z-buffer.</li>
+<li>Traversing:
+<ul>
+<li>Draw polys behind first</li>
+<li>Draw A</li>
+<li>Draw polys in front.</li>
+<li><strong>recursive</strong></li>
+</ul>
+</li>
+<li>Don't need to recalculate the tree (draw order is determined by plane
+equation of each poly and eye position)</li>
+<li>Don't rely on graphics hardware.</li>
+<li>No algorithm for optimal BSP tree</li>
+<li>Nearly optimal algorithms exist</li>
+</ul>
+<p><strong>Build method</strong></p>
+<ul>
+<li>Assume no intersections</li>
+<li>Choose a poly</li>
+<li>add rest of polygons ordering with plane equation
+<ul>
+<li>test all verts w/ plane equation of current node.</li>
+<li>if all pos add to pos subtree, otherwise neg subtree.</li>
+<li>if some are pos, and some neg, split the poly</li>
+</ul>
+</li>
+<li><strong>Efficiency</strong> depends on number of nodes.
+<ul>
+<li>every time we split, we get more nodes.</li>
+<li>choice of root poly and order polys are added affect number of splits</li>
+<li>Can choose root at random (gives sometimes good, sometimes bad results)</li>
+<li>Instead choose a small number (5 emperically is good enough) and choose the
+one that splits the least.</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="texture-mapping"><a class="header" href="#texture-mapping">Texture Mapping</a></h1>
+<h2 id="bump-mapping"><a class="header" href="#bump-mapping">Bump Mapping</a></h2>
+<p>Use of texture to modify normals to simulate surface texture (bumpiness).</p>
+<h2 id="texture-mapping-1"><a class="header" href="#texture-mapping-1">Texture Mapping</a></h2>
+<p>Purpose: Map an image of a texture onto a <em>small</em> number of polygons.
+Images are 2D array of pixels. The surface of our object is 2D. Therefore map a
+point on the surface to a point in the image.<br />
+Cordinate system needed for object surface to map to image: <strong>Texture
+Coordinates</strong>. Attach texture coords to the vertices.</p>
+<p>Tiling textures is a thing. Texture coords go between [0, 1] normally. When
+tiling they can go outside this range (e.g. [0, 2]). In this case we can look
+only at the fractional parts of the coords (1.<em>53</em>) and multiply against nx and
+ny to get pixel coords in the image.</p>
+<p>Works fine if image pixels and screen pixels are about same size. But...</p>
+<h3 id="screen-pixels--texels"><a class="header" href="#screen-pixels--texels">Screen Pixels &lt;&lt; Texels</a></h3>
+<ul>
+<li>Several screen pixels have same texture pixel; result in same colour.</li>
+<li>Results in a blocky effect.</li>
+<li>Happens when you get too close to an object.</li>
+<li>Possible solutions
+<ul>
+<li>Higher resolution texture.</li>
+<li>Prevent user from getting too close to an object.</li>
+</ul>
+</li>
+</ul>
+<h3 id="screen-pixels--texels-1"><a class="header" href="#screen-pixels--texels-1">Screen Pixels &gt;&gt; Texels</a></h3>
+<ul>
+<li>One screen pixels cover multiple texture pixels.</li>
+<li>Visual artifacting when user moves.</li>
+<li>Possible solutions:
+<ul>
+<li>Choose closest texel: Can cause <strong>Aliasing</strong>, specifically <strong>bubbling</strong> -
+When the user moves different texels will be chosen causing the artifacts.</li>
+<li>Average the pixel colour of the multiple texels.</li>
+</ul>
+</li>
+</ul>
+<h4 id="averaging-texels"><a class="header" href="#averaging-texels">Averaging Texels</a></h4>
+<ul>
+<li>Will produce a blurry image.
+<ul>
+<li>Usually happens when objects are far away so blurryness is not as bad.</li>
+</ul>
+</li>
+<li>Relatively expensive.
+<ul>
+<li>Far away objects = more pixels to average.</li>
+<li>Not a problem for non-realtime rendering.</li>
+</ul>
+</li>
+<li>Speed Ups:
+<ul>
+<li>blurr textures ahead of time (helps).</li>
+<li>average a few of the close pixels.</li>
+<li>Still problematic for large size mismatches.</li>
+</ul>
+</li>
+</ul>
+<h2 id="mipmapping"><a class="header" href="#mipmapping">MipMapping</a></h2>
+<p>Solution to Averaging Texels at large distances.</p>
+<ul>
+<li>Hierarchy of textures.</li>
+<li>Typically pre-computed.</li>
+<li>OpenGL has a procedure for this.</li>
+<li>Memory cost is more, but less than twice.</li>
+<li>Textures sizes must be powers of 2.</li>
+<li>Base image is the original image.</li>
+<li>Next level is quarter of the size.
+<ul>
+<li>Each pixel is average of 2x2.</li>
+</ul>
+</li>
+<li>Next level is quarter of the size again.
+<ul>
+<li>Repeat until dimensions of last texture is 1x1.</li>
+</ul>
+</li>
+<li>Select the texture at the level that best corresponds to the screen pixel
+size (texel size. approx equal pixel size.)</li>
+<li>Alternatives interpolations exist:</li>
+</ul>
+<h3 id="gl_nearest_mipmap_nearest"><a class="header" href="#gl_nearest_mipmap_nearest">GL_NEAREST_MIPMAP_NEAREST</a></h3>
+<ul>
+<li>Select nearest mipmap level.</li>
+<li>Select nearest pixel.</li>
+</ul>
+<h3 id="gl_linear_mipmap_nearest"><a class="header" href="#gl_linear_mipmap_nearest">GL_LINEAR_MIPMAP_NEAREST</a></h3>
+<ul>
+<li>Select nearest mipmap level.</li>
+<li>Linearly interpolate pixel in 2X2 neighbourhood.</li>
+</ul>
+<h3 id="gl_nearest_mipmap_linear"><a class="header" href="#gl_nearest_mipmap_linear">GL_NEAREST_MIPMAP_LINEAR</a></h3>
+<ul>
+<li>Select 2 adjacent mipmap levels.</li>
+<li>Select nearest pixel.</li>
+<li>Linearly interpolate.</li>
+</ul>
+<h3 id="gl_linear_mipmap_nearest-1"><a class="header" href="#gl_linear_mipmap_nearest-1">GL_LINEAR_MIPMAP_NEAREST</a></h3>
+<ul>
+<li>Select 2 adjacent mipmap levels.</li>
+<li>Linearly interpolate pixel in 2X2 neighbourhood for both mipmaps.</li>
+<li>Linearly interpolate.</li>
+</ul>
+<h2 id="procedural-texture"><a class="header" href="#procedural-texture">Procedural Texture</a></h2>
+<ul>
+<li>Created within the program by a function.</li>
+<li>Relevent OpenGL funcs:
+<ul>
+<li><code>glGenTextures(_type_, _mipmap-level_, _gpu-pixel-format_, _width_, _height_, _border-size_, _cpu/file-pixel-format_, ...)</code></li>
+<li><code>glBindTexture()</code></li>
+<li><code>glTexImage2D()</code></li>
+<li><code>glTexParameter*()</code></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="texture-mapping-part-2"><a class="header" href="#texture-mapping-part-2">Texture Mapping Part 2</a></h1>
+<ul>
+<li>OBJ model files often contain texture coordinates for each vector. They are
+typically stored after vertices and normals.</li>
+<li>Aliasing issues can occur. Can be solved by tiling the texture(multiply
+tex-coords by e.g. 8) or generating mipmaps (glGenerateMipmap.)</li>
+</ul>
+<h2 id="opengl-and-image-data"><a class="header" href="#opengl-and-image-data">OpenGL and Image Data</a></h2>
+<ul>
+<li>OpenGL expects a packed representation of the image: One pixel after the other
+in memory, line-by-line.</li>
+<li>FreeImage allocates one line at a time <em>at word boundaries</em>.
+<ul>
+<li>The data FreeImage loads will need to be packed so OpenGL can work with it.</li>
+<li>Process the image data one line at a time, moving the pixels from the
+FreeImage internal storage to an array we'll pass to OpenGL.</li>
+</ul>
+</li>
+</ul>
+<h2 id="computing-with-textures"><a class="header" href="#computing-with-textures">Computing With Textures</a></h2>
+<ul>
+<li>The values retrieved from a texture can be used in any computation, including
+in vertex shaders.</li>
+<li>The values don't need to be colour info (e.g. normals, bump maps, etc.)</li>
+<li>More than one texture map can be used at a time.</li>
+</ul>
+<h2 id="multiple-textures"><a class="header" href="#multiple-textures">Multiple Textures</a></h2>
+<ul>
+<li>Multiple texture coordinates needed.</li>
+<li>Vertex and fragment shaders will need an additional attribute for the
+textures.</li>
+<li>Each texture can be associated with a <strong>Texture Unit</strong>. There are at least
+80 available (0 through 79).</li>
+<li><code>glActiveTexture</code> selects one of these texture units.</li>
+<li>Next, use <code>glBindTexture</code> to associate a texture with the active texture unit.</li>
+<li>To then associate a texture with a shader sampler variable, we need to assign
+the texture unit number to that sampler with <code>glUniform1i</code>.</li>
+</ul>
+<h2 id="advanced-texture-mapping"><a class="header" href="#advanced-texture-mapping">Advanced Texture Mapping</a></h2>
+<ul>
+<li>We've done simple 2D texture mapping.</li>
+<li>We can use 1D and 3D textures.
+<ul>
+<li>3D examples: Clouds, smoke, tree trunk (cut it open to see the inside
+texture.)</li>
+</ul>
+</li>
+<li>OpenGL handles them simillarly to 2D images, albeit with different functions.</li>
+<li>1D textures are essentially a line. Often used for contour lines and scales on
+the surfaces of objects.</li>
+<li>3D textures are a volume of pixel values. We are essentially sampling a
+volume instead of a surface.
+<ul>
+<li>3D textures are large, lots of memory needed!</li>
+<li>Hard to filter to get rid of aliasing problems.</li>
+</ul>
+</li>
+</ul>
+<h2 id="procedural-textures"><a class="header" href="#procedural-textures">Procedural Textures</a></h2>
+<ul>
+<li>3D textures can be very large.</li>
+<li>We can generate the values in a function instead.
+<ul>
+<li>This solves the large size problem.</li>
+<li>The fn can even filter the texture based as it goes.</li>
+</ul>
+</li>
+</ul>
+<h2 id="bump-maps-normal-maps"><a class="header" href="#bump-maps-normal-maps">Bump Maps (Normal Maps)</a></h2>
+<ul>
+<li>A texture containing the diffuse light only. (&lt;- how would we do this?)</li>
+<li>Just generate a texture! (Programmatically, or other)</li>
+<li>Bump Maps allow you to change the illumination handling in shaders with the
+use of a texture.</li>
+<li>They are vector offsets for the normal vectors.</li>
+</ul>
+<h1 id="slide-65"><a class="header" href="#slide-65">Slide 65</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="ray-tracing"><a class="header" href="#ray-tracing">Ray Tracing</a></h1>
+<ul>
+<li>Global illumination model</li>
+</ul>
+<h2 id="radiosity"><a class="header" href="#radiosity">Radiosity</a></h2>
+<ul>
+<li>Not used much anymore.</li>
+<li>Ideas incorporated into other techniques.</li>
+</ul>
+<h2 id="properties-of-light"><a class="header" href="#properties-of-light">Properties of Light</a></h2>
+<ul>
+<li>Law of conservation of energy.</li>
+<li>CG light is special case
+<ul>
+<li>light energy may convert to other form.</li>
+<li>other forms may convert to light energy.</li>
+</ul>
+</li>
+<li>Light is a wave (see light model lecture)</li>
+<li>Light is a particle (carries amount of energy, used in raytracing)</li>
+<li>CG light follows straight paths.</li>
+</ul>
+<h2 id="towards-ray-tracing"><a class="header" href="#towards-ray-tracing">Towards Ray Tracing</a></h2>
+<ul>
+<li>Phong is coarse approximation.</li>
+<li>Goal: Look at real physical conditions.
+<ul>
+<li>Use particle model of light.</li>
+<li>Derive reflected amount of light from:
+<ul>
+<li>Incoming light from different directions.</li>
+<li>More realistically modeled reflection properties.</li>
+<li>Own emitted light.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="basic-ideas---rays-in-ray-tracing"><a class="header" href="#basic-ideas---rays-in-ray-tracing">Basic Ideas - Rays in Ray Tracing</a></h2>
+<ul>
+<li>One ray per pixel.</li>
+<li>Rays originate at the pixel, directed towards the eye.</li>
+<li>How to determine the pixel colour?</li>
+<li>Reverse the ray, trace it into the scene.
+<ul>
+<li>The ray starts at the pixel and goes into the scene.</li>
+<li>It hits an object or goes into the background</li>
+</ul>
+</li>
+<li>Compute the colour of the object where the ray hits it.
+<ul>
+<li>Don't forget the light contributions from other objects in the scene.</li>
+</ul>
+</li>
+</ul>
+<p>So:</p>
+<ul>
+<li>Trace a ray from each intersection point to each of the light sources.
+<ul>
+<li>If a clear path to the light, compute the diffuse and specular light
+produced by that light.</li>
+<li>If there isn't a clear path, that object is in shadow from the light source
+and only the ambient component of light is used.</li>
+</ul>
+</li>
+<li>The ray can also reflect off of surfaces that it hits.</li>
+<li>Trace the ray to any object it may intersect. Compute that colour as the
+reflected colour for the original object.
+<ul>
+<li>If the object is transparent, trace the ray through the object to find the
+colour on the other side (refract the ray). Then follow the ray to its next
+intersection and compute the colour there.</li>
+</ul>
+</li>
+<li>This process can be recursive. Usually a couple levels until stopping.</li>
+</ul>
+<h2 id="the-math"><a class="header" href="#the-math">The Math</a></h2>
+<p>TODO</p>
+<h2 id="forward-ray-tracing"><a class="header" href="#forward-ray-tracing">Forward Ray Tracing</a></h2>
+<p>We trace from eye to object (through pixels) to light source. Forward ray
+tracing traces rays from light source to object (eventually to eye).</p>
+<ul>
+<li>Lots of work (rays) for little return.</li>
+<li>Some of the rays will reflect in such a way that they don't intersect with
+the pixels of the screen and the eye.</li>
+</ul>
+<h2 id="backwards-ray-tracing"><a class="header" href="#backwards-ray-tracing">Backwards Ray Tracing</a></h2>
+<ul>
+<li>What we do.</li>
+<li>From the eye to (eventually) the light source.</li>
+<li>"Do work where it matters".</li>
+</ul>
+<h2 id="efficiency-of-backwards-ray-tracing"><a class="header" href="#efficiency-of-backwards-ray-tracing">Efficiency of Backwards Ray Tracing</a></h2>
+<ul>
+<li>Each of the original rays can generate more rays.</li>
+<li>The final result of the original ray is the pixel colour.</li>
+<li>Can be modeled as a tree of rays, pixels are the root.</li>
+<li>Each intersection is a node in the tree. The generated rays lead to the
+children.</li>
+<li>Called a <strong>Ray Tree</strong>.</li>
+<li>Contribution of child rays to colour lessens each intersection.</li>
+<li>The Ray Tree can quickly grow large.</li>
+<li>Ray Tracing can become expensive to compute.</li>
+<li>We want to control number of rays.</li>
+<li>Intersection computations must be efficient.</li>
+</ul>
+<h2 id="stopping-conditions-for-ray-tracing"><a class="header" href="#stopping-conditions-for-ray-tracing">Stopping Conditions for Ray Tracing</a></h2>
+<ul>
+<li>Two options
+<ol>
+<li>Stop when the tree reaches a maximum depth.</li>
+<li>Stop when the contribution to colour goes below a certain level.</li>
+</ol>
+</li>
+<li>Usually, both are used.</li>
+</ul>
+<h2 id="finding-intersections"><a class="header" href="#finding-intersections">Finding Intersections</a></h2>
+<ul>
+<li>When tracing rays, we want the closest intersection.</li>
+<li>Other objects are hidden by the closest, so only the closest matter to the pixel colour.</li>
+<li>Naive approach is to test every object in the scene.</li>
+</ul>
+<h2 id="coordinate-systems"><a class="header" href="#coordinate-systems">Coordinate Systems</a></h2>
+<p>First we need to put everything in a common coord system before generating
+rays.</p>
+<h3 id="eye-coordinates"><a class="header" href="#eye-coordinates">Eye Coordinates</a></h3>
+<p>When using eye coords, transform the models so they are in the eye coordinate
+system. Only needs to be done once, so not a performance concern.</p>
+<h3 id="model-coordinates"><a class="header" href="#model-coordinates">Model Coordinates</a></h3>
+<p>Place the eye and display screen in model coordinates. Needs to be applied to
+each of the original rays. Still not an efficiency concern.</p>
+<h2 id="intersections"><a class="header" href="#intersections">Intersections</a></h2>
+<p>The most expensive operation. The mathematical representation of a ray:
+p(t) = e + td, t &gt; 0  (Slide 45)</p>
+<p><code>t</code> must always be greater than 0, otherwise, any intersections will be at or
+behind the eye.</p>
+<h2 id="sphere-intersection"><a class="header" href="#sphere-intersection">Sphere Intersection</a></h2>
+<ul>
+<li>One of the easiest objects to intersect.</li>
+</ul>
+<p>See the math: Slide 45 onwards.</p>
+<p>!!! Slide 49 !!! Smallest of the two roots -&gt; Smallest <em>positive</em> root.
+(otherwise <code>t</code> in equation above would be negative.)</p>
+<h1 id="ray-tracing-part-2"><a class="header" href="#ray-tracing-part-2">Ray Tracing Part 2</a></h1>
+<p>Review of <strong>raycasting</strong>:</p>
+<ul>
+<li>Light rays, for each intersection -&gt; compute local illumination using Phong
+model.</li>
+<li>Shadow rays, for testing if intersection points have line-of-sight to light
+source.</li>
+<li>True raytracing: Recursive, follow reflected and refracted rays.</li>
+</ul>
+<h2 id="adapted-illumination-model"><a class="header" href="#adapted-illumination-model">Adapted Illumination Model</a></h2>
+<p>See slide 8.
+I = ambient + sum(diffuse + specular) + reflected-ray-values + refracted-ray-values.</p>
+<h2 id="intersection"><a class="header" href="#intersection">Intersection</a></h2>
+<ul>
+<li>The most expensive operation in raytracing.</li>
+<li>A ray is: p(t) = e + td    t &gt; 0
+<ul>
+<li>e is the starting point of the ray.</li>
+<li>d is a unit vector in the ray direction.</li>
+<li>t is will always be <strong>greater than 0</strong>, otherwise the intersection is behind
+the eye.</li>
+</ul>
+</li>
+</ul>
+<h2 id="intersecting-a-sphere"><a class="header" href="#intersecting-a-sphere">Intersecting a Sphere</a></h2>
+<ul>
+<li>One of the easiest objects to intersect.</li>
+<li>Use implicit representation of sphere eq'n.
+<ul>
+<li>(ray)   e+td</li>
+<li>(sphere)   (p-c) * (p-c) - R^2</li>
+<li>Substitute the ray eq'n into the sphere eq'n as the point to test <code>p</code></li>
+<li>(e+td - c) * (e+td - c) - R^2</li>
+<li>Slide 11</li>
+</ul>
+</li>
+<li>This results in a quadratic equation:
+(d * d)t^2 + 2(d * (e - c))t + (e - c)^2 - R^2 = 0
+<ul>
+<li>Use the quadratic formula.</li>
+<li>Imaginary roots only? -&gt; No intersection. (check the descriminant)</li>
+</ul>
+</li>
+</ul>
+<h2 id="general-intersections"><a class="header" href="#general-intersections">General Intersections</a></h2>
+<p>General polygon intersection.</p>
+<ul>
+<li>Two steps
+<ul>
+<li>Where does the ray intersect the polygon's plane? (Is it parallel or not?)</li>
+<li>Is the intersection point inside or outside the polygon?</li>
+</ul>
+</li>
+<li>Polygon plane eq'n, Slide 15:
+(p - p1) * n = 0,   n is normal.<br />
+(e + td - p1) * n = 0.<br />
+After rearranging: t = ((p1 - e) * n) / (d * n)</li>
+<li>If (d * n) is 0, the ray is parallel to the plane.</li>
+<li>Project the polygon and intersection point to one of the coordinate planes.</li>
+<li>Draw a line from the intersection point to infinity, Count the number of times
+it intersects a polygon edge.
+<ul>
+<li>Odd -&gt; inside polygon</li>
+<li>Even -&gt; outside polygon</li>
+</ul>
+</li>
+</ul>
+<p>So which line to infinity should we use? (This selects the coordinate plane
+to project onto)</p>
+<ul>
+<li>
+<p>An easy choice is the x-axis.</p>
+<ul>
+<li>Intersection calculation
+is easy, check y values only.</li>
+</ul>
+</li>
+<li>
+<p>Slide 19: If one end point is above the line (x-axis in this case) and the
+other below,   we have an intersection.</p>
+</li>
+<li>
+<p>If the projection results in a horizontal line, choose one of the other
+planes.</p>
+</li>
+<li>
+<p>See also page: 20</p>
+</li>
+<li>
+<p>More efficient computations in the case of triangles.</p>
+</li>
+<li>
+<p>Efficiency is a major concern in raytracing.</p>
+</li>
+<li>
+<p>Key observation: <em>Most objects will not be hit by a particular ray</em>.</p>
+</li>
+<li>
+<p>Want: Compute <strong>non-intersections</strong> as quickly as possible.</p>
+</li>
+<li>
+<p>Sol'n: Bounding volumes.</p>
+</li>
+</ul>
+<h2 id="bonuding-volumes"><a class="header" href="#bonuding-volumes">Bonuding Volumes</a></h2>
+<ul>
+<li>Enclose complex objects in a simpler shape.</li>
+<li>Test intersection against the simpler shape first (e.g. a sphere).</li>
+<li>Use a sphere, axis-aligned bounding box, rectangular prism.</li>
+<li>Prefer:
+<ul>
+<li>Bounding volume closely contains the object.
+<ul>
+<li>Reduce possibility of false positives.</li>
+</ul>
+</li>
+<li>Add to modeling heirarchy for heirarchy of bounding volumes.</li>
+</ul>
+</li>
+</ul>
+<h2 id="accelerating-raytracing"><a class="header" href="#accelerating-raytracing">Accelerating RayTracing</a></h2>
+<p>Parallelizeable - raytracing is emberassingly parallel.
+Space Partitioning - Bounding Volume heirarchies, BSP, uniform subdivision trees
+(Octrees)</p>
+<h2 id="space-partitioning"><a class="header" href="#space-partitioning">Space Partitioning</a></h2>
+<ul>
+<li>
+<p>Want closest intersection to start of ray</p>
+</li>
+<li>
+<p>More likely desired intersection occurs near start of the ray.</p>
+</li>
+<li>
+<p>Intersection will not occur behind the ray or in a direction the array doesn't go.</p>
+</li>
+<li>
+<p>The ray passes through a small portion of space, don't look elsewhere.</p>
+</li>
+<li>
+<p>So we need a way of organizing the objects in the scene so we only look at the
+ones where the ray will pass and ignore the rest of them.</p>
+</li>
+<li>
+<p>Want to test objects in smart order, most likely first, but make sure you don't
+miss closer ones.</p>
+</li>
+<li>
+<p>Inefficient to sort objects by distance since they would need to be sorted
+for <em>each</em> ray.</p>
+</li>
+<li>
+<p>A Sol'n:</p>
+<ul>
+<li>Build grid on top of scene.</li>
+<li>Assign objects to the grid cells they are in.</li>
+<li>Each cell should hold a small number of objects (ideally 3 - 5)</li>
+<li>Start intersection testing at cell where ray starts</li>
+<li>Find first cell the ray hits</li>
+<li>Objects in that cell are closest to ray origin, test them.</li>
+<li>If no intersection, move on to next cell.</li>
+<li>Worst Case (n x n x n 3D grid): Have to check n * sqrt(3) cells.</li>
+<li>For evenly distributed objects: Speed up on order of 1/n^2 (if n = 10 -&gt; 100 times faster)</li>
+<li>In practice, objects are rarely evenly distributed.</li>
+<li>Problems:
+<ul>
+<li>As n is increased data structure grows by n^3</li>
+<li>As cell size gets smaller, an object may appear in multiple cells causing
+multiple intersection calculations for that model.</li>
+<li>Many cells will be empty, computing next cell to visit takes time so we
+waste efficiency on empty cells.</li>
+<li>Lower limit on cell size exists.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="adaptive-space-partitioning"><a class="header" href="#adaptive-space-partitioning">Adaptive Space Partitioning</a></h2>
+<ul>
+<li>We want cells to be as large as possible so we can chew through them quickly.</li>
+<li>Use an <em>adaptive grid with cells of varying size</em>.</li>
+<li>May improve performance by reducing the number of empty cells.</li>
+</ul>
+<h2 id="recursive-raytracing"><a class="header" href="#recursive-raytracing">Recursive RayTracing</a></h2>
+<p>Slide 36</p>
+<p>TODO: A bunch of slides.</p>
+<h2 id="distributed-raytracing"><a class="header" href="#distributed-raytracing">Distributed RayTracing</a></h2>
+<p>Two main problems w/ classical raytracing:</p>
+<ol>
+<li>Images are too clean, sharp, and always in focus.</li>
+<li>Lot's of aliasing around edges of objects and shadows.</li>
+</ol>
+<p>These problems are caused by point sampling:</p>
+<ul>
+<li>1 ray per pixel</li>
+<li>1 ray to light source</li>
+<li>1 reflected ray</li>
+<li>1 refracted ray</li>
+</ul>
+<p>Consider a row of pixels and their rays:
+Rays are shot through a point on the pixel. but we ideally want to sample the
+<em>whole</em> pixel, not just a point on it. a ray may hit an object while the next
+misses it.</p>
+<ul>
+<li>a ray for one pixel may hit an object, but the ray for the next pixel might
+not (imagine the edge of the object is diagonal.)</li>
+</ul>
+<p>The basic solution:</p>
+<ul>
+<li>Use more than one ray per pixel</li>
+<li>Easiest approach is to divide the pixel into smaller squares and use one
+array for each cell. This only delays (minimizes) the problem. Not a sol'n</li>
+<li>Next approach is to randomly select a position within a pixel. Use a large
+number of rays per pixel. Average the result.
+<ul>
+<li>Not uniform without lots of rays.</li>
+<li>Inefficient, needs large number of rays to get a good sample for each
+pixel.</li>
+</ul>
+</li>
+<li>Next approach: Combine both. Divide the pixel into a grid of smaller cells.
+<ul>
+<li>Within each cell, randomly sample.</li>
+<li>pixels are sampled more uniformly.</li>
+<li>but still somewhat random so aliasing isn't as noticable.</li>
+<li>Adds a bit of noise in exchange for eliminating aliasing.</li>
+<li>5x5 grid is usually good enough.</li>
+</ul>
+</li>
+</ul>
+<h3 id="shadows"><a class="header" href="#shadows">Shadows</a></h3>
+<p>Dark == umbra, transition/light == penumbra.</p>
+<ul>
+<li>
+<p>Light source must have finite area, cannot be a single point.</p>
+</li>
+<li>
+<p>Surface of light source is divided into a grid similar to the pixel stuff
+above.</p>
+</li>
+<li>
+<p>Instead of one shadow ray, use multiple, one for each of the cells on the
+light source.</p>
+</li>
+<li>
+<p>The rays intersect a random point in each cell, also like above.</p>
+</li>
+<li>
+<p>The values of the different shadow rays are averaged.</p>
+</li>
+<li>
+<p>If a point is in the Umbra: all rays are blocked, same result as without
+distributed rays.</p>
+</li>
+<li>
+<p>If a point is in the penumbra: only some rays blocked, average result with
+give desired affect.</p>
+</li>
+<li>
+<p>Distributed rays also works for:</p>
+<ul>
+<li>depth of field</li>
+<li>glossy reflections</li>
+<li>motion blur</li>
+</ul>
+</li>
+</ul>
+<h3 id="efficiency"><a class="header" href="#efficiency">Efficiency</a></h3>
+<ul>
+<li>The number of rays increases rapidly.</li>
+<li>Using 25 rays (for example) for a pixel, with <em>one</em> light source w/ 25 cells,
+number of rays increase by factor of 625 at least.</li>
+</ul>
+<h2 id="path-tracing"><a class="header" href="#path-tracing">Path Tracing</a></h2>
+<p>The branching of subsequent rays in distributed raytracing leads to rays
+contributing only a fraction of the colour of the pixel. We could get away with
+fewer rays.</p>
+<p>With PathTracing:</p>
+<ul>
+<li>each of the initial multiple rays follows <em>only one</em> path through the scene.</li>
+<li>a number of rays for each pixel is still used (usually in the range of
+several hundreds to thousands.)</li>
+<li>when a ray hits an object, randomly decide to generate a
+shadow/reflection/refraction ray.
+<ul>
+<li>Also, randomly generate a direction for the ray using the techniques as
+distributed ray tracing.</li>
+<li>Continues until the ray leaves the scene or goes through enough levels.</li>
+</ul>
+</li>
+</ul>
+<h3 id="advantagesdisadvantages"><a class="header" href="#advantagesdisadvantages">Advantages/Disadvantages</a></h3>
+<ul>
+<li>No explosive growth of rays</li>
+<li>Deep in the tree, a large number of rays is wasteful since each contributes
+little to the final colour of a pixel.
+<ul>
+<li>Path tracing only uses one ray throughout.</li>
+</ul>
+</li>
+<li>Will need lots of rays to get a good average value.</li>
+<li>Basically a Monte Carlo simulation of light transfer.
+<ul>
+<li>needs a large number of samples</li>
+<li>We know that there are ways for controlling the sampling, so we can do
+this reasonably efficiently.</li>
+</ul>
+</li>
+</ul>
+<p>Photon Mapping:</p>
+<ul>
+<li>both forward and backwards path tracing.</li>
+<li>forwards from light "deposits" photons on surface of objects.</li>
+<li>backwards from eye picks up these photons.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="volume-visualization"><a class="header" href="#volume-visualization">Volume Visualization</a></h1>
+<p>...</p>
+<h2 id="volume-rendering"><a class="header" href="#volume-rendering">Volume Rendering</a></h2>
+<ul>
+<li>produce visualization from 3D uniform rectilinear grid of scalars</li>
+<li>see more than one voxel at each point on the screen</li>
+<li>all techniques can be divided into two parts:
+<ul>
+<li>Determine voxels (or points) that contribute to each pixel on the screen</li>
+<li>Determine colour of pixels as a function of the corresponding voxels</li>
+</ul>
+</li>
+<li><strong>Transfer Function</strong> - function/method used to determine the pixel colour.
+Usually a function of the current pixel colour and voxel, and sometimes the
+path from the pixel to the voxel.</li>
+<li>two methods for determining the voxels that contribute to each pixel value:
+<ul>
+<li>Start with the pixel and search through the volume for voxels</li>
+<li>Start with the voxel and determine the pixels that it maps too</li>
+</ul>
+</li>
+<li>TODO</li>
+</ul>
+<h2 id="transfer-functions"><a class="header" href="#transfer-functions">Transfer Functions</a></h2>
+<h2 id="illumination"><a class="header" href="#illumination">Illumination</a></h2>
+<p>Volume Visualization Slide 93
+Recursive integral! An Integral equation.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="visualization-2"><a class="header" href="#visualization-2">Visualization 2</a></h1>
+<ul>
+<li>Can't see black holes - dust absorbs visible wavelengths.</li>
+<li>This around the black hole we can see at radio wavelengths.
+<ul>
+<li>Requires radio telescope, 1.3mm wavelength</li>
+</ul>
+</li>
+</ul>
+<h2 id="black-holes"><a class="header" href="#black-holes">Black Holes</a></h2>
+<ul>
+<li>Bends space-time</li>
+<li>Since space-time is curved, light rays bend near a black hole</li>
+</ul>
+<p><strong>Schwarzschild radius</strong><br />
+Non-rotating, non-charged black hole. Defines the event horizon.
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.10903em;">GM</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">G</span></span></span></span> is the gravitational constant. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> is the mass of the black hole. <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> is
+the speed of light.</p>
+<p><strong>photon sphere</strong><br />
+Sphere of zero thickness where photons orbit the black hole.</p>
+<ul>
+<li>unstable, photons either escape or fall into the black hole.</li>
+</ul>
+<p>Inner most stable orbit of black hole is at 3 times <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. At greater distance,
+you can safely orbit the black hole.</p>
+<p><strong>accretion disk</strong> - gasses spiralling into the black hole. They emit radiation
+in the process. This is what we see of black holes.</p>
+<h2 id="visualization-of-m87"><a class="header" href="#visualization-of-m87">Visualization of M87*</a></h2>
+<ul>
+<li>From Earth M87* is small. It covers an angle of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">40</span><span class="mord mathnormal">μ</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span></span></span></span></li>
+<li>resolution of a radio telescope is proportional to the wavelength divided by
+its diameter</li>
+<li>Would need a dish with a diameter the size of the Earth.</li>
+<li>Can't do that (obviously.)</li>
+<li>Instead build several telescopes at different locations.
+<ul>
+<li>If they are seperated by the diameter of the earth, they are almost as good
+as a telescope that large.</li>
+</ul>
+</li>
+<li>How does this work? Interference.</li>
+<li>2 telescopes pointed at same location recieve slightly different signals due to
+different distances to object.</li>
+<li>Led to EHT</li>
+</ul>
+<h2 id="eht---event-horizon-telescope"><a class="header" href="#eht---event-horizon-telescope">EHT - Event Horizon Telescope</a></h2>
+<ul>
+<li>network of telescopes</li>
+<li>cover diameter of Earth</li>
+<li>each telescope has an atomic clock, synchronized</li>
+<li>data recorded during observation saved to disk + timestamp</li>
+<li>sent to MIT for processing</li>
+<li>data is raw signals from pairs of telescopes, not an image.</li>
+<li>what does a correct visualization look like? (no one's seen a black hole
+before.)</li>
+</ul>
+<h2 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h2>
+<ol>
+<li><strong>CLEAN</strong> - start with data -&gt; compute pixel values.</li>
+<li><strong>RML</strong> - start with pixel values -&gt; use optimization process to match the
+pixel values to the data.</li>
+</ol>
+<ul>
+<li>multi-step process was used to build visualization</li>
+<li>Step one:
+<ul>
+<li>take 4 independent teams, no communication allowed</li>
+<li>multiple weeks to build their pictures</li>
+<li>results were similar not too bad</li>
+<li>allowed estimation of black hole properties</li>
+<li>produced approximation of good parameters for visualization techniques.</li>
+</ul>
+</li>
+<li>Step two:
+<ul>
+<li>use math models w/ estimations to simulate what it should look like.</li>
+<li>four possible geometries chosen and modeled</li>
+<li>EHT signals were computed for the chosen geometries</li>
+<li>the new data was used to find better parameters for the algos</li>
+</ul>
+</li>
+<li>Step three:
+<ul>
+<li>introduce additional simulation to ensure overfitting of data did not ocurr.</li>
+</ul>
+</li>
+</ul>
+<p>Or just see slide 32.</p>
+<h2 id="simulation"><a class="header" href="#simulation">Simulation</a></h2>
+<ul>
+<li>Einstein developed equations of general relativity.</li>
+<li>Others developed equations for black holes.</li>
+<li>Maths understood by 1930s but visualizations came 40 years later.</li>
+<li>Equations are complicated.</li>
+<li>Couldn't do it until sufficiently powerful computers existed.</li>
+<li>We would see the accretion disk or stars behind it, not the black hole itself.</li>
+<li>Use <em>ray tracing</em>.</li>
+<li>rays do not follow straight line near black hole
+<ul>
+<li>compute the paths</li>
+<li>if intersecting a star, work illumination back along the curved path to the
+viewer</li>
+</ul>
+</li>
+<li>ray tracing previously ignored what light was made of.</li>
+<li>now, light consists of particles which interact with gravitational field.</li>
+<li>observer is likely moving at high speed around black hole.</li>
+<li>How to handle this?</li>
+</ul>
+<h2 id="approach"><a class="header" href="#approach">Approach</a></h2>
+<ul>
+<li>develop differential equations for path of photons starting at observer
+<ul>
+<li>non-trivial equations</li>
+<li>solved numerically</li>
+<li>compute path photon would take</li>
+</ul>
+</li>
+<li><strong>Termination Conditions</strong>:
+<ul>
+<li>Photon intersects star or accretion disk</li>
+<li>Photon goes to infinity w/out intersection</li>
+<li>Photon absorbed by block hole</li>
+</ul>
+</li>
+<li>starts could be very far away, long path to trace</li>
+</ul>
+<h3 id="star-intersection"><a class="header" href="#star-intersection">Star Intersection</a></h3>
+<ul>
+<li>map the stars onto large sphere enclosing observer and black hole:
+<strong>celestial sphere</strong>.</li>
+<li>intersect ray w/ sphere to see if it strikes a star</li>
+<li>stars are point light sources, rays infinitely thin, almost impossible to
+have intersection.
+<ul>
+<li>assume ray has diameter, look for intersections w/in diameter.</li>
+</ul>
+</li>
+<li>one star is intersected, propegate light back to observer
+<ul>
+<li>requires second set of differential equations that model light transport</li>
+<li>gravitational field effects the frequency of light, could shift it red or
+blue</li>
+</ul>
+</li>
+<li>star light can appear in multiple positions</li>
+<li>computed path can circle the black hole multiple times</li>
+</ul>
+<h3 id="interstellar-movie"><a class="header" href="#interstellar-movie">Interstellar (Movie)</a></h3>
+<ul>
+<li>film needed high quality image, physics simulations aliased badly.</li>
+<li>instead of ray tracing, trace light beams (give ray some volume.)</li>
+<li>beam starts as circle at camera, projects as ellipse on celestial sphere.</li>
+<li>stars w/in ellipse averaged together -&gt; stars no longer pop between frames.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="exam-review"><a class="header" href="#exam-review">Exam Review</a></h1>
+<ul>
+<li>Short answer questions - similar to mid-term.</li>
+<li>Be precise in your answers.</li>
+</ul>
+<p><strong>Review the Review Slides</strong></p>
+<p>Lighting: Why eye coords? old tech could handle it, world coords for new tech.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid.min.js"></script>
+        <script src="mermaid-init.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

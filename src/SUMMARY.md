@@ -11,6 +11,7 @@
   - [CPU Scheduling & Deadlocks](./y1s2/systems-programming/04-scheduling-deadlocks.md)
   - [Networking - Models & Layers](./y1s2/systems-programming/09-networking.md)
   - [Security](./y1s2/systems-programming/12-security.md)
+
 - [Computer Graphics & Visualization](./y1s2/computer-graphics/intro.md)
   - [Introduction](./y1s2/computer-graphics/00-intro.md)
   - [The Graphics Pipeline](./y1s2/computer-graphics/01-graphics-pipeline.md)
@@ -24,6 +25,8 @@
   - [Texture Mapping 2](./y1s2/computer-graphics/16-texture-mapping2.md)
   - [Ray Tracing](./y1s2/computer-graphics/17-ray-tracing.md)
   - [Volume Visualization](./y1s2/computer-graphics/21-volume-visualization.md)
+  - [Black Holes](./y1s2/computer-graphics/22-visualization2.md)
+  - [Exam Review](./y1s2/computer-graphics/23-exam-review.md)
 
 # Year 2 Semester 1
 
