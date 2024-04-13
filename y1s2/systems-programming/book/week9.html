@@ -301,8 +301,32 @@ bits at the beginning of the address:</p>
 </ul>
 <h2 id="ipv4-header"><a class="header" href="#ipv4-header">IPv4 Header</a></h2>
 <p><img src="assets/ipv4-header.png" alt="IPv4 header diagram" /></p>
+<p><strong>IHL</strong> - Internet Header Length. The size of the internet header in 32-bit
+words.</p>
+<p><strong>Differentiated Services</strong> - Specifies the differentiated service this packet
+is for. Includes <em>Explicit Congestion Notification</em>.</p>
+<p><strong>Total Length</strong> - Size of the entire packet.</p>
+<p><strong>Identification</strong> - Used for uniquely identifying the group of fragments for a
+single IP datagram.</p>
+<p><strong>DF</strong> - Don't Fragment. Do not fragment the packet. The packet is dropped if
+fragmentation is required to route the packet.</p>
+<p><strong>MF</strong> - More Fragments. For fragmented packets, all fragment except the last
+have this flag set.</p>
+<p><strong>Fragment Offset</strong> - Offset of a fragment relative to the beginning of the
+original IP datagram. Specified in units of 8 bytes.</p>
+<p><strong>Time To Live</strong> - In practice, hop-count.</p>
+<p><strong>Protocol</strong> - Protocol used in the data portion of the IP datagram.</p>
+<p><strong>Header Checksum</strong> - Checksum for the header only.</p>
+<p><strong>Options</strong> - Optional parameters.</p>
 <h2 id="ipv6-header"><a class="header" href="#ipv6-header">IPv6 Header</a></h2>
 <p><img src="assets/ipv6-header.png" alt="IPv6 header diagram" /></p>
+<p><strong>Traffic Class</strong> - Contains both the Differentiated Service field and the
+Explicit Congestion Notification field.</p>
+<p><strong>Flow Label</strong> - An identifier for a group of packets.</p>
+<p><strong>Payload Length</strong> - Size of the payload in octets. Includes extension headers.</p>
+<p><strong>Next Header</strong> - Type of the next header. Usually the transport layer protocol
+used by the packet's payload.</p>
+<p><strong>Hop Limit</strong> - A.K.A. Time to Live.</p>
 
                     </main>
 

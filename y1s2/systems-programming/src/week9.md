@@ -148,6 +148,46 @@ bits at the beginning of the address:
 
 ![IPv4 header diagram](assets/ipv4-header.png)
 
+**IHL** - Internet Header Length. The size of the internet header in 32-bit
+words.
+
+**Differentiated Services** - Specifies the differentiated service this packet
+is for. Includes _Explicit Congestion Notification_.
+
+**Total Length** - Size of the entire packet.
+
+**Identification** - Used for uniquely identifying the group of fragments for a
+single IP datagram.
+
+**DF** - Don't Fragment. Do not fragment the packet. The packet is dropped if
+fragmentation is required to route the packet.
+
+**MF** - More Fragments. For fragmented packets, all fragment except the last
+have this flag set.
+
+**Fragment Offset** - Offset of a fragment relative to the beginning of the
+original IP datagram. Specified in units of 8 bytes.
+
+**Time To Live** - In practice, hop-count.
+
+**Protocol** - Protocol used in the data portion of the IP datagram.
+
+**Header Checksum** - Checksum for the header only.
+
+**Options** - Optional parameters.
+
 ## IPv6 Header
 
 ![IPv6 header diagram](assets/ipv6-header.png)
+
+**Traffic Class** - Contains both the Differentiated Service field and the
+Explicit Congestion Notification field.
+
+**Flow Label** - An identifier for a group of packets.
+
+**Payload Length** - Size of the payload in octets. Includes extension headers.
+
+**Next Header** - Type of the next header. Usually the transport layer protocol
+used by the packet's payload.
+
+**Hop Limit** - A.K.A. Time to Live.

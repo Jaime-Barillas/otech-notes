@@ -888,8 +888,32 @@ bits at the beginning of the address:</p>
 </ul>
 <h2 id="ipv4-header"><a class="header" href="#ipv4-header">IPv4 Header</a></h2>
 <p><img src="assets/ipv4-header.png" alt="IPv4 header diagram" /></p>
+<p><strong>IHL</strong> - Internet Header Length. The size of the internet header in 32-bit
+words.</p>
+<p><strong>Differentiated Services</strong> - Specifies the differentiated service this packet
+is for. Includes <em>Explicit Congestion Notification</em>.</p>
+<p><strong>Total Length</strong> - Size of the entire packet.</p>
+<p><strong>Identification</strong> - Used for uniquely identifying the group of fragments for a
+single IP datagram.</p>
+<p><strong>DF</strong> - Don't Fragment. Do not fragment the packet. The packet is dropped if
+fragmentation is required to route the packet.</p>
+<p><strong>MF</strong> - More Fragments. For fragmented packets, all fragment except the last
+have this flag set.</p>
+<p><strong>Fragment Offset</strong> - Offset of a fragment relative to the beginning of the
+original IP datagram. Specified in units of 8 bytes.</p>
+<p><strong>Time To Live</strong> - In practice, hop-count.</p>
+<p><strong>Protocol</strong> - Protocol used in the data portion of the IP datagram.</p>
+<p><strong>Header Checksum</strong> - Checksum for the header only.</p>
+<p><strong>Options</strong> - Optional parameters.</p>
 <h2 id="ipv6-header"><a class="header" href="#ipv6-header">IPv6 Header</a></h2>
 <p><img src="assets/ipv6-header.png" alt="IPv6 header diagram" /></p>
+<p><strong>Traffic Class</strong> - Contains both the Differentiated Service field and the
+Explicit Congestion Notification field.</p>
+<p><strong>Flow Label</strong> - An identifier for a group of packets.</p>
+<p><strong>Payload Length</strong> - Size of the payload in octets. Includes extension headers.</p>
+<p><strong>Next Header</strong> - Type of the next header. Usually the transport layer protocol
+used by the packet's payload.</p>
+<p><strong>Hop Limit</strong> - A.K.A. Time to Live.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="security"><a class="header" href="#security">Security</a></h1>
 <h2 id="encryption"><a class="header" href="#encryption">Encryption</a></h2>
 <ul>
@@ -935,6 +959,139 @@ it is not possible to derive one from the other.</p>
   C-&gt;&gt;S: 7. Finished Message
   S-&gt;&gt;C: 8. Finished Message
 </pre>
+<p>Once a TLS connection is established, the TLS handshake occurs. The client
+sends to the server, among other things, the versions of SSL/TLS it supports,
+which ciphers it knows, and which compression methods it can use. The server
+selects the highest mutually supported SSL/TLS version and a cipher suite and
+compression method from the list provided by the client.</p>
+<h2 id="certificates"><a class="header" href="#certificates">Certificates</a></h2>
+<ul>
+<li>Each HTTPS server uses one or more certificates to verify their identity.</li>
+<li>The certificate must be trusted by the client or a third party the client
+trusts.</li>
+<li>"This trust is proven using digital signatures."</li>
+</ul>
+<h1 id="os-security-and-protection"><a class="header" href="#os-security-and-protection">OS Security and Protection</a></h1>
+<h2 id="dont-forget-protection"><a class="header" href="#dont-forget-protection">Don't Forget Protection</a></h2>
+<ul>
+<li>A mechanism for controlling the access of programs/processes or users to the
+resources provided by a computer system.</li>
+<li>A protection-oriented system provides means to distinguish between authorized
+and unauthorized usage.</li>
+</ul>
+<h2 id="principals-of-protection"><a class="header" href="#principals-of-protection">Principals of Protection</a></h2>
+<ul>
+<li>The time-tested <strong>Principle of Least Privilage</strong>.
+<ul>
+<li>Programs, users, and system processes should be given <em>just</em> enough
+privileges to perform their tasks.</li>
+</ul>
+</li>
+</ul>
+<h2 id="domain-of-protection"><a class="header" href="#domain-of-protection">Domain of Protection</a></h2>
+<ul>
+<li>A computer system is a collection of processes and objects/resources.</li>
+<li>Each object has a unique name and can only be accessed through well-defined
+and meaningful operations.
+<ul>
+<li>e.g. A CPU can execute, Memory can be read/written.</li>
+</ul>
+</li>
+<li>A process should only be able to access the resources it currently requires
+to complete its task. This is known as the <strong>Need-to-Know Principle</strong>.</li>
+</ul>
+<h2 id="linux-permissions"><a class="header" href="#linux-permissions">Linux Permissions</a></h2>
+<ul>
+<li>Determines whether a user or group has access to files, programs, or other
+resources on the system.</li>
+<li>Four access types/rules:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Symbol</th><th style="text-align: center">Meaning</th></tr></thead><tbody>
+<tr><td style="text-align: center">r</td><td style="text-align: center">Read permissions</td></tr>
+<tr><td style="text-align: center">w</td><td style="text-align: center">Write permissions</td></tr>
+<tr><td style="text-align: center">x</td><td style="text-align: center">Execute permissions</td></tr>
+<tr><td style="text-align: center">-</td><td style="text-align: center">No permissions</td></tr>
+</tbody></table>
+</div>
+<p>These permissions are specified for three times for each file: For the owner of
+the file, the user group associated with the file, and everyone else. You can
+see the permissions on a file by running <code>ls -l</code> in a terminal. One trio of
+permissions (<code>rwx</code>) is read right-to-left. You'll often see them specified in
+octal notation (e.g. <code>chmod 766 ...</code>), in which case, convert each digit into
+binary and interpret it as a bitflag, on binary digit for each <code>r</code>, <code>w</code>, or <code>x</code>.</p>
+<h2 id="security-violations"><a class="header" href="#security-violations">Security Violations</a></h2>
+<ul>
+<li><strong>Breach of Confidentiality</strong> - Unauthorized reading of data.</li>
+<li><strong>Breach of Integrity</strong> - Unauthorized modification of data.</li>
+<li><strong>Breach of Availability</strong> - Unauthorized destruction of data.</li>
+<li><strong>Theft of Services</strong> - Unauthorized use of resources.</li>
+<li><strong>Denial of Service (DOS)</strong> - Not MS-DOS, Prevention of legitimate use.</li>
+</ul>
+<h2 id="security-violation-methods"><a class="header" href="#security-violation-methods">Security Violation Methods</a></h2>
+<ul>
+<li><strong>Masquerading</strong> (breach authentication) - Pretending to be an authorized
+user to escelate privileges.</li>
+<li><strong>Replay Attack</strong> - Valid data transmission is maliciously or fraudulently
+repeated. See Wikipedia's exellent
+<a href="https://en.wikipedia.org/wiki/Replay_attack">example</a>.</li>
+<li><strong>Man-in-The-Middle Attack</strong> - An intruder sits in the middle of data flow,
+masquerading as the sender and receiver to both sides of the connection.</li>
+<li><strong>Session Hijacking</strong> - Intercept an already established session to bypass
+authentication.</li>
+</ul>
+<h2 id="security-measure-levels"><a class="header" href="#security-measure-levels">Security Measure Levels</a></h2>
+<p>Security must occur at four levels to be effective:</p>
+<ul>
+<li>Physical - e.g. At data centers, servers, terminals.</li>
+<li>Human - Consider social engineering.</li>
+<li>OS - Protection mechanisms.</li>
+<li>Network - (D)DOS, intercepted communications.</li>
+</ul>
+<h2 id="program-level-threats"><a class="header" href="#program-level-threats">Program Level Threats</a></h2>
+<h3 id="trojan-horse"><a class="header" href="#trojan-horse">Trojan Horse</a></h3>
+<p>Code segment that misuses its environment. Exploits mechanisms for allowing
+programs written by users to be executed by other users. (spyware, covert
+channels.)</p>
+<h3 id="stack--buffer-overflow"><a class="header" href="#stack--buffer-overflow">Stack &amp; Buffer Overflow</a></h3>
+<ul>
+<li>Allows writing past argument on the stack into the return address.
+<ul>
+<li>When a routine returns from a call, it'll return to the inject address
+instead of the intended original call location.</li>
+</ul>
+</li>
+<li>Can cause unauthorized user or privilege escelation.</li>
+</ul>
+<h3 id="viruses"><a class="header" href="#viruses">Viruses</a></h3>
+<ul>
+<li>Code fragment embedded in legitimate program.</li>
+<li>Often self replicating, designed to infect other systems.</li>
+</ul>
+<h2 id="system--network-threats"><a class="header" href="#system--network-threats">System &amp; Network Threats</a></h2>
+<h3 id="port-scanning"><a class="header" href="#port-scanning">Port Scanning</a></h3>
+<ul>
+<li>Automated attempt to connect to a range of ports.</li>
+<li>Detects available protocols.</li>
+<li>Detects OS (and its version).</li>
+</ul>
+<h3 id="denial-of-service"><a class="header" href="#denial-of-service">Denial of Service</a></h3>
+<ul>
+<li>Overload the targeted computer.</li>
+<li>Prevents it from doing any useful work.</li>
+<li>Often used as part of extortion or punishment.</li>
+</ul>
+<h2 id="firewalls"><a class="header" href="#firewalls">FireWalls</a></h2>
+<ul>
+<li>Hardware or Software that inspects packets going into or out of a network or
+computer.</li>
+<li>Packets are discarded or forwarded base on a set of predefined rules.</li>
+<li>Conceptually, just a router with specialized software for creating rules to
+permit or deny packets.</li>
+<li>Routers are more open by default, whereas FireWalls are intended to be more
+restrictive.</li>
+<li>Network Admins create <strong>access control lists</strong> to deny certain types of
+packets.</li>
+</ul>
 
                     </main>
 
