@@ -39,6 +39,8 @@
 |fseek|stdio.h|Set file position|
 |getcwd|unistd.h|Current working directory|
 |stat|sys/stat.h|File attributes|
+|getpwuid|sys/types.h, pwd.h|Get password file entry (let's you get username of the owner of a file)|
+|getgrgid|sys/types.h, grp.h|Get group file entry|
 |chmod|sys/stat.h|Change file permissions|
 |opendir|dirent.h|Open a directory for listing contents|
 |readdir|dirent.h|Get next directory entry|
