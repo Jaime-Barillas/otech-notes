@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Function Index - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/13-c-functions.html" class="active"><strong aria-hidden="true">1.7.</strong> Function Index</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.12.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">2.13.</strong> Black Holes</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/23-exam-review.html"><strong aria-hidden="true">2.14.</strong> Exam Review</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> TBD</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="good-to-know-functions"><a class="header" href="#good-to-know-functions">Good to Know Functions</a></h1>
+<h2 id="memory"><a class="header" href="#memory">Memory</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Function</th><th>Header</th><th>Notes</th></tr></thead><tbody>
+<tr><td style="text-align: center">malloc</td><td>stdlib.h</td><td></td></tr>
+<tr><td style="text-align: center">free</td><td>stdlib.h</td><td></td></tr>
+<tr><td style="text-align: center">memcmp</td><td>string.h</td><td></td></tr>
+<tr><td style="text-align: center">memset</td><td>string.h</td><td></td></tr>
+</tbody></table>
+</div>
+<h2 id="strings"><a class="header" href="#strings">Strings</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Function</th><th>Header</th><th>Notes</th></tr></thead><tbody>
+<tr><td style="text-align: center">strcat</td><td>string.h</td><td>Concatenate two strings</td></tr>
+<tr><td style="text-align: center">strcmp</td><td>string.h</td><td>Compare two strings</td></tr>
+<tr><td style="text-align: center">strcpy</td><td>string.h</td><td>Copy a string</td></tr>
+<tr><td style="text-align: center">strdup</td><td>string.h</td><td>Duplicate a string</td></tr>
+<tr><td style="text-align: center">strlen</td><td>string.h</td><td>Calculate the length of a string</td></tr>
+<tr><td style="text-align: center">strstr</td><td>string.h</td><td>Locate a substring</td></tr>
+<tr><td style="text-align: center">strtok</td><td>string.h</td><td>Extract tokens from strings</td></tr>
+<tr><td style="text-align: center">strto{d,f}</td><td>stdlib.h</td><td>Convert a string to a double/float</td></tr>
+<tr><td style="text-align: center">ato{i,l}</td><td>stdlib.h</td><td>Convert a string to an integer/long</td></tr>
+<tr><td style="text-align: center">toupper</td><td>ctype.h</td><td>Operates on a single character, convert input to unsigned char before use</td></tr>
+<tr><td style="text-align: center">tolower</td><td>ctype.h</td><td>Operates on a single character, convert input to unsigned char before use</td></tr>
+</tbody></table>
+</div>
+<h2 id="file-io"><a class="header" href="#file-io">File I/O</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Function</th><th>Header</th><th>Notes</th></tr></thead><tbody>
+<tr><td style="text-align: center">fopen</td><td>stdio.h</td><td></td></tr>
+<tr><td style="text-align: center">fclose</td><td>stdio.h</td><td></td></tr>
+<tr><td style="text-align: center">fread</td><td>stdio.h</td><td>Read n bytes</td></tr>
+<tr><td style="text-align: center">fwrite</td><td>stdio.h</td><td>Write n bytes</td></tr>
+<tr><td style="text-align: center">fscanf</td><td>stdio.h</td><td>Formatted read</td></tr>
+<tr><td style="text-align: center">fprintf</td><td>stdio.h</td><td>Formatted write</td></tr>
+<tr><td style="text-align: center">fgets</td><td>stdio.h</td><td>Read line-by-line</td></tr>
+<tr><td style="text-align: center">fseek</td><td>stdio.h</td><td>Set file position</td></tr>
+<tr><td style="text-align: center">getcwd</td><td>unistd.h</td><td>Current working directory</td></tr>
+<tr><td style="text-align: center">stat</td><td>sys/stat.h</td><td>File attributes</td></tr>
+<tr><td style="text-align: center">chmod</td><td>sys/stat.h</td><td>Change file permissions</td></tr>
+<tr><td style="text-align: center">opendir</td><td>dirent.h</td><td>Open a directory for listing contents</td></tr>
+<tr><td style="text-align: center">readdir</td><td>dirent.h</td><td>Get next directory entry</td></tr>
+<tr><td style="text-align: center">closedir</td><td>dirent.h</td><td>Close directory</td></tr>
+</tbody></table>
+</div>
+<p>Plus some others...</p>
+<h2 id="processesthreads"><a class="header" href="#processesthreads">Processes/Threads</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Function</th><th>Header</th><th>Notes</th></tr></thead><tbody>
+<tr><td style="text-align: center">fork</td><td>sys/types.h, unistd.h</td><td></td></tr>
+<tr><td style="text-align: center">exec*</td><td>unistd.h</td><td>Family of functions (see execvp)</td></tr>
+<tr><td style="text-align: center">waitpid</td><td>sys/types.h, sys/wait.h</td><td>wait for process to change state</td></tr>
+<tr><td style="text-align: center"></td><td></td><td></td></tr>
+<tr><td style="text-align: center">pthread_create</td><td>pthread.h</td><td></td></tr>
+<tr><td style="text-align: center">pthread_exit</td><td>pthread.h</td><td>It is not generally required to explicitly call this function</td></tr>
+<tr><td style="text-align: center">pthread_join</td><td>pthread.h</td><td></td></tr>
+<tr><td style="text-align: center">pthread_self</td><td>pthread.h</td><td></td></tr>
+<tr><td style="text-align: center">pthread_mutex_init</td><td>pthread.h</td><td></td></tr>
+<tr><td style="text-align: center">pthread_mutex_destroy</td><td>pthread.h</td><td></td></tr>
+<tr><td style="text-align: center">pthread_mutex_lock</td><td>pthread.h</td><td></td></tr>
+<tr><td style="text-align: center">pthread_mutex_unlock</td><td>pthread.h</td><td></td></tr>
+</tbody></table>
+</div>
+<h2 id="networking"><a class="header" href="#networking">Networking</a></h2>
+<p>Required functions to start a TCP server:</p>
+<pre><code class="language-c">#include &lt;sys/socket.h&gt; // included by arpa/inet, socket, bind, etc.
+#include &lt;netinet/in.h&gt; // included by arpa/inet, struct sockaddr_in
+#include &lt;arpa/inet.h&gt; // inet_pton, htons
+#include &lt;unistd.h&gt; // close
+
+void server() {
+    // First, setup the address.
+    struct sockaddr_in saddr;
+    saddr.sin_family = AF_INET;
+    saddr.sin_port = htons(8080);
+    inet_pton(AF_INET, "127.0.0.1", &amp;saddr.sin_addr);
+
+    // Socket setup
+    int s_fd = socket(AF_INET, SOCK_STREAM, 0);
+    bind(s_fd, (struct sockaddr*)&amp;saddr, sizeof(saddr));
+    listen(s_fd, 1);
+
+    // Client connections
+    int c_fd;
+    struct sockaddr_in caddr;
+    unsigned int caddr_len = sizeof(caddr);
+    c_fd = accept(s_fd, (struct sockaddr*)&amp;caddr, &amp;caddr_len);
+    recv(c_fd, &lt;buf&gt;, &lt;size&gt;, 0);
+    send(c_fd, &lt;buf&gt;, &lt;size&gt;, 0);
+
+    close(c_fd);
+    close(s_fd);
+}
+
+void client() {
+    // Address
+    struct sockaddr_in saddr;
+    saddr.sin_family = AF_INET;
+    saddr.sin_port = htons(8080);
+    inet_pton(AF_INET, "127.0.0.1", &amp;saddr.sin_addr);
+
+    // Socket setup
+    int s_fd = socket(AF_INET, SOCK_STREAM, 0);
+    connect(s_fd, (struct sockaddr*)&amp;saddr, sizeof(saddr));
+
+    // Communication
+    recv(s_fd, &lt;buf&gt;, &lt;size&gt;, 0);
+    send(s_fd, &lt;buf&gt;, &lt;size&gt;, 0);
+
+    close(s_fd);
+}
+</code></pre>
+<p>For UDP communication:</p>
+<pre><code class="language-c">
+void server() {
+    // First, setup the address.
+    struct sockaddr_in saddr;
+    saddr.sin_family = AF_INET;
+    saddr.sin_port = htons(8080);
+    inet_pton(AF_INET, "127.0.0.1", &amp;saddr.sin_addr);
+
+    // Socket setup
+    int s_fd = socket(AF_INET, SOCK_DGRAM, 0);
+    bind(s_fd, (struct sockaddr*)&amp;saddr, sizeof(saddr));
+
+    // Client connections
+    struct sockaddr_in caddr;
+    unsigned int caddr_len = sizeof(caddr);
+    recvfrom(s_fd, &lt;buf&gt;, &lt;size&gt;, 0, (struct sockaddr*)&amp;caddr, &amp;caddr_len);
+    sendto(c_fd, &lt;buf&gt;, &lt;size&gt;, 0, (struct sockaddr*)&amp;caddr, sizeof(caddr));
+
+    close(c_fd);
+    close(s_fd);
+}
+
+void client() {
+    // Address
+    struct sockaddr_in saddr;
+    saddr.sin_family = AF_INET;
+    saddr.sin_port = htons(8080);
+    inet_pton(AF_INET, "127.0.0.1", &amp;saddr.sin_addr);
+    unsigned int saddr_len = sizeof(saddr);
+
+    // Socket setup
+    int s_fd = socket(AF_INET, SOCK_STREAM, 0);
+
+    // Communication
+    recv(s_fd, &lt;buf&gt;, &lt;size&gt;, 0, (struct sockaddr*)&amp;saddr, &amp;saddr_len);
+    send(s_fd, &lt;buf&gt;, &lt;size&gt;, 0, (struct sockaddr*)&amp;saddr, sizeof(saddr));
+
+    close(s_fd);
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y1s2/systems-programming/12-security.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y1s2/computer-graphics/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y1s2/systems-programming/12-security.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y1s2/computer-graphics/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

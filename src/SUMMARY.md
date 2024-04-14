@@ -11,6 +11,7 @@
   - [CPU Scheduling & Deadlocks](./y1s2/systems-programming/04-scheduling-deadlocks.md)
   - [Networking - Models & Layers](./y1s2/systems-programming/09-networking.md)
   - [Security](./y1s2/systems-programming/12-security.md)
+  - [Function Index](./y1s2/systems-programming/13-c-functions.md)
 
 - [Computer Graphics & Visualization](./y1s2/computer-graphics/intro.md)
   - [Introduction](./y1s2/computer-graphics/00-intro.md)
