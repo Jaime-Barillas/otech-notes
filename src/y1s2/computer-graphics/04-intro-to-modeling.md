@@ -10,10 +10,12 @@ Y is up, X is to the right, z is out of the screen.
 Winding order: CCW
 determines which side is the inside, and which is outside.
 
-Polygons must be planar for efficiency and simplicity.
+Polygons must be planar for efficiency and simplicity. Given the equation for a
+plane:
 
-`ax+by+cz+d = 0` <- plane equation.
-(a, b, c) is normal to the plane.
+$$ ax + by + cz + d = 0 $$
+
+The vector (a, b, c) is normal to the plane.
 
 Meshes
 store each vertex once and reference it per face.

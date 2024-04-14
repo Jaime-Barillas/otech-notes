@@ -55,17 +55,16 @@ Transforming the Normal
 the relationship between the normal and a vector tangent to the surface (call
 it t):
 
-(matrix-vector multiplication)
-n^t * t = 0
+(matrix-vector multiplication) $n^T \cdot t = 0$
 
 For transoformation M:
-n'^t * (M * t) = 0    <-- What is n'?
+$n'^T \cdot (M \cdot t) = 0$    <-- What is n'?
 
 See the math in the slides
 
 **The matrix to transform the normal is the transpose of the inverse of the
 original transformation matrix**:
-n' = M^-1^t * n
+$n' = (M^{-1})^T \cdot n$
 
 **Note:** n' may no longer be unit length so normalize to be safe.
 
