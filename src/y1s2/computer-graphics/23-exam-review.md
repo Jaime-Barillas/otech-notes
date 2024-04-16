@@ -27,9 +27,9 @@
   >   from the framebuffer to the display.
 + What operations are performed in vertex processing?
   > + Each vertex is transformed into global world coordinates.
-  > + Project verticies using desired projection.
+  > + Vertices are projected using desired projection.
   > + Clip triangles outside of viewing frustum.
-  > + Run vertex shader
+  > + Run vertex shader.
   > + Continue on to processing fragments.
 
 ## OpenGL Programming
@@ -67,6 +67,10 @@
   > + An attribute variable for the vertices is added to the vertex shader.
   > + CPU programs determine the location of the attribute variable and link it
   >   to the data in the array buffer.
++ What is the main reason for using uniform blocks?
+  > + Grouping uniform variables together.
+  > + Allows sending them all at once instead of individually.
+  > + Fewer OpenGL calls.
 
 ## Modeling
 
@@ -100,20 +104,27 @@
 ### Possible Questions
 
 + What data structures are used to store a polygonal mesh?
-  > Both a vertex table and face table.
-  > The vertex table stores:
+  > Both a vertex table and face table.  
+  > The vertex table stores:  
   > + Vertex position.
   > + Corresponding normal values.
-  > + Additional information, such as, vertex colour.
+  > + Additional information, such as, vertex colour.  
+  > 
   > The face table stores:
-  > + indicies into the vertex table for each face.
+  > + indicies into the vertex table for each face.  
   > These structures save space, allow you to process each vertex once, and map
   > cleanly to OpenGL array/element buffers.
-+ What is the main difference between Cn continuity and Gn continuity?
++ How can the normal vector for a polygon be computed?
+  > _Work it out on paper_
+  > + Take 3 colinear vertices.
+  > + $\vec{a_1} = v_2 - v_1$
+  > + $\vec{a_2} = v_3 - v_1$
+  > + $\vec{n} = \vec{a_1} \times \vec{a_2}$
++ What is the main difference between $C^n$ continuity and $G^n$ continuity?
   > With $C^n$ continuity, the derivatives of two curve segments must be equal.
   > With $G^n$ continuity the derivatives just need to be proportional to each
   > other (same direction, but different lengths.)
-+ Given the matrix M for transforming vertices, how can the matrix for
++ Given the matrix $M$ for transforming vertices, how can the matrix for
   transforming normal vectors be constructed?
   > Take the transpose of the inverse of the original matrix. Rotations and
   > Translations can use the original matrix since they are considered
@@ -129,12 +140,16 @@
 + Why are masters and instances used in hierarchical modeling?
   > They are used when several objects have the same geometry. The master
   > stores the geometry, the instances point to the master. Advantages include:
-  > Easy to change the geometry, change the master and all instances change
-  > too. Saves memory since there is only one copy of the geometry.
+  > + Easy to change the geometry.
+  > + Change the master and all instances change too.
+  > + Saves memory since there is only one copy of the geometry.
 + Why is local control an important property of a curve?
   > With local control, changing a control point only affects a small part of
   > the curve. This makes it much easier to modify or edit a curve since making
   > a single change does not affect the entire curve.
++ Can a 3x3 matrix be used to perform a 3D translation?
+  > No, given the way that matrix-vector multiplication is defined, it is not
+  > possible. You would need a 4x4 matrix to perform 3D translation.
 + Construct a transformation matrix that scales an object by (sx, sy, sz) about
   the point (x, y, z). You do not need to multiply out the matrices.
   > $$
@@ -219,11 +234,21 @@
   > bin in the z buffer; the z buffer doesn't have enough resolution to
   > distinguish them. Carefully set the near and far clipping planes to
   > increase the resolution of the z buffer bins.
++ Briefly explain the z-buffer hidden surface algorithm. What problem can occur
+  with perspective projection?
+  > The z-buffer hidden surface algorithm is an array of memory the same size
+  > as the image initialized to the far plane. Each pixel compares its z value
+  > to the z value in the z-buffer. If it is closer, the pixel is written and
+  > the z-buffer is updated. If not, the pixel is discarded.  
+  > Perspective projection performs a non-linear transformation of z values.
+  > The bin size in world coordinates would get larger when you move away from
+  > the eye making it less precise and would cause z-fighting.
 + What is the main difference between Gouraud and Phong shading?
   > Gouraud:
   > + Computes colours at the vertices.
   > + Linearly interpolates this colour over the polygon.
-  > + Uses interpolated normal calculated from the normals of the vertices.
+  > + Uses the averaged normal calculated from the normals of the vertices.  
+  > 
   > Phong:
   > + Interpolates the normals over the polygon.
   > + Computes colours at each pixel.
@@ -239,14 +264,15 @@
   > Space partitioning.
   > + Bounding volume hierarchies.
   > + BSP.
-  > + Octrees.
-  > Parallelize ray tracing, use more cores.
+  > + Octrees.  
+  > 
+  > Parallelize ray tracing, use more cores/the GPU.
 + What is the Schlick approximation used for?
   > + The Schlick approximation is used to approximate the intensity of the
   >   reflected and refracted light.
   > + It approximates the Fresnel equations.
   > + It is multiplied by the specular reflection coefficient to give the total
-  >   specular reflection of the surface.
+  >   specular contribution of the surface.
   > + $1 - \text{Schlick Approximation}$ is multiplied by the refracted light
   >   to give the refracted contribution.
 + What is the main difference between distributed ray tracing and path tracing?
@@ -256,7 +282,8 @@
   > + Each pixel is divided into a grid of cells. Within each cell, a random
   >   position for each ray is generated.
   > + Average the results. Simillar is done with light sources.
-  > + Computationally expensive as number of rays grow.
+  > + Computationally expensive as number of rays grow.  
+  > 
   > Path Tracing:
   > + Uses more than one ray per pixel (a lot more.)
   > + Follows one path through the scene.
@@ -269,14 +296,28 @@
   > Backface culling detects the polygons that are pointing away from the
   > viewer: $\vec{n} \cdot \vec{v} > 0$. It is used to reduce the number of
   > polygons and pixels that must be processed.
++ Can backface culling be used as a hidden surface algorithm?
+  > Backface culling would not work in situations where objects overlap.
 + What is the main difference between Phong specular reflection and Blinn-Phong
   specular reflection?
   > Phong uses the reflection vector while Blinn-Phong uses the half vector in
-  > computing specular reflection.
+  > computing specular reflection. The Blinn-Phong half-way angle is smaller
+  > than the Phong angle, resulting in a bigger specular highlight with
+  > Blinn-Phong.
 + What is the main difference between a point light source and a spot light
   source?
   > A point light source emits light in all directions equally. A spot light
   > source only emits light in a cone.
+
+## Textures
+
++ What is a mipmap and what problem does it solve?
+  > + A heirarchy of textures.
+  > + The root texture is the orginal.
+  > + each level is $\frac{1}{4}$ the size.
+  >   - Each pixel, an interpolation of the previous level's 2x2.
+  > + Caches long distance versions of each texture to prevent artifacting.
+  > + Pre-computed averaging of texels.
 
 ## Colour
 
@@ -292,6 +333,14 @@
   > It would require negative colour.
 + What is the main difference between the RGB colour space and the L*u*v*
   colour space?
+  > RGB:
+  > + Not perceptually linear.
+  >   - Can cause issues with gradients.
+  >   - Can result in viewer perceiving differences in colour that aren't
+  >     really there.
+  > 
+  > L\*u\*v\*:  
+  > + Much closer to perceptually linear.
 
 ## Visualization
 
@@ -320,6 +369,18 @@
 ### Possible Questions
 
 + What is in-situ visualization?
+  > Build the visualization on the (super)computer while the computation is
+  > running. Display the results on a seperate workstation. Reduces the amount
+  > of data that must be transmitted and saved.
 + What is seeding and describe one of the techniques that can be used for
   seeding?
+  > Finding the initial position of particles. One technique is to choose
+  > random positions. Another is to generate random seeds within a sphere or
+  > along a line at the location of interesting features.
 + Describe two transfer functions.
+  > Maximum Value:
+  > + Takes the largest voxel value encountered along the ray.  
+  > 
+  > Distance to a particular value:
+  > + Calculates the distance to a particular voxel value using that as the
+  >   pixel colour.

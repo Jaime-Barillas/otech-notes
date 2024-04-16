@@ -51,7 +51,7 @@
 
 + 3D textures can be very large.
 + We can generate the values in a function instead.
-  * This solves the large size problem.
+  * This solves the large file size problem.
   * The fn can even filter the texture based as it goes.
 
 ## Bump Maps (Normal Maps)
@@ -62,6 +62,29 @@
   use of a texture.
 + They are vector offsets for the normal vectors.
 
-# Slide 65
+## Environment Maps
 
-
++ 6 textures, one for each face of a cube.
++ 3D texture coords.
+  - Largest one determines which image (cube face) to use.
+  - Other two are regular texture coords.
++ Cube maps have the advantage over sphere maps that there is less distortion
+  around poles.
++ Used to capture reflection of other objects in scene.
++ To compute tex coords:
+  - In a cube-map: normal at vector or vector from center of object to surface
+    position (pixel to draw).
++ For reflection uses specifically:
+  - Need $\vec{u}$, vector from origin to the vertex/pixel.
+  - Need $\vec{n}$, normal at vertex/pixel.
+  - In eye coord-system.
+  - If in world coord-system: $\vec{u}$ is vector from eye to vertex/pixel.
+  - Reflection direction is: $\vec{r} = \vec{u} - 2\vec{n}(\vec{n} \cdot \vec{u})$
+  - $\vec{r}$ is used as the texture coordinates.
++ To create the texture map:
+  - Position camera at object center.
+  - Point in direction of each plane (+/-x, +/-y, +/-z)
+  - Render scene without the object.
+  - Save each render as an image.
+  - Can be low resolution
+  - Cheap way to get global illumination effects.

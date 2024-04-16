@@ -1,6 +1,9 @@
 # Ray Tracing
 
-+ Global illumination model
++ Global illumination model  
+  Two techniques:
+  - Ray Tracing
+  - Radiosity
 
 ## Radiosity
 
@@ -57,10 +60,16 @@ So:
 
 TODO
 
+## Adapted Illumination Model
+
+See slide 8.
+I = ambient + sum(diffuse + specular) + reflected-ray-values + refracted-ray-values.
+
 ## Forward Ray Tracing
 
-We trace from eye to object (through pixels) to light source. Forward ray
-tracing traces rays from light source to object (eventually to eye).
+We trace from eye to object (through pixels) to light source.
+**Forward ray tracing** traces rays from light source to object (eventually to
+eye).
 
 + Lots of work (rays) for little return.
 + Some of the rays will reflect in such a way that they don't intersect with
@@ -117,19 +126,23 @@ each of the original rays. Still not an efficiency concern.
 ## Intersections
 
 The most expensive operation. The mathematical representation of a ray:
-p(t) = e + td, t > 0  (Slide 45)
+$p(t) = e + t\vec{d}$
 
-`t` must always be greater than 0, otherwise, any intersections will be at or
-behind the eye.
+$e$ is the starting point of the ray. $\vec{d}$ is the ray direction. $t$ must
+always be greater than 0, otherwise, any intersections will be at or behind the
+eye.
 
 ## Sphere Intersection
 
 + One of the easiest objects to intersect.
-
-See the math: Slide 45 onwards.
-
-!!! Slide 49 !!! Smallest of the two roots -> Smallest _positive_ root.
-(otherwise `t` in equation above would be negative.)
++ $f(e + t\vec{d}) = 0$ or in vector from:
++ $(p - c)^2 - R^2 = 0$
+  - $c$ is the center point and $R$ is the sphere radius.
+  - After substitution and simplification, results in a quadratic function in
+    $t$. Solve with the quadratic formula.
++ Want the smallest positive of two roots. (closest intersection in _front_.)
++ If both roots are complex, ray does not hit sphere.
+  - Use discriminant to check.
 
 # Ray Tracing Part 2
 
@@ -140,45 +153,18 @@ Review of **raycasting**:
   source.
 + True raytracing: Recursive, follow reflected and refracted rays.
 
-## Adapted Illumination Model
-
-See slide 8.
-I = ambient + sum(diffuse + specular) + reflected-ray-values + refracted-ray-values.
-
-## Intersection
-
-+ The most expensive operation in raytracing.
-+ A ray is: p(t) = e + td    t > 0
-  - e is the starting point of the ray.
-  - d is a unit vector in the ray direction.
-  - t is will always be **greater than 0**, otherwise the intersection is behind
-    the eye.
-
-## Intersecting a Sphere
-
-+ One of the easiest objects to intersect.
-+ Use implicit representation of sphere eq'n.
-  - (ray)   e+td
-  - (sphere)   (p-c) * (p-c) - R^2
-  - Substitute the ray eq'n into the sphere eq'n as the point to test `p`
-  - (e+td - c) * (e+td - c) - R^2
-  - Slide 11
-+ This results in a quadratic equation:
-  (d * d)t^2 + 2(d * (e - c))t + (e - c)^2 - R^2 = 0
-  - Use the quadratic formula.
-  - Imaginary roots only? -> No intersection. (check the descriminant)
-
 ## General Intersections
 
 General polygon intersection.
 + Two steps
   - Where does the ray intersect the polygon's plane? (Is it parallel or not?)
   - Is the intersection point inside or outside the polygon?
-+ Polygon plane eq'n, Slide 15:
-  (p - p1) * n = 0,   n is normal.  
-  (e + td - p1) * n = 0.  
-  After rearranging: t = ((p1 - e) * n) / (d * n)
-+ If (d * n) is 0, the ray is parallel to the plane.
++ Polygon plane eq'n:
+  $(p - p_1) \cdot \vec{n} = 0$,   for any point p on the plane of the polygon.  
+  $p_1$ is a polygon vertex, $n$ is the normal for the polygon.
++ $(e + t\vec{d} - p_1) \cdot \vec{n} = 0$,   $p$ is $e + t\vec{d}$.  
+  After rearranging: $t = \frac{((p_1 - e) * \vec{n})}{(\vec{d} * \vec{n})}$
++ If $(\vec{d} \cdot \vec{n})$ is 0, the ray is parallel to the plane.
 + Project the polygon and intersection point to one of the coordinate planes.
 + Draw a line from the intersection point to infinity, Count the number of times
   it intersects a polygon edge.
@@ -188,13 +174,11 @@ General polygon intersection.
 So which line to infinity should we use? (This selects the coordinate plane
 to project onto)
 + An easy choice is the x-axis.
-  - Intersection calculation
-is easy, check y values only.
-+ Slide 19: If one end point is above the line (x-axis in this case) and the
-  other below,   we have an intersection.
+  - Intersection calculation is easy, check y values only.
++ If one end point of polygon edge is above the line (x-axis in this case) and
+  the other below, we have an intersection.
 + If the projection results in a horizontal line, choose one of the other
   planes.
-+ See also page: 20
 
 + More efficient computations in the case of triangles.
 + Efficiency is a major concern in raytracing.
@@ -256,11 +240,57 @@ Space Partitioning - Bounding Volume heirarchies, BSP, uniform subdivision trees
 + Use an _adaptive grid with cells of varying size_.
 + May improve performance by reducing the number of empty cells.
 
-## Recursive RayTracing
+## Recursive (Normal) RayTracing
 
-Slide 36
+### Hard Shadows
 
-TODO: A bunch of slides.
++ Use a shadow feeler for each light source.
+  - A ray cast from each intersected object to the light source.
+  - If feeler intersects another object before hitting the light source, the
+    object is in shadow.
++ Only for point light sources and infinitely far away ones (directional.)
+
+### Reflections
+
++ Need reflection direction.
++ Perfect mirror reflection.
++ $\vec{r} = \vec{d} - 2(\vec{d} \cdot \vec{n})\vec{n}$
++ Apply ray-tracing computation recursively to find pixel colour.
++ Contributes to _specular light_ component.
++ Each recursion (extra reflection ray), contributes less and less.
+
+### Refraction
+
++ **Snell's law**: $\eta\sin{\theta} = \eta_t\sin{\phi}$
++ $\eta$ and $\eta_t$ are the **indicies of refraction**.
+  - These are known
++ $\theta$ is also known, we solve for $\phi$
++ Snell's law gives us the angle but not the direction vector $\vec{t}$.
++ Use $t = \vec{b}\sin{\phi} - \vec{n}\cos{\phi}$
+  - **Basis vectors** $\vec{b}$ and $\vec{n}$ needed.
+  - $\vec{n}$ is normal.
+  - $\vec{b}$ is parallel to medium's surface.
+  - Incident vector $\vec{d}$ can be used to find $\vec{b}$:
+  - $t = \frac{\eta}{\eta_t}(\vec{d} - \vec{n}(\vec{d} \cdot \vec{n})) - \vec{n} \sqrt{1 - \frac{\eta^2}{\eta_{t}^2}(1 - (\vec{d} \cdot \vec{n})^2)}$
++ If the term in the square root is negative, we get total internal reflection.
++ If this happens when the ray is leaving the object, there is no refracted
+  light contribution.
+
+### Intensity of Reflection and Refraction
+
++ Amount of reflection is function of angle of entry of incident ray.
++ Given by **Fresnel Equations**.
++ Approximated by **Schlick Approximation**.
+  - Multiply by specular coefficient to get total specular contribution.
+  - Multiply $1 - \text{Schlick Approximation}$ by refracted light to get total
+    refracted contribution.
+
+### Attenuation Through Refraction
+
++ Beer's Law.
++ Recursive: $I(s) = I(0)e^{-\ln(a)s}$
++ $s$ is distance the ray has traveled.
++ $a$ is unknown, found through trial and error.
 
 ## Distributed RayTracing
 
