@@ -29,7 +29,6 @@
   - [Visualization](./y1s2/computer-graphics/20-visualization.md)
   - [Volume Visualization](./y1s2/computer-graphics/21-volume-visualization.md)
   - [Black Holes](./y1s2/computer-graphics/22-visualization2.md)
-  - [Exam Review](./y1s2/computer-graphics/23-exam-review.md)
 
 # Year 2 Semester 1
 
