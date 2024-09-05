@@ -32,4 +32,9 @@
 
 # Year 2 Semester 1
 
-- [TBD]()
+- [Data Mining](./#)
+  - [Introduction](./y2s1/csci4150u/lec1.md)
+- [Advanced Graphics](./#)
+  - [Graphics Hardware 1](./y2s1/csci4110u/lec1.md)
+- [Scientific Data Analysis](./#)
+  - [Introduction](./y2s1/csci2000u/lec1.md)
