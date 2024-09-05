@@ -11,14 +11,15 @@ build-dir = "docs"
 [preprocessor]
 
 [preprocessor.admonish]
-command = "mdbook/mdbook-admonish"
+command = "../_mdbook-extensions/mdbook-admonish"
 assets_version = "3.0.2" # do not edit: managed by `mdbook-admonish install`
 
 [preprocessor.mermaid]
-command = "mdbook/mdbook-mermaid"
+command = "../_mdbook-extensions/mdbook-mermaid"
 
 [preprocessor.katex]
-command = "mdbook/mdbook-katex"
+command = "../_mdbook-extensions/mdbook-katex"
+after = ["links"]
 
 [output]
 
