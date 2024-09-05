@@ -165,11 +165,12 @@ Analysis:
 + Medical informatics:
   - Used to find combination of patient symptoms and test results associated
     with certain diseases.
-+ Deviation/Anomaly/Change Detection:
-  - Detect _significant deviations_ from normal behaviour.
-  - Credit card fraud detection.
-  - Network intrusion.
-  - Changes in global forest cover.
+
+### Deviation/Anomaly/Change Detection
++ Detect _significant deviations_ from normal behaviour.
++ Credit card fraud detection.
++ Network intrusion.
++ Changes in global forest cover.
 
 ## FAQ
 
