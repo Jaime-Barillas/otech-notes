@@ -32,9 +32,9 @@
 
 # Year 2 Semester 1
 
-- [Data Mining](./#)
+- [Data Mining](./y2s1/csci4150u/intro.md)
   - [Introduction](./y2s1/csci4150u/lec1.md)
-- [Advanced Graphics](./#)
+- [Advanced Graphics](./y2s1/csci4110u/intro.md)
   - [Graphics Hardware 1](./y2s1/csci4110u/lec1.md)
-- [Scientific Data Analysis](./#)
+- [Scientific Data Analysis](./y2s1/csci2000u/intro.md)
   - [Introduction](./y2s1/csci2000u/lec1.md)
