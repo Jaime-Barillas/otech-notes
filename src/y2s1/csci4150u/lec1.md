@@ -12,12 +12,13 @@ For example:
 + Computational Simulations.
 
 Commercial Viewpoint:
-+ Lots of data is being collected ^^^^
++ Lots of data is being collected and stored.
   - We need tools to organize and learn from the data.
 + Computers have become cheaper & more powerful.
   - Can be used to provide better customized services.
   - Competitive pressure.
     * e.g. How can use data for big bucks.
+    * Customer Relationship Management.
 
 Scientific Viewpoint
 + Data is collected and stored at enormous speeds.
@@ -87,6 +88,8 @@ Does not cater to:
 + Data Ownership and Distribution.
   - We may only have partial access or data is distributed (not available from one source.)
 + Non-traditional Analysis.
++ Complex data.
++ Distributed data.
 
 ~~~admonish
 You can also say that if the above characteristics are not part of the analysis
@@ -101,12 +104,12 @@ Draws ideas from:
 
 ## Data Mining Tasks
 
-+ Prediciton Methods.
++ **Prediciton** Methods.
   - Use some variables to predict unknown or future values of other variables.
   - Classification.
   - Anomaly Detection.
   - Regression.
-+ Description Methods.
++ **Description** Methods.
   - Find human-interpretable patterns that describe the data.
   - _Understand_ the data.
   - Clustering.
@@ -118,6 +121,27 @@ Draws ideas from:
 + Find a model for a _class_ attribute as a function of the values of _other
   attributes_.
 
+A Model for predicting credit worthiness:
+```mermaid
+flowchart TB
+  em[Employed]
+  ed[Education]
+  y1["# of years at present address"]
+  y2["# of years at present address"]
+```
+```mermaid
+flowchart LR
+  tr["Training Set"]
+  c["Classifier Learns"]
+  m[Model]
+  te["Test Set"]
+
+  tr --> c --> m
+  te --> m
+```
+^^^^ Generalization ^^^^
+Can generalize to new, unseen data.
+
 Examples:
 + Classifying legitimate/fraudulent credit card transactions.
 + Classifying land covers (water bodies, urban areas) using satellite data.
@@ -126,8 +150,8 @@ Examples:
 
 ### Regression
 
-Predict a value of a given continuous valued variable based on the values of
-other variables, assuming a linear or non-linear model of dependency.
+Predict a value of a given _continuous valued_ variable based on the values of
+other variables, assuming a _linear_ or _non-linear_ model of dependency.
 
 Examples:
 + Predict sales amounts of new product based on advertising expenditure.
@@ -148,9 +172,8 @@ Examples:
 + Summarization:
   - Reduce the size of large datasets.
 
-### Association Rule
+### Association Rule Discovery
 
-Discovery:
 + You have a set of records which contain some number of items from a
   collection.
 + Produce _dependency rules_ which predict the occurrence of an item based on
@@ -171,9 +194,8 @@ Analysis:
 + Credit card fraud detection.
 + Network intrusion.
 + Changes in global forest cover.
-
-## FAQ
-
-Why are some labs repetative?
-To develop fluency and to see differences in techniques across different datasets (ex: performance.)
++ Like Classification but predicted abnormal behaviour is _very_ rare.
+  - Special type of classification essentially.
+  - Classification is not good for imbalanced data.
+    * i.e probability of each class is _not_ close to eachother (not 50/50.)
 

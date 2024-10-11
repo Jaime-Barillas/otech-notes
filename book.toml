@@ -20,6 +20,7 @@ command = "../_mdbook-extensions/mdbook-mermaid"
 [preprocessor.katex]
 command = "../_mdbook-extensions/mdbook-katex"
 after = ["links"]
+macros = "src/macros.txt"
 
 [output]
 
