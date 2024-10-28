@@ -1,0 +1,553 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>OpenGL Topics - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/13-c-functions.html"><strong aria-hidden="true">1.7.</strong> Function Index</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/18-colour.html"><strong aria-hidden="true">2.12.</strong> Colour</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/20-visualization.html"><strong aria-hidden="true">2.13.</strong> Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.14.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">2.15.</strong> Black Holes</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/intro.html"><strong aria-hidden="true">3.</strong> Data Mining</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec1.html"><strong aria-hidden="true">3.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec2.html"><strong aria-hidden="true">3.2.</strong> Data</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec3.html"><strong aria-hidden="true">3.3.</strong> Data Exploration</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec4.html"><strong aria-hidden="true">3.4.</strong> OLAP</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec6.html"><strong aria-hidden="true">3.5.</strong> WIP 5</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec7.html"><strong aria-hidden="true">3.6.</strong> WIP 6</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec8.html"><strong aria-hidden="true">3.7.</strong> WIP 7</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/intro.html"><strong aria-hidden="true">4.</strong> Advanced Graphics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/01-graphics-hardware.html"><strong aria-hidden="true">4.1.</strong> Graphics Hardware</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/02-modeling-overview.html"><strong aria-hidden="true">4.2.</strong> Modeling Overview</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/03-polygon-meshes-and-processing.html"><strong aria-hidden="true">4.3.</strong> Polygon Meshes & Processing</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/04-curves-and-display.html"><strong aria-hidden="true">4.4.</strong> Types of Curves & Curve Display</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/05-procedural-modeling.html"><strong aria-hidden="true">4.5.</strong> Procedural Modeling</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/06-advanced-modeling-and-production-process.html"><strong aria-hidden="true">4.6.</strong> Advanced Modeling & The Production Process</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/07-opengl-topics.html" class="active"><strong aria-hidden="true">4.7.</strong> OpenGL Topics</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec1.html"><strong aria-hidden="true">5.</strong> Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec2.html"><strong aria-hidden="true">5.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec3.html"><strong aria-hidden="true">5.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec4.html"><strong aria-hidden="true">5.3.</strong> Divide & Conquer, Recurrences</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec5.html"><strong aria-hidden="true">5.4.</strong> Divide & Conquer, Recurrences 2</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Programming Languages</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec1.html"><strong aria-hidden="true">6.1.</strong> Lec 1</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec2.html"><strong aria-hidden="true">6.2.</strong> Lec 2</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec3.html"><strong aria-hidden="true">6.3.</strong> Lec 3</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec4.html"><strong aria-hidden="true">6.4.</strong> Lec 4</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/intro.html"><strong aria-hidden="true">7.</strong> Scientific Data Analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec1.html"><strong aria-hidden="true">7.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec2.html"><strong aria-hidden="true">7.2.</strong> Shell</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec3.html"><strong aria-hidden="true">7.3.</strong> Version Control</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="opengl-topics"><a class="header" href="#opengl-topics">OpenGL Topics</a></h1>
+<h2 id="immediate-mode"><a class="header" href="#immediate-mode">Immediate Mode</a></h2>
+<ul>
+<li>Drawing commands are sent to the GPU as they are generated.</li>
+<li>Easier to learn.</li>
+<li>Easier to program for small applications.</li>
+<li>Don't need to create arrays of vertices and indices and send them to the GPU.</li>
+<li>But data (verts, etc.) must be sent every time.
+<ul>
+<li>Need lots of memory bus bandwidth.</li>
+<li>Can become an application bottleneck.</li>
+</ul>
+</li>
+</ul>
+<h2 id="retained-mode"><a class="header" href="#retained-mode">Retained Mode</a></h2>
+<ul>
+<li>Drawing commands are saved in a data structure.</li>
+<li>To redraw an object, just reference the saved structure.</li>
+<li>OpenGL had display lists:
+<ul>
+<li>Sequences of API calls which are saved.</li>
+<li>Call the display list instead of issuing API draw calls.</li>
+<li>Display lists could call other display lists.</li>
+<li>Disappeared with OpenGL 3.2.</li>
+</ul>
+</li>
+<li>Retained mode makes it easier to organize and manage data.</li>
+<li>Data can be stored on the GPU.
+<ul>
+<li>Thus, only need to send a little data from the CPU to draw a scene multiple times.</li>
+</ul>
+</li>
+</ul>
+<h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
+<pre class="mermaid">flowchart LR
+  c[&quot;CPU - Calls to Graphics API&quot;] &lt;--&gt; I[&quot;Interface Driver&quot;] &lt;--&gt; g[&quot;GPU&quot;]
+</pre>
+<ul>
+<li>The OpenGL driver has grown large and complex.</li>
+<li>Hard to get maximum performance from it.</li>
+<li>Makes many decisions on behalf of the programmer.</li>
+<li>Vulkan has a smaller driver, but the programmer has to do more work.</li>
+</ul>
+<h2 id="opengl-state"><a class="header" href="#opengl-state">OpenGL State</a></h2>
+<ul>
+<li>
+<p>OpenGL maintains a large number of state variables.</p>
+</li>
+<li>
+<p>Set as a side-effect of many OpenGL calls.</p>
+</li>
+<li>
+<p>Set of <code>get*</code> procedures to retrieve state.</p>
+</li>
+<li>
+<p><code>glGetString</code></p>
+<ul>
+<li>Input: One of <code>GL_VERSION</code>, <code>GL_VENDER</code>, <code>GL_RENDERER</code>.</li>
+<li>Get OpenGL version, GPU manufacturer, the renderer being used.</li>
+</ul>
+</li>
+<li>
+<p><code>glGetIntegerv</code> with <code>GL_NUM_EXTENSIONS</code> gets the number of known extensions.</p>
+</li>
+<li>
+<p><code>glGetStringi</code> with <code>GL_EXTENSIONS</code> and an index returns the name of an extension.</p>
+</li>
+<li>
+<p>GLEW handles GL extensions for us.</p>
+<ul>
+<li>Defines and sets a <code>GLEW_&lt;extension-name&gt;</code> define.
+<ul>
+<li>Set to true if available.</li>
+</ul>
+</li>
+<li><code>glewIsSupported</code> takes a string of extension names.
+<ul>
+<li>Returns true if all are supported.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>OpenGL maintains a large number of resources:</p>
+<ul>
+<li>Vertex.</li>
+<li>Textures.</li>
+<li>Shader Programs.</li>
+<li>Frame Buffers.</li>
+<li>etc.</li>
+</ul>
+</li>
+<li>
+<p>They are identified by integer ids.</p>
+</li>
+<li>
+<p>We cannot directly reference them.</p>
+</li>
+<li>
+<p>Allows the driver to store them in the most efficient place.</p>
+</li>
+<li>
+<p><code>glGenBuffers</code> to create a new buffer reference (integer id).</p>
+</li>
+<li>
+<p><code>glBindBuffer</code> to identify the buffer's type and create it.</p>
+</li>
+<li>
+<p><code>glBufferData</code> Specify size of data, the data to use, and a hint on how the
+data will be used and where it can be stored.</p>
+<ul>
+<li>The hint param (e.g. GL_STATIC_DRAW) is made up of 2 parts.</li>
+<li>The first part:
+<ul>
+<li><code>STATIC</code>: Written once used many times.</li>
+<li><code>DYNAMIC</code>: Written more than once, used many times.</li>
+<li><code>STREAM</code>: Written many times, used only a few times.</li>
+</ul>
+</li>
+<li>The second part:
+<ul>
+<li><code>DRAW</code>: The data is written by the CPU and READ by the GPU.</li>
+<li><code>READ</code>: The data is written by the GPU and READ by the CPU.</li>
+<li><code>COPY</code>: The data is written by the GPU, sent to the CPU, and sent back to the GPU.</li>
+</ul>
+</li>
+<li><code>COPY</code> is used when a shader modifies or generates geometry which is fed
+through the pipeline again.</li>
+<li>Problems: The driver can ignore this parameter.
+<ul>
+<li>Missed opportunity for optimization.</li>
+<li>Can only specify the parameter once.
+<ul>
+<li>May want to start with Dynamic or Stream and convert to Static.</li>
+<li>Would have to reload the buffer data.</li>
+</ul>
+</li>
+<li>The driver makes all the decisions on behalf of the programmer.
+<ul>
+<li>Main difference between OpenGL and Vulkan.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>glBufferStorage</code> Gives more control over how the buffer can be used.</p>
+</li>
+<li>
+<p><code>glNamedBufferStorage</code> "named" (by integer id) version of <code>glBufferStorage</code>.</p>
+</li>
+<li>
+<p><code>glBufferSubData</code> Modify the contents of a portion of a buffer.</p>
+</li>
+<li>
+<p><code>glGetBufferParameter</code> Get state of the buffer.</p>
+</li>
+</ul>
+<h2 id="shaders"><a class="header" href="#shaders">Shaders</a></h2>
+<ul>
+<li>
+<p>Originally, OpenGL used a fixed function pipeline.</p>
+<ul>
+<li>Had Transformations.</li>
+<li>Viewing and Projections.</li>
+<li>Phong light model.</li>
+<li>Texture mapping (few textures, one).</li>
+</ul>
+</li>
+<li>
+<p>OpenGL3.2: Much less is fixed.</p>
+<ul>
+<li>Have to write shaders.</li>
+</ul>
+</li>
+<li>
+<p>Shaders handle one part of the pipeline.</p>
+</li>
+<li>
+<p>Need at least 2 shaders.</p>
+<ul>
+<li>Vertex.</li>
+<li>Fragment.</li>
+</ul>
+</li>
+<li>
+<p><code>glCreateShader</code>: create a new shader object.</p>
+<ul>
+<li>GL_VERTEX_SHADER.</li>
+<li>GL_TESS_CONTROL_SHADER.</li>
+<li>GL_TESS_EVALUATION_SHADER.</li>
+<li>GL_GEOMETRY_SHADER.</li>
+<li>GL_FRAGMENT_SHADER.</li>
+<li>GL_COMPUTE_SHADER.</li>
+</ul>
+</li>
+<li>
+<p><code>glShaderSource</code>: provide shader source to the driver and associate it with a
+shader object.</p>
+</li>
+<li>
+<p><code>glCompileShader</code>: Compile a shader object.</p>
+</li>
+<li>
+<p><code>glGetShaderiv</code>: Get shader sate variables.</p>
+<ul>
+<li>e.g. <code>GL_COMPILE_STATES</code>: Was compilation successful?</li>
+<li><code>GL_INFO_LOG_LENGTH</code>: Length of info log string</li>
+</ul>
+</li>
+<li>
+<p><code>glGetShaderInfoLog</code>: Retrieve info log string in case of, e.g., an error.</p>
+</li>
+<li>
+<p><code>glCreateProgram</code>: Create a new program object.</p>
+</li>
+<li>
+<p><code>glAttachShader</code>: Associate a shader object with a program.</p>
+</li>
+<li>
+<p><code>glLinkProgram</code>: Link all the shaders together to form a pipeline.</p>
+</li>
+<li>
+<p><code>glGetProgramiv</code>: Get program object state.</p>
+<ul>
+<li>With <code>GL_LINK_STATUS</code>: Determine if linking was successfull.</li>
+<li><code>GL_INFO_LOG_LENGTH</code>: Info log string length.</li>
+</ul>
+</li>
+<li>
+<p><code>glGetProgramInfoLog</code>: Get info log string.</p>
+</li>
+<li>
+<p><code>glUseProgram</code>: Activate a pipeline (program object) to use its shaders.</p>
+</li>
+<li>
+<p><code>glUseProgramStages</code>: Allows using stages out of individual program objects.</p>
+<ul>
+<li>Can use one copy of shader objects across multiple programs.
+<ul>
+<li>Save memory.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>glGetProgramBinary</code>: Retrieve linked program binary format.</p>
+<ul>
+<li>Can save it to disk to not have to recompile shaders.</li>
+</ul>
+</li>
+<li>
+<p><code>glProgramBinary</code>: Installs existing binary for a program into a program object.</p>
+</li>
+<li>
+<p>New assembler languages for shaders have been introduced (or already existed).</p>
+<ul>
+<li>SPIR-V: mainly for Vulkan and OpenCL, can be used with OpenGL.</li>
+<li>PTX: Mainly for CUDA.</li>
+<li>Allows developing own shader language.</li>
+</ul>
+</li>
+</ul>
+<h2 id="framebuffer-objects"><a class="header" href="#framebuffer-objects">Framebuffer Objects</a></h2>
+<ul>
+<li>Can render to off screen memory.</li>
+<li>Then use the result in another render pass.</li>
+<li>Most common use is to generate a texture that is later applide to objects.
+<ul>
+<li>e.g. Cube maps for environment mapping.
+<ul>
+<li>Generate each texture for the cube map.</li>
+<li>Then apply to the corresponding object.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>glGenFramebuffers</code>: Generate framebuffer names.</li>
+<li><code>glBindFramebuffer</code>: Bind the created framebuffer object to a target (e.g. GL_FRAMEBUFFER).
+<ul>
+<li>Requires allocating memory for the framebuffer.</li>
+<li>Generate a texture, then attach it to the framebuffer object.</li>
+</ul>
+</li>
+<li><code>glFrameBufferTexture</code>: Attach a texture to a framebuffer object.
+<ul>
+<li>Can specify an Attachment parameter:
+<ul>
+<li>How the texture is used.</li>
+<li>GL_DEPTH_ATTACHMENT - depth buffer.</li>
+<li>GL_STENCIL_ATTACHMENT - stencil buffer.</li>
+<li>GL_COLOR_ATTACHMENT0 - colour buffer.</li>
+</ul>
+</li>
+<li>There can be more than one color attachment.
+<ul>
+<li>They need to be selected by calling <code>glDrawBuffers</code> <em>before</em> drawing commands.</li>
+<li>A geometry shader can also select the colour buffer a drawing primitve
+will be sent to.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>TODO: Slide 45</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y2s1/csci4110u/06-advanced-modeling-and-production-process.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y2s1/csci3070u/lec1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y2s1/csci4110u/06-advanced-modeling-and-production-process.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y2s1/csci3070u/lec1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,883 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Graphics Hardware - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">1.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">1.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">1.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">1.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">1.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">1.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">1.6.</strong> Security</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/13-c-functions.html"><strong aria-hidden="true">1.7.</strong> Function Index</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">2.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">2.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">2.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">2.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">2.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">2.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">2.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">2.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">2.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">2.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">2.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">2.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/18-colour.html"><strong aria-hidden="true">2.12.</strong> Colour</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/20-visualization.html"><strong aria-hidden="true">2.13.</strong> Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">2.14.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">2.15.</strong> Black Holes</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/intro.html"><strong aria-hidden="true">3.</strong> Data Mining</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec1.html"><strong aria-hidden="true">3.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec2.html"><strong aria-hidden="true">3.2.</strong> Data</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec3.html"><strong aria-hidden="true">3.3.</strong> Data Exploration</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec4.html"><strong aria-hidden="true">3.4.</strong> OLAP</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec6.html"><strong aria-hidden="true">3.5.</strong> WIP 5</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec7.html"><strong aria-hidden="true">3.6.</strong> WIP 6</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec8.html"><strong aria-hidden="true">3.7.</strong> WIP 7</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/intro.html"><strong aria-hidden="true">4.</strong> Advanced Graphics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/01-graphics-hardware.html" class="active"><strong aria-hidden="true">4.1.</strong> Graphics Hardware</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/02-modeling-overview.html"><strong aria-hidden="true">4.2.</strong> Modeling Overview</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/03-polygon-meshes-and-processing.html"><strong aria-hidden="true">4.3.</strong> Polygon Meshes & Processing</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/04-curves-and-display.html"><strong aria-hidden="true">4.4.</strong> Types of Curves & Curve Display</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/05-procedural-modeling.html"><strong aria-hidden="true">4.5.</strong> Procedural Modeling</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/06-advanced-modeling-and-production-process.html"><strong aria-hidden="true">4.6.</strong> Advanced Modeling & The Production Process</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/07-opengl-topics.html"><strong aria-hidden="true">4.7.</strong> OpenGL Topics</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec1.html"><strong aria-hidden="true">5.</strong> Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec2.html"><strong aria-hidden="true">5.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec3.html"><strong aria-hidden="true">5.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec4.html"><strong aria-hidden="true">5.3.</strong> Divide & Conquer, Recurrences</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec5.html"><strong aria-hidden="true">5.4.</strong> Divide & Conquer, Recurrences 2</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Programming Languages</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec1.html"><strong aria-hidden="true">6.1.</strong> Lec 1</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec2.html"><strong aria-hidden="true">6.2.</strong> Lec 2</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec3.html"><strong aria-hidden="true">6.3.</strong> Lec 3</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec4.html"><strong aria-hidden="true">6.4.</strong> Lec 4</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/intro.html"><strong aria-hidden="true">7.</strong> Scientific Data Analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec1.html"><strong aria-hidden="true">7.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec2.html"><strong aria-hidden="true">7.2.</strong> Shell</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec3.html"><strong aria-hidden="true">7.3.</strong> Version Control</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="graphics-hardware---part-one"><a class="header" href="#graphics-hardware---part-one">Graphics Hardware - Part One</a></h1>
+<p>(Extremely) high-level view of hardware:</p>
+<pre class="mermaid">flowchart LR
+  m[Memory] &lt;--&gt; c[CPU] &lt;--&gt; g[&quot;Graphics Card&quot;] --&gt; d[Display]
+</pre>
+<h2 id="memory"><a class="header" href="#memory">Memory</a></h2>
+<p>Note: numbers may be outdated.</p>
+<ul>
+<li>CPUs work directly on data within registers.</li>
+<li>Register work as quickly as the CPU. No delay in access.</li>
+<li>Followed by L1 cache.
+<ul>
+<li>Near CPU speed. Little delay.</li>
+<li>Feeds CPU registers.</li>
+<li>One for data and one for instructions</li>
+</ul>
+</li>
+<li>Then L2 cache.
+<ul>
+<li>Feeds L1 cache.</li>
+<li>Slower, ~order of magnitude.</li>
+<li>Larger than L1 cache.</li>
+</ul>
+</li>
+<li>Some systems have an L3 cache.
+<ul>
+<li>Again, larger but slower.</li>
+<li>Multiple MegaBytes</li>
+</ul>
+</li>
+<li>Lastly, there is DRAM.
+<ul>
+<li>Very large storage.</li>
+<li>Much slower.</li>
+</ul>
+</li>
+</ul>
+<h3 id="cache-lines"><a class="header" href="#cache-lines">Cache Lines</a></h3>
+<div id="admonition-danger" class="admonition admonish-danger" role="note" aria-labelledby="admonition-danger-title">
+<div class="admonition-title">
+<div id="admonition-danger-title">
+<p>Danger</p>
+</div>
+<a class="admonition-anchor-link" href="#admonition-danger"></a>
+</div>
+<div>
+<p>This information is important when optimizing code.</p>
+</div>
+</div>
+<ul>
+<li>CPU caches are organized as cache lines.
+<ul>
+<li>64 or 128 bytes of contiguous memory.</li>
+</ul>
+</li>
+<li>A cache line is the basic amount of data that will be transferred at a time.</li>
+<li>Most data types are multiple bytes large.
+<ul>
+<li>We'll access these bytes together.</li>
+<li>So they should fit in a single cache line.</li>
+<li>If data is not "aligned" to a cache line boundary, we may have to transfer
+an additional cache line worth of bytes to load the data.
+<ul>
+<li>Consider a double (8 bytes) where the middle bytes cross a cache line
+boundary.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="dram"><a class="header" href="#dram">DRAM</a></h2>
+<ul>
+<li>Large and cheap.</li>
+<li>Optimized for size not speed.</li>
+<li>A DRAM Cell stores 1 bit.
+<ul>
+<li>Stores the bit for 30 to 100 milliseconds.</li>
+<li>Contents must be refreshed regularly.</li>
+</ul>
+</li>
+<li>Chips are typically organized as a 2D array of cells.
+<ul>
+<li>You retrieve a row at a time.</li>
+<li>The retrieved row is stored in a fast row buffer on DRAM.
+<ul>
+<li>First read of a row is slow, subsequent reads are faster.
+<ul>
+<li>Could be 10x faster.</li>
+</ul>
+</li>
+<li>Allows adjacent bits to retrieved quickly.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Reads are destructive.
+<ul>
+<li>Contents of row buffer must be written back to memory.</li>
+</ul>
+</li>
+<li>Designed to feed caches.</li>
+<li><strong>Don't</strong> jump all over DRAM.</li>
+</ul>
+<p>So:</p>
+<ul>
+<li>Avoid referencing DRAM if possible.</li>
+<li>Reference contiguous locations.</li>
+<li>Align data to cache lines.</li>
+<li>Make data structures as compact as possible.</li>
+<li>Group items of the same type (really size) together.</li>
+</ul>
+<h2 id="cpu"><a class="header" href="#cpu">CPU</a></h2>
+<ul>
+<li>
+<p>Double CPU speed every so often</p>
+<ul>
+<li>VLSI (manufacturing) improvements.</li>
+</ul>
+</li>
+<li>
+<p>Smaller components -&gt; faster chips.</p>
+<ul>
+<li>~4GH is upper limit.</li>
+<li>Problematic quantum effects start to matter.</li>
+<li>Harder to cool the smaller surface area.</li>
+</ul>
+</li>
+<li>
+<p>Chip area is still usable.</p>
+<ul>
+<li>Could increase cache sizes but has limits.</li>
+</ul>
+</li>
+<li>
+<p>Solution: Multiple cores</p>
+<ul>
+<li>Slower processors, but collectively more power.</li>
+<li>Initially, issues with cache design. &lt;- Don't really need to worry about it in this course.</li>
+<li>Problem is now developing parallel programs.</li>
+</ul>
+</li>
+<li>
+<p>Ray tracing is good example of parallel programming.</p>
+<ul>
+<li><em>Primary</em> rays are independent.</li>
+<li>Very close to linear scaling.</li>
+</ul>
+</li>
+<li>
+<p>Tools:</p>
+<ul>
+<li>Low level threads.
+<ul>
+<li>Good control.</li>
+<li>Good performance.</li>
+</ul>
+</li>
+<li>Open MP.
+<ul>
+<li>Compiler extension.</li>
+<li>Easy to learn.</li>
+<li>Compiler switch available to turn on/off for debugging.</li>
+<li>Use <code>#pragma</code> statements to suggest parallelism.
+<pre><code class="language-cpp">  #pragma omp parallel for private(i, j)
+  for (i = 0; i &lt; N; i++)
+    for (j = 0; j &lt; M; j++)
+      ...
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="graphics-card"><a class="header" href="#graphics-card">Graphics Card</a></h2>
+<pre><code>flowchart LR
+  B["Bus Interface"]
+  R[DRAM]
+  G[GPU]
+  V[Video]
+
+  B &lt;--&gt; R
+  R &lt;--&gt; G
+  B &lt;--&gt; G
+  G --&gt; V
+</code></pre>
+<h3 id="bus-interface"><a class="header" href="#bus-interface">Bus Interface</a></h3>
+<ul>
+<li>
+<p>PCIe.</p>
+</li>
+<li>
+<p>Transfer data to/from GPU.</p>
+</li>
+<li>
+<p>Want to store as much as possible on the GPU.</p>
+<ul>
+<li>This is, in part, controlled by the driver.</li>
+<li>Try not to thrash between GPU and Main memory.</li>
+</ul>
+</li>
+<li>
+<p>Alternatively, the GPU can be on the same chip as the CPU.</p>
+</li>
+<li>
+<p>CPU and GPU now share same memory.</p>
+<ul>
+<li>Increased bandwidth.</li>
+<li>AMD APUs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="gpu-dram"><a class="header" href="#gpu-dram">GPU DRAM</a></h3>
+<ul>
+<li>Most space on GPU is devoted to processors.
+<ul>
+<li>External memory needed.</li>
+</ul>
+</li>
+<li>Either standard DRAM chips or GDDR chips.</li>
+<li>GDDR uses same memory cells as DDR3. (&lt;- up to date?)
+<ul>
+<li>Different bus interface.</li>
+<li>GPU memory doesn't co-exist with other devices.</li>
+<li>Fewer constraints than DDR.</li>
+<li>Much wider data bus for greater bandwidth.</li>
+<li>Higher clock speeds and better clock management.</li>
+</ul>
+</li>
+<li>GPUs transfer large chunks of contiguous memory.
+<ul>
+<li>GDDR has deeper row buffers.</li>
+<li>The GPU is more likely to request adjacent rows of memory.</li>
+</ul>
+</li>
+</ul>
+<h3 id="video-output"><a class="header" href="#video-output">Video (Output)</a></h3>
+<ul>
+<li>To display, we need to encode the frame buffer into a video signal.</li>
+<li>In early graphics systems:
+<ul>
+<li>Both GPU and video circuits accessed same memory.</li>
+<li>They had to share bandwidth.</li>
+<li>Early solution was VRAM with two data ports:
+<ul>
+<li>Standard memory port for GPU.</li>
+<li>Shift register based port for video circuits.</li>
+</ul>
+</li>
+<li>Both ports acted independently.
+<ul>
+<li>Video circuits accessed a row of pixels at a time.</li>
+<li>Thus shift registers made sense.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Modern graphics systems:
+<ul>
+<li>Use double buffering and etc.</li>
+<li>Ping pong chips between GPU and video circuits.</li>
+<li>Multiple displays can be assigned different areas of memory.</li>
+</ul>
+</li>
+</ul>
+<h3 id="video-standards"><a class="header" href="#video-standards">Video Standards</a></h3>
+<p>VGA:</p>
+<ul>
+<li>Analogue.</li>
+<li>R, G, and B.</li>
+<li>Horizontal sync.</li>
+<li>Vertical sync.</li>
+</ul>
+<p>DVI:</p>
+<ul>
+<li>Analogue &amp; Digital.</li>
+<li>Different "versions".
+<ul>
+<li>Connectors have same basic shape but different pins and capabilities.</li>
+</ul>
+</li>
+</ul>
+<p>HDMI:</p>
+<ul>
+<li>More standard connector shape.</li>
+<li>Wider range of signals (including Ethernet!)</li>
+<li>Two-way communication (HDMI CEC).</li>
+</ul>
+<p>Display Port:</p>
+<ul>
+<li>Designed as replacement for HDMI.</li>
+<li>Smaller sized than HDMI.</li>
+</ul>
+<p>USB-C:</p>
+<ul>
+<li>Can carry video signal.
+<ul>
+<li>e.g. HDMI or Display Port.</li>
+</ul>
+</li>
+<li>Both cable and connector spec not video.</li>
+</ul>
+<h3 id="gpu"><a class="header" href="#gpu">GPU</a></h3>
+<ul>
+<li>"Wheel of Reincarnation" - Graphics architectures repeat themselves over time.</li>
+<li>Special purpose hardware gives more performance for lower price.
+<ul>
+<li>Trade-off between flexibility and performance.</li>
+</ul>
+</li>
+</ul>
+<p>SGI:</p>
+<ul>
+<li>Silicon Graphics (company).</li>
+<li>Saw lots of floating point computation in graphics.</li>
+<li>Developed Geometry engine.
+<ul>
+<li>Computations in hardware.</li>
+<li>The first company to do this.</li>
+</ul>
+</li>
+<li>Much cheaper than competition.</li>
+<li>As hardware evolved, chips became programmable.
+<ul>
+<li>By hardware engineers not end users.</li>
+</ul>
+</li>
+</ul>
+<p>NVidia:</p>
+<ul>
+<li>
+<p>1990s startup.</p>
+</li>
+<li>
+<p>Developed graphics hardware.</p>
+<ul>
+<li>Again much cheaper than competition (e.g. SGI).</li>
+</ul>
+</li>
+<li>
+<p>Started with support for 2 textures.</p>
+<ul>
+<li>Wanted to simultaneously use more.</li>
+</ul>
+</li>
+<li>
+<p>Introduced programmable fragment shaders.</p>
+<ul>
+<li>Initially simple, only small programs.</li>
+<li>Assembly level programming.</li>
+<li>Initially no branching.</li>
+<li>Program applied to multiple fragments in parallel.</li>
+</ul>
+</li>
+<li>
+<p>Eventually introduced programmable vertex processor.</p>
+<ul>
+<li>Different instruction sets to fragment processor.</li>
+</ul>
+</li>
+</ul>
+<pre class="mermaid">flowchart LR
+  B[&quot;Bus Interface&quot;]
+  V[&quot;Vertex Processor&quot;]
+  I[Interpolation]
+  F[&quot;Fragment Processor&quot;]
+
+  B --&gt; V --&gt; I --&gt; F
+</pre>
+<ul>
+<li>Eventually branching instructions added.</li>
+<li>Longer more complicated programs.</li>
+<li>Two seperate ISA (vertex + fragment processor) converged.</li>
+<li>High level languages:
+<ul>
+<li>NVidia Cg.</li>
+<li>OpenGL GLSL.</li>
+</ul>
+</li>
+</ul>
+<p>The modern state:</p>
+<ul>
+<li>New problem:
+<ul>
+<li>Dedicated vertex/fragment processors.</li>
+<li>If we have a lot of fragment work, vertex processors are idle.
+<ul>
+<li>And vice versa.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Solution: One set of processors to dynamically allocate where needed.
+<ul>
+<li>Processors can handle either vertex or fragment work.</li>
+</ul>
+</li>
+<li>Data cycles through the GPU.
+<ul>
+<li>Starts with vertex programs.</li>
+<li>Output is pumped back through chip as input to fragment programs.</li>
+</ul>
+</li>
+<li>Other types of shaders can be introduced:
+<ul>
+<li>Geometry.</li>
+<li>Tessellation.</li>
+<li>Computation.</li>
+</ul>
+</li>
+</ul>
+<h2 id="gpu-architecture"><a class="header" href="#gpu-architecture">GPU Architecture</a></h2>
+<p><img src="./01_gp100.png" alt="Pascal GP100" /></p>
+<p>NVidia Pascal (GP100):</p>
+<ul>
+<li>Mostly computational cores (3840 of them).</li>
+<li><strong>SIMD</strong> - Cores are a SIMD architecture.
+<ul>
+<li><em>One</em> instruction decode unit <strong>for a group of 32</strong> cores.</li>
+<li>All cores perform the same instruction in lock step.</li>
+</ul>
+</li>
+<li>Instruction decode on CPU is complicated.</li>
+<li>Instruction decode on GPU is much simpler.</li>
+<li>The SIMD unit with 32 processors is called a <strong>streaming multiprocessor (SM)</strong>.</li>
+<li>SMs are grouped into GPC (Graphics Processing Cluster).</li>
+<li>GP100 organizes SMs into 6 GPCs.
+<ul>
+<li>New level of organization for NVidia chips.</li>
+</ul>
+</li>
+</ul>
+<p><img src="./01_gp100_sm.png" alt="Pascal GP100 SM" /></p>
+<h2 id="simd"><a class="header" href="#simd">SIMD</a></h2>
+<ul>
+<li>Consequences abound.</li>
+<li>Many cores execute the same instruction in parallel.</li>
+<li>Problem for control structures.</li>
+<li><code>if</code> statement:
+<ul>
+<li>Each core evaluates the condition.</li>
+<li>Each core is marked as true or false.</li>
+<li>Execute true cores then false cores <em>serially</em>.</li>
+<li>On average, half of the cores will be idle during execution of an <code>if</code>.</li>
+</ul>
+</li>
+<li><code>while</code> loop:
+<ul>
+<li>Each core will evaluate the loop condition.</li>
+<li>If even one core is still looping, the others must wait.</li>
+<li>Possibly result in large number of idle cores.</li>
+</ul>
+</li>
+<li><code>for</code> loop:
+<ul>
+<li>Not an issue since loop count is fixed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="back-to-gpu-architecture"><a class="header" href="#back-to-gpu-architecture">Back to GPU Architecture</a></h2>
+<p>GP100:</p>
+<ul>
+<li>New memory organization.
+<ul>
+<li>Memory chips are stacked on top of each other.</li>
+<li>~4 dies in each stack, significantly increasing memory bandwidth.</li>
+<li>e.g. ~300 GB/s on previous architectures to ~720 GB/s.</li>
+</ul>
+</li>
+</ul>
+<p>Turing:</p>
+<ul>
+<li>Another significant evolution.</li>
+<li>Floating point and integer units can work in parallel.</li>
+<li>Tensor cores used for machine learning.</li>
+<li>RayTracing core.
+<ul>
+<li>Ray-triangle intersections.</li>
+<li>Bounding volume hierarchies.</li>
+</ul>
+</li>
+<li>A program on an SM can spawn other programs.</li>
+</ul>
+<p>ADA:</p>
+<ul>
+<li>Even more cores.</li>
+<li>12 GPCs
+<ul>
+<li>12 SMs per GPC.</li>
+</ul>
+</li>
+<li>Improvements to tensor and ray tracing cores.</li>
+<li>Tensor and Ray-Tracing cores require special programming.
+<ul>
+<li>i.e. Taking these cores into account.</li>
+</ul>
+</li>
+<li>Some indications that bottleneck problems are starting to appear.
+<ul>
+<li>Between Ray-Tracing cores and the rest of the SM.</li>
+</ul>
+</li>
+</ul>
+<h2 id="tiled-architectures"><a class="header" href="#tiled-architectures">Tiled Architectures</a></h2>
+<ul>
+<li>Mobile devices.
+<ul>
+<li>Power usage is concern.</li>
+</ul>
+</li>
+<li>Tendency to write to same location many times.
+<ul>
+<li>Too much DRAM access.</li>
+</ul>
+</li>
+<li>Solution: <strong>Tiled Rendering</strong>
+<ul>
+<li>Divide screen into tiles.</li>
+<li>Each tile is small enough to fit onto on-chip memory.</li>
+<li><strong>Binning</strong> - Sort triangles into tiles.</li>
+<li>Process one tile at a time.
+<ul>
+<li>Run complete pipeline on each triangle.</li>
+</ul>
+</li>
+<li>Write finished tile to DRAM.</li>
+</ul>
+</li>
+<li>Each triangle may be processed many times.
+<ul>
+<li>Done on chip so it is fast despite being not optimal.</li>
+</ul>
+</li>
+<li>In some cases, triangles are sorted to optimize hidden surface.
+<ul>
+<li>z-buffer is kept on-chip.</li>
+</ul>
+</li>
+<li><strong>Deferred Rendering</strong>: Do not run entire frag shader until certain fragment
+will be displayed.</li>
+</ul>
+<h2 id="displays---slms"><a class="header" href="#displays---slms">Displays - SLMs</a></h2>
+<p><strong>Spacial Light Modulators (SLM)</strong>:</p>
+<ul>
+<li>Dynamically changes (modulates) the optical properties of individual pixels.</li>
+</ul>
+<h3 id="lcd"><a class="header" href="#lcd">LCD</a></h3>
+<ul>
+<li>Most common SLM.</li>
+<li>Works by changing the polarization of light.</li>
+<li><strong>Linear polarization</strong>: Light waves in only one orientation.</li>
+<li>Polarizers on both ends of the panel.
+<ul>
+<li>Thin sheets that pass light of only one polarity.</li>
+<li>Select light with a particular polarization.</li>
+</ul>
+</li>
+<li>Can also have optical elements that change the polarization.</li>
+<li>Liquid Crystals (<strong>LC</strong>D) are long molecules that can be aligned by applying
+a voltage, this changes their optical properties.
+<ul>
+<li>Arranged in small cells with three cells per pixel.</li>
+</ul>
+</li>
+<li>See next image:
+<ul>
+<li>On left, positive voltage is applied and the light is blocked.</li>
+<li>On right, no voltage, light passes through cell, but polarization is changed.
+<ul>
+<li>LCD is basically transparent.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="01_lcd.png" alt="LCD Polarization" /></p>
+<ul>
+<li>An LCD has a backlight that provides the light needed to see.</li>
+<li>Mainly LED backlights.</li>
+<li>Backlight should be even to avoid intensity variations across display.</li>
+<li>Can use more than one LCD panel.
+<ul>
+<li>Each panel can do 256 level of red, green, and blue.</li>
+</ul>
+</li>
+<li>Stack 2 panels and get <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">25</span><span class="mord"><span class="mord">6</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> levels for each of red, green, and blue.
+<ul>
+<li>This is <strong>HDR</strong>.</li>
+</ul>
+</li>
+<li>First LCD panel (closest to backlight) becomes a <em>pixel accurate</em> variable
+backlight.</li>
+<li>An LCD is called a <strong>transmissive SLM</strong> since it modifies the light that
+passes through it.</li>
+</ul>
+<h3 id="reflective-displays"><a class="header" href="#reflective-displays">Reflective Displays</a></h3>
+<ul>
+<li>Change the light reflected off of an SLM.</li>
+</ul>
+<p><strong>LCoS (Liquid Crystal on Silicon)</strong>:</p>
+<ul>
+<li>A reflective surface is placed on top of a CMOS chip.</li>
+<li>A Coating of liquid crystal on top of the reflective surface.</li>
+<li>Charges applied to the liquid crystal coating change its polarizing
+properties and whether light is reflected.</li>
+<li>No need for backlight</li>
+<li>Smaller pixels.</li>
+<li>F-LCoS: Even smaller pixels for head-mounted displays.</li>
+<li>Also used in projectors.</li>
+</ul>
+<p><img src="01_lcos.png" alt="LCoS" /></p>
+<p><strong>DMD (Digital Micromirror Devices)</strong>:</p>
+<ul>
+<li>Uses very small mirrors on a silicon chip.</li>
+<li>Mirrors can move (orientate).
+<ul>
+<li>In one configuration: The mirror reflects light towards the viewer.</li>
+<li>In another: Light can be reflected away from viewer.</li>
+<li>Can get grey by controlling the amount of time the mirror points towards
+the viewer.</li>
+</ul>
+</li>
+<li>Switch/Orientate much faster than LCDs.</li>
+<li>Very efficient.
+<ul>
+<li>Little light loss in reflection.</li>
+</ul>
+</li>
+<li>Used in projectors.</li>
+<li>Low end DMDs produce colour by displaying red, green, and blue sequentially.</li>
+<li>High end uses three DMDs per pixel and combines the three images.
+<ul>
+<li>Used in movie theatres.</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y2s1/csci4110u/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y2s1/csci4110u/02-modeling-overview.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y2s1/csci4110u/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y2s1/csci4110u/02-modeling-overview.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
