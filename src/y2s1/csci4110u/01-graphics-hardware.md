@@ -1,4 +1,4 @@
-# Graphics Hardware - Part One
+# Graphics Hardware
 
 (Extremely) high-level view of hardware:
 
@@ -107,7 +107,7 @@ So:
 
 ## Graphics Card
 
-```
+```mermaid
 flowchart LR
   B["Bus Interface"]
   R[DRAM]

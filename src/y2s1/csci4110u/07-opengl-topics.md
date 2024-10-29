@@ -157,4 +157,47 @@ flowchart LR
     * A geometry shader can also select the colour buffer a drawing primitve
       will be sent to.
 
-TODO: Slide 45
+## Tesselation Shaders
+
++ Input: **Patch** - Primitive, set of $n$ vertices.
+  - GL_PATCH
+  - `glPatchParameteri` Set the number of vertices in a patch.
++ Generate new vertices and _triangles_ inside the primitve.
++ Used to draw other primitives or surfaces based on subdivision.
+
+### Tesselation Control Shader
+
++ Compute level of tessellation.
++ Run once for each vertex of the patch.
++ Has access to all vertices of each patch.
+  - Indexed by vertex number called the **InvocationID**.
++ Output 2 variables:
+  - `gl_TessLevelOuter[4]`
+    * Number of segments along the outer _edge_.
+  - `gl_TessLevelInner[2]`
+    * Number of primitives in the $u$ and $v$ direction.
+      result in triangles despite
+  - Default values can be set CPU side.
++ Each patch can result in different values for **adaptive resolution**.
+
+### Tesselation Evaluation Shader
+
++ Called for each vertex after the tesselator unit has processed it.
++ Has access to the $u, v$ coords of the vertex over the surface of
+  the patch.
++ Computes the 3D coords of the vertex.
+  - `gl_Position`
+
+### Geometry Shader
+
++ Called once per primitive.
++ Has access to all vertices of the primitive.
++ For each primitive, can generate several or no primitives.
++ Needs to set outputs before calling:
+  - `EmitVertex()`: Generate output vertex.
+  - After which they will be reset to undefined.
++ Call `EmitPrimitive()`: Bundle previous verteces into a primitive.
++ If too few vertices are specified, the primitive will be culled.
++ Can run more than once per primitive via `layout(invocations = n)` statement.
+  - `glInvocationID` will have a different value each time.
+
