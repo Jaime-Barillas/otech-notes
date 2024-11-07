@@ -84,7 +84,7 @@ The natural cubic/spline curve.
 + Bounded by a convex hull of its control points.
 + Exhibits the variation diminishing property.
 + The blending functions have the following properties:
-  - Each one has/affects $k + 1$ knots.
+  - Each one has influence over $k + 1$ knots.
   - Each one is zero before its first knot.
   - Each one is zero after its last knot.
   - Local control since each control point is multiplied by one blending function.

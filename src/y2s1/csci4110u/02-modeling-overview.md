@@ -132,12 +132,15 @@ Starting with 2D curves:
   - Integrate the length of the tangent vector over the desired parameter values.
     * [0, 1] for the length of the entire curve.
     * **Arc length** is when you integrate over [0, u].
+      - $s(u) = \int_0^u ||f'(t)||dt$
+      - Allows for some useful definitions that follow.
     * Arc length can be computed from any curve parameterization.
 + The number of line segments needed to accurately approximate the curve
   depends on how fast the tangent is changing.
   - This is the derivative of the tangent: **curvature**.
-  - $k(s) = ||f''(s)||$
+  - In _arc length parameterization_ $k(s) = ||s''(u)||$
     * _Where $s$ is the arc length_.
+    * Points inwards, i.e. normal to the curve.
   - A larger curvature requires more line segments.
 + In summary, you need 3 things to accurately render curves:
   - The tangent.
