@@ -1,8 +1,8 @@
 # Support Vector Machines
 
-**linear hyperplane** - A decision boundary (linear, a line).
-**margin** - Distance to the closest points on both sides of the hyperplane.
-**support vector** - Data point on the margin.
++ **linear hyperplane** - A decision boundary (linear, a line).
++ **margin** - Distance to the closest points on both sides of the hyperplane.
++ **support vector** - Data point on the margin.
 
 + Find a linear hyperplane that will separate the data.
 + Essentially a function that returns 1 or -1:
