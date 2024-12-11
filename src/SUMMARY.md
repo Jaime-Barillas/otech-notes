@@ -44,6 +44,7 @@
   - [Classification II](./y2s1/csci4150u/06-classification-2.md)
   - [Classification III](./y2s1/csci4150u/07-classification-3.md)
   - [Clustering](./y2s1/csci4150u/08-clustering.md)
+  - [More](./y2s1/csci4150u/cluster-analysis-basics.md)
 - [Advanced Graphics](./y2s1/csci4110u/intro.md)
   - [Graphics Hardware](./y2s1/csci4110u/01-graphics-hardware.md)
   - [Modeling Overview](./y2s1/csci4110u/02-modeling-overview.md)
