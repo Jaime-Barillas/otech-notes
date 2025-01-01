@@ -1,0 +1,1 @@
+\box:{\textcolor{red}{\boxed{\textcolor{#1}{#2}}}}
