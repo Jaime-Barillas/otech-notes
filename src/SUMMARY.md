@@ -6,6 +6,7 @@
 
 - [Massively Parallel Programming](./y2s2/csci4060u/intro.md)
   - [Introduction](./y2s2/csci4060u/01-introduction.md)
+  - [Multicore Hardware](./y2s2/csci4060u/02-multicore-hardware.md)
 - [Compilers](./y2s2/csci4020u/intro.md)
   - [Introduction](./y2s2/csci4020u/01-introduction.md)
 - [Software Security](./y2s2/csci3540u/intro.md)
