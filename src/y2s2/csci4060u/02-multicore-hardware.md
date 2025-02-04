@@ -5,7 +5,7 @@ Goal: Increase performance.
 **Speedup** $ = \frac{t_s (\text{Execution time on a single processor})}{t_p (\text{Execution time with} p \text{processors})}$
 
 + **Linear Speedup** - A speedup factor of $p$ with $p$ processors.
-+ **SuperLinear Speedup** - Is a factor greater than $p$ possible.
++ **SuperLinear Speedup** - Is a factor greater than $p$ possible?
   - The parallel parts of the program can be executed faster than $t_s$.
   - The parallelization presents opportunities for optimizations.
     * ex: Caching opportunities.
@@ -56,16 +56,25 @@ MIMD:
 
 ### Centralized Shared-Memory Architectures
 
-**SMP** or **NUMA**
-+ Multi-core processors.
 + Multiple processors on the same die.
++ All processors share memory and I/O devices.
+
++ **Symmetric Multiprocessor (SMP)**
+  - Shared address space.
+  - "Equal-time" access for each processor.
+  - OS treats every processor the same way.
++ **Non Uniform Address Space Multiprocessor (NUMA)**
+  - Different memory regions have differnt access costs.
+    * E.g. "Near" vs "Far" memory.
 
 ### Distributed-Memory Architectures
 
-+ Processors are often not located on the same chip.
-  - ex: Clusters.
-+ High speed interconnection network for communication across processors.
-  - Even across long distances (e.g. typically fibre-optics).
++ Two important aspects:
+  1. Processors - Often not located on the same chip.
+     - ex: Clusters.
+  2. Interconnect Network.
+     - High speed interconnection network for communication across processors.
+     - Even across long distances (e.g. typically fibre-optics).
 + Can have a shared memory address space or multiple address spaces.
   - If using shared memory address spaces: communication can be done via _load_
     and _store_ instructions.
@@ -89,9 +98,9 @@ MIMD:
   sequential or concurrent.
 + Thread level parallelism (like multicore programming) usually is dependent on
   the software being concurrent.
-+ **Thread Level Parallelism** - Multiple threads per program. (High Level.)
 + **Instruction Level Parallelism** - The many instructions contained in each
   thread. (Low Level, internal to CPU.)
++ **Thread Level Parallelism** - Multiple threads per program. (High Level.)
 + **Multithreading** - An _instruction_-level approach to multi-threaded
   programs.
   - Run multiple threads _simultaneously_.
@@ -103,14 +112,14 @@ MIMD:
   - Intel **Hyperthreading** is one approach using _Simultaneous
     Multithreading_ (SMT).
 
-### SMD - Symmetric Multicore Design
+### Symmetric Multicore Design and Asymmetric Multicore Design
 
 + Historically, we started with multiple physically separate CPUs in one
   system.
 + Then multiple cores on the same chip with an _internal_ bus connecting the
   various cores.
-+ To, most recently, **mixed-core processors**, Different _types_ of cores on
-  the same chip.
++ To, most recently, **mixed-core processors** or an **Asymmetric Multicore
+  Design**, Different _types_ of cores on the same chip.
 
 ### Massively Parallel Systems
 
@@ -122,4 +131,45 @@ MIMD:
   - Nodes performing different tasks.
 + **Cluster Computing**
   - Nodes performing the same task.
+
+---
+
+# Why might not parallel instead of concurrent
+
++ not enough hardware (cores)
++ inter-task dependencies
++ job scheduling
+
+# Time Slicing
+
+Often used to refer to a particular scheduling.
+allows running more threads on fewer cores if needed.
+
+ex: 3 tasks, 2 CPUs
++ A task might be split up into multiple "time slices".
+  - Each time slice will be assigned to a CPU.
+  - Each task may be assigned to different CPUs at different times.
++ Maximizes hardware use (maximum parallelism) even if the tasks themselves are
+  not fully parallel.
+
+Choice of when CPUs swap tasks.
++ "Context Switches" <=> "Interleaving Points"
++ When the task awaits some result/resource (possibly shared).
+
+# Making Parallel Programs
+
+1. Start with a sequential program.
+1. Divide the program into tasks.
+   + Identify shared/local data.
+1. Organize tasks into threads.
+   + Consider shared/local data.
+1. Write parallel versions of code using strategies from previous steps.
+
+# Explicit vs Implicit
+
+**implicit** - Do _not_ explicitly write parallel code. e.g. Use of
+annotations, such as compiler directives, to generate a parallel version of
+your code.
+**explicit** - Explicit use of threads and organizing code into parallelizable
+chunks.
 

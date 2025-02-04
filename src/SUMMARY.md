@@ -7,6 +7,7 @@
 - [Massively Parallel Programming](./y2s2/csci4060u/intro.md)
   - [Introduction](./y2s2/csci4060u/01-introduction.md)
   - [Multicore Hardware](./y2s2/csci4060u/02-multicore-hardware.md)
+  - [OpenMP](./y2s2/csci4060u/03-openmp.md)
 - [Compilers](./y2s2/csci4020u/intro.md)
   - [Introduction & PL Backends](./y2s2/csci4020u/01-introduction.md)
   - [Semantics & Syntax of PLs](./y2s2/csci4020u/02-semantics-and-syntax.md)

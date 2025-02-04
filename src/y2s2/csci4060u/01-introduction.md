@@ -1,7 +1,7 @@
 # Introduction
 
 What is Concurrency?  
-+ Two or more execution flows (e.g. threads) are able to run _simultaneously_.
++ Two or more execution flows (e.g. threads) run _simultaneously_.
 
 Introduction of multiple cores within a CPU came alongside a plateau in clock
 speed improvements.
