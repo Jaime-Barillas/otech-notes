@@ -12,9 +12,9 @@ speed improvements.
 
 ## Why is Concurrency Difficult?
 
-+ Many different, possibly unexpected, executions of the program.
-  - Makes debugging and reproducability difficult.
-  - **Interleavings** - Scheduled _order_ of concurrent tasks.
++ Many different possible **Interleavings** (Scheduled order of
+  concurrent tasks) makes _debugging_ and _reproducability_
+  difficult.
 + Sharing of data and resources between threads is error-prone.
 
 ## What is Massively Parallel?
@@ -41,32 +41,34 @@ The difference between **multicore** and **manycore**?
 |Good for serial processing|Good for parallel processing|
 |Can do a handful of operations at once|Can do thousands of operations at once|
 
-+ CPUs tend to have few cores with lots of cache memory that can handle a few
-  threads simultaneously.
-+ GPUs tend to have hundreds of cores that can handle thousands of threads to
-  achieve **parallel computing**.
-  - GPUS do this by allowing you to divide tasks among their many processors.
++ CPUs tend to have few cores with lots of cache memory that can
+  handle a few threads simultaneously.
++ GPUs tend to have hundreds of cores that can handle thousands of
+  threads to achieve _parallel computing_.
+  - GPUS do this by allowing you to divide tasks among their many
+    processors.
 
 ## [What Makes Parallel Programming Hard?](https://web.archive.org/web/20170122105042/http://www.futurechips.org/tips-for-power-coders/parallel-programming.html)
 
 ### Finding Parallelism in Tasks is Hard
 
-+ Some tasks are easy to to parallelize.
-  - Sub-tasks are independent.
-  - Low data dependency.
-  - ex: Two dudes can paint a wall 2x as fast by painting different halves.
++ Some tasks are easy to to parallelize:
+  - Tasks that are independent of each other.
+  - Tasks with low data dependency.
+  - ex: Two dudes can paint a wall 2x as fast by painting different
+    halves.
 + Some tasks are hard/impossible to parallelize.
-  - Sub-tasks are interdependent.
+  - Tasks that are interdependent.
   - ex: Cooking (recipe steps often depend on previous steps being completed.)
-+ Many programs have _artificial_ inter-task dependencies because programmers
-  wrote them with a single-threaded mind set.
++ Many programs have _artificial_ inter-task dependencies because
+  programmers wrote them with a single-threaded mind set.
 + It can be difficult to re-write a program to be multi-thread capable.
 
 ### Debugging is Difficult
 
-+ Different interleavings of tasks, particularly in combination with shared
-  mutable data, can cause non-deterministic bugs (scheduling of tasks is
-  non-deterministic.)
++ Different interleavings of tasks, particularly in combination with
+  shared mutable data, can cause non-deterministic bugs (scheduling
+  of tasks is non-deterministic.)
   - ex: Two threads read a number from shared memory, increment its value by 1,
     and write the new value back to memory. The intent is to have the original
     value incremented by 2. The following interleaving will produce incorrect
@@ -81,7 +83,7 @@ The difference between **multicore** and **manycore**?
 ### Optimizing for Performance is Difficult
 
 Often, the first working version of a parallel version is slower than the
-serial version.
+serial version:
 + Too many (task) dependencies still exist.
   - Possible due to iterative removal of these dependencies.
 + Contention for hardware resources.
@@ -105,6 +107,10 @@ serial version.
 ## The Free Lunch Is Over...
 
 TL;DR
+
+Terms and other things to consider:
++ Cache Coherency.
++ _Other things..._
 
 ## Apple M1 & M3
 

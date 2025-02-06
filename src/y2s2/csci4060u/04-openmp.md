@@ -1,36 +1,5 @@
 # OpenMP
 
-## Why might not parallel instead of concurrent
-
-+ not enough hardware (cores)
-+ inter-task dependencies
-+ job scheduling
-
-## Time Slicing
-
-Often used to refer to a particular scheduling.
-allows running more threads on fewer cores if needed.
-
-ex: 3 tasks, 2 CPUs
-+ A task might be split up into multiple "time slices".
-  - Each time slice will be assigned to a CPU.
-  - Each task may be assigned to different CPUs at different times.
-+ Maximizes hardware use (maximum parallelism) even if the tasks themselves are
-  not fully parallel.
-
-Choice of when CPUs swap tasks.
-+ "Context Switches" <=> "Interleaving Points"
-+ When the task awaits some result/resource (possibly shared).
-
-## Making Parallel Programs
-
-1. Start with a sequential program.
-1. Divide the program into tasks.
-   + Identify shared/local data.
-1. Organize tasks into threads.
-   + Consider shared/local data.
-1. Write parallel versions of code using strategies from previous steps.
-
 ## Explicit vs Implicit
 
 **implicit** - Do _not_ explicitly write parallel code. e.g. Use of
@@ -38,19 +7,6 @@ annotations, such as compiler directives, to generate a parallel version of
 your code.
 **explicit** - Explicit use of threads and organizing code into parallelizable
 chunks.
-
----
-
-## Processes and Threads Review
-
-+ Process.
-  - An instance of program execution.
-  - The execution context of a running program.
-    * The resources associated with a program's execution.
-+ Threads.
-  - Light weight processes.
-  - Threads share process state among multiple threads.
-    * Greatly reduces cost of switching context.
 
 # OpenMP
 
@@ -105,9 +61,9 @@ chunks.
 
 + **False Sharing** - If independent data elements (accessed by different
   threads) happen to sit on the same cache line, each update will need to be
-  reflected across threads.
+  reflected across cpu caches.
   - If this happens with array elements, contiguous elements may share cache
-    lines. Padd arrays so independent elements are on distinct cache lines.
+    lines. Pad arrays so independent elements are on distinct cache lines.
     * Cache lines are typically 64bytes long.
 
 ## Synchronization
