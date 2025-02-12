@@ -19,12 +19,14 @@
   - [Root Finding](./y2s2/csci2072u/02-root-finding.md)
   - [Error Plotting, Accuracy, Stability, Efficiency](./y2s2/csci2072u/03-err-acc.md)
   - [Nonlinear Equations I](./y2s2/csci2072u/04-nonlinear.md)
+  - [Solving Linear Systems](./y2s2/csci2072u/05-linear-systems.md)
   - [Computational Complexity](./y2s2/csci2072u/01-introduction.md)
   - [Interpolation, Least Squares](./y2s2/csci2072u/01-introduction.md)
   - [Differentiation](./y2s2/csci2072u/01-introduction.md)
   - [Integration](./y2s2/csci2072u/01-introduction.md)
   - [Initial Value Problems & APS](./y2s2/csci2072u/01-introduction.md)
 - [Advanced Linear Algebra](./y2s2/csci2055u/intro.md)
+  - [Notes](./y2s2/csci2055u/01-notes.md)
 
 # Year 2 Semester 1
 
