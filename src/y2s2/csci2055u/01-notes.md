@@ -106,3 +106,46 @@ $$
 
 Completely defined by its effect on a generating system or basis.
 
+# Matrix Operations
+
+Multiplication is associative, distributive, and scalar multiples can be taken
+pulled.
+
+$$
+(A B)^T = B^T A^T \\
+(A B)^{-1} = B^{-1} A^{-1} \\
+\text{trace}(A B) = \text{trace}(B A)
+$$
+
+# Identity Transformation
+
+$$
+I \vec{x} = \vec{x} \quad \forall \vec{x}
+$$
+
+# Left/Right Invertible
+
+A linear transformation $A : V \rarr W$ is left-invertible when a linear
+transformation $B : W \rarr V$ exists such that:
+$$
+B A = I_V
+$$
+
+A linear transformation $A : V \rarr W$ is right-invertible when a linear
+transformation $B : W \rarr V$ exists such that:
+$$
+A B = I_W
+$$
+
+# Invertibility
+
+A linear transformation is **invertible** if both left and right inverses
+exists.
++ If a linear transformation is invertible, then both left and right inverses
+  are unique and equivalent.
++ i.e. $A : V \rarr W$ is invertible iff there exists a _unique_ linear
+  transformation $A^{-1} : W \rarr V$ such that:
+  $$
+    A^{-1} A = I_V, \quad A A^{-1} = I_W
+  $$
+
