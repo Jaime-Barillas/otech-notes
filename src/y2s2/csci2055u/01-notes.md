@@ -74,13 +74,13 @@ $$
 
 # Linear Dependence
 
-A system of vectors is linearly dependent iff $\vec{0}$ can be represented as a
+A system of vectors is linearly dependent if $\vec{0}$ can be represented as a
 _non-trivial_ linear combination (at least one coefficient is non-zero):
 $$
 \vec{0} = \sum_{k=1}^n \alpha_k \vec{v}_k \quad \quad \text{where} \sum_{k=1}^n |\alpha_k| \ne 0
 $$
 
-A system of vectors is linearly dependent iff one of the vectors can be
+A system of vectors is linearly dependent if one of the vectors can be
 represented as a linear combination of the others.
 
 # Transformation
