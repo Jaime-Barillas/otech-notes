@@ -39,6 +39,14 @@ Computation happens within an "environment".
 ---
 
 ## Backend of Programming Languages
+
+## Elements of a Turing Complete Language
+
++ Data representation.
++ Array-like memory storage.
++ Looping.
++ Branch Control.
+
 2 things of concern:
 + Runtime efficiency.
 + User experience.
@@ -54,7 +62,7 @@ Computation happens within an "environment".
 + Simple instruction based runtime environment with:
   - An operand stack (32-bit or 64-bit cells).
     * 32-bits: integer, float, hot-spot reference.
-    * 64-bits: long, double, reference.
+    * 64-bits: long, double, reference(general).
   - A local variable array.
   - A heap for dynamic memory allocation.
   - Constant pool for storing constants.
