@@ -17,7 +17,7 @@
   language $L$.
 + Strings can have different encodings but still represent the same thing.
   - e.g. ASCII chars, binary, token set, etc. encodings.
-+ Conversion between different alphabets is possible.
++ Conversion between different encodings (and thus alphabets) is possible.
 
 ## Tokenization
 
