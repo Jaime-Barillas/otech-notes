@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Posix Threads - OTech Notes</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../intro.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Year 2 Semester 2</li><li class="chapter-item expanded "><a href="../../y2s2/csci4060u/intro.html"><strong aria-hidden="true">1.</strong> Massively Parallel Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s2/csci4060u/01-introduction.html"><strong aria-hidden="true">1.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4060u/02-multicore-hardware.html"><strong aria-hidden="true">1.2.</strong> Multicore Hardware</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4060u/03-concurrency-parallelism.html"><strong aria-hidden="true">1.3.</strong> Concurrency & Parallelism</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4060u/04-openmp.html"><strong aria-hidden="true">1.4.</strong> OpenMP</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4060u/05-posix.html" class="active"><strong aria-hidden="true">1.5.</strong> Posix Threads</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4060u/06-posix-api.html"><strong aria-hidden="true">1.6.</strong> Posix Threads API</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/intro.html"><strong aria-hidden="true">2.</strong> Compilers</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/01-introduction.html"><strong aria-hidden="true">2.1.</strong> Introduction & PL Backends</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/02-semantics-and-syntax.html"><strong aria-hidden="true">2.2.</strong> Semantics & Syntax of PLs</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/03-lexical-analysis.html"><strong aria-hidden="true">2.3.</strong> Lexical Analysis</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/04-ANTLR.html"><strong aria-hidden="true">2.4.</strong> ANTLR</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/05-automata.html"><strong aria-hidden="true">2.5.</strong> Automata</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/06-regex.html"><strong aria-hidden="true">2.6.</strong> Regular Expressions</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci4020u/07-context-free-and-ambiguity.html"><strong aria-hidden="true">2.7.</strong> CFGs & Ambiguity</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/intro.html"><strong aria-hidden="true">3.</strong> Software Security</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/01-introduction.html"><strong aria-hidden="true">3.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/02-web-intro.html"><strong aria-hidden="true">3.2.</strong> Web Basics</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/03-file-attacks.html"><strong aria-hidden="true">3.3.</strong> File Attacks</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/04-broken-auth.html"><strong aria-hidden="true">3.4.</strong> Broken Auth & Access Controls</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/05-sql-injection.html"><strong aria-hidden="true">3.5.</strong> SQL Injection</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/06-xss.html"><strong aria-hidden="true">3.6.</strong> Cross-Site Scripting</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/07-binary-exploits.html"><strong aria-hidden="true">3.7.</strong> Binary Analysis & Exploitation</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci3540u/midterm-notes.html"><strong aria-hidden="true">3.8.</strong> MidTerm Notes</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/intro.html"><strong aria-hidden="true">4.</strong> Computational Science</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/01-introduction.html"><strong aria-hidden="true">4.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/02-root-finding.html"><strong aria-hidden="true">4.2.</strong> Root Finding</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/03-err-acc.html"><strong aria-hidden="true">4.3.</strong> Error Plotting, Accuracy, Stability, Efficiency</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/04-nonlinear.html"><strong aria-hidden="true">4.4.</strong> Nonlinear Equations I</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/05-linear-systems.html"><strong aria-hidden="true">4.5.</strong> Solving Linear Systems</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/01-introduction.html"><strong aria-hidden="true">4.6.</strong> Computational Complexity</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/01-introduction.html"><strong aria-hidden="true">4.7.</strong> Interpolation, Least Squares</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/01-introduction.html"><strong aria-hidden="true">4.8.</strong> Differentiation</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/01-introduction.html"><strong aria-hidden="true">4.9.</strong> Integration</a></li><li class="chapter-item expanded "><a href="../../y2s2/csci2072u/01-introduction.html"><strong aria-hidden="true">4.10.</strong> Initial Value Problems & APS</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s2/csci2055u/intro.html"><strong aria-hidden="true">5.</strong> Advanced Linear Algebra</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s2/csci2055u/01-notes.html"><strong aria-hidden="true">5.1.</strong> Notes</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 2 Semester 1</li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/intro.html"><strong aria-hidden="true">6.</strong> Data Mining</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec1.html"><strong aria-hidden="true">6.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec2.html"><strong aria-hidden="true">6.2.</strong> Data</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec3.html"><strong aria-hidden="true">6.3.</strong> Data Exploration</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec4.html"><strong aria-hidden="true">6.4.</strong> OLAP</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec6.html"><strong aria-hidden="true">6.5.</strong> WIP 5</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec7.html"><strong aria-hidden="true">6.6.</strong> WIP 6</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/lec8.html"><strong aria-hidden="true">6.7.</strong> WIP 7</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/06-classification-2.html"><strong aria-hidden="true">6.8.</strong> Classification II</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/07-classification-3.html"><strong aria-hidden="true">6.9.</strong> Classification III</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/08-clustering.html"><strong aria-hidden="true">6.10.</strong> Clustering</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4150u/cluster-analysis-basics.html"><strong aria-hidden="true">6.11.</strong> Clustering II</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/intro.html"><strong aria-hidden="true">7.</strong> Advanced Graphics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/01-graphics-hardware.html"><strong aria-hidden="true">7.1.</strong> Graphics Hardware</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/02-modeling-overview.html"><strong aria-hidden="true">7.2.</strong> Modeling Overview</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/03-polygon-meshes-and-processing.html"><strong aria-hidden="true">7.3.</strong> Polygon Meshes & Processing</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/04-curves-and-display.html"><strong aria-hidden="true">7.4.</strong> Types of Curves & Curve Display</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/05-procedural-modeling.html"><strong aria-hidden="true">7.5.</strong> Procedural Modeling</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/06-advanced-modeling-and-production-process.html"><strong aria-hidden="true">7.6.</strong> Advanced Modeling & The Production Process</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/07-opengl-topics.html"><strong aria-hidden="true">7.7.</strong> OpenGL Topics</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/08-rendering.html"><strong aria-hidden="true">7.8.</strong> Rendering - The Basics</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/09-local-illumination.html"><strong aria-hidden="true">7.9.</strong> Local Illumination</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci4110u/10-global-illumination.html"><strong aria-hidden="true">7.10.</strong> Global Illumination</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec1.html"><strong aria-hidden="true">8.</strong> Algorithms</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec2.html"><strong aria-hidden="true">8.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec3.html"><strong aria-hidden="true">8.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec4.html"><strong aria-hidden="true">8.3.</strong> Divide & Conquer, Recurrences</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3070u/lec5.html"><strong aria-hidden="true">8.4.</strong> Divide & Conquer, Recurrences 2</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Programming Languages</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec1.html"><strong aria-hidden="true">9.1.</strong> Lec 1</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec2.html"><strong aria-hidden="true">9.2.</strong> Lec 2</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec3.html"><strong aria-hidden="true">9.3.</strong> Lec 3</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci3055u/lec4.html"><strong aria-hidden="true">9.4.</strong> Lec 4</a></li></ol></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/intro.html"><strong aria-hidden="true">10.</strong> Scientific Data Analysis</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec1.html"><strong aria-hidden="true">10.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec2.html"><strong aria-hidden="true">10.2.</strong> Shell</a></li><li class="chapter-item expanded "><a href="../../y2s1/csci2000u/lec3.html"><strong aria-hidden="true">10.3.</strong> Version Control</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Year 1 Semester 2</li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/intro.html"><strong aria-hidden="true">11.</strong> Systems Programming</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/01-operating-systems.html"><strong aria-hidden="true">11.1.</strong> Operating Systems</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/02-processes.html"><strong aria-hidden="true">11.2.</strong> Processes</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/03-threads-synchronization.html"><strong aria-hidden="true">11.3.</strong> Threads & Process Synchronization</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/04-scheduling-deadlocks.html"><strong aria-hidden="true">11.4.</strong> CPU Scheduling & Deadlocks</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/09-networking.html"><strong aria-hidden="true">11.5.</strong> Networking - Models & Layers</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/12-security.html"><strong aria-hidden="true">11.6.</strong> Security</a></li><li class="chapter-item expanded "><a href="../../y1s2/systems-programming/13-c-functions.html"><strong aria-hidden="true">11.7.</strong> Function Index</a></li></ol></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/intro.html"><strong aria-hidden="true">12.</strong> Computer Graphics & Visualization</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/00-intro.html"><strong aria-hidden="true">12.1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/01-graphics-pipeline.html"><strong aria-hidden="true">12.2.</strong> The Graphics Pipeline</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/04-intro-to-modeling.html"><strong aria-hidden="true">12.3.</strong> Introduction To Modeling</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/05-transformations.html"><strong aria-hidden="true">12.4.</strong> Transformations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/08-implicit.html"><strong aria-hidden="true">12.5.</strong> Implicit and Parametric Equations</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/10-advanced-curves.html"><strong aria-hidden="true">12.6.</strong> Advanced Curves</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/11-viewing-perspective.html"><strong aria-hidden="true">12.7.</strong> Viewing and Perspective</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/12-hidden-surface.html"><strong aria-hidden="true">12.8.</strong> Hidden Surface Removal</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/15-texture-mapping.html"><strong aria-hidden="true">12.9.</strong> Texture Mapping</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/16-texture-mapping2.html"><strong aria-hidden="true">12.10.</strong> Texture Mapping 2</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/17-ray-tracing.html"><strong aria-hidden="true">12.11.</strong> Ray Tracing</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/18-colour.html"><strong aria-hidden="true">12.12.</strong> Colour</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/20-visualization.html"><strong aria-hidden="true">12.13.</strong> Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/21-volume-visualization.html"><strong aria-hidden="true">12.14.</strong> Volume Visualization</a></li><li class="chapter-item expanded "><a href="../../y1s2/computer-graphics/22-visualization2.html"><strong aria-hidden="true">12.15.</strong> Black Holes</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">OTech Notes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="posix-threads"><a class="header" href="#posix-threads">Posix Threads</a></h1>
+<ul>
+<li>Processes contain information about program resources and program execution
+state:
+<ul>
+<li>Process ID &amp; User ID.</li>
+<li>Environment Variables.</li>
+<li>Working Directory.</li>
+<li>Program Instructions.</li>
+<li>CPU state (registers, fault info).</li>
+<li>Memory allocation (stack and heap).</li>
+<li>File Descriptors.</li>
+<li>Signal Actions.</li>
+<li>Shared Libraries.</li>
+<li>Inter-Process Comm. related info (message queues, pipes, semaphores,
+shared mem.)</li>
+</ul>
+</li>
+</ul>
+<p><img src="05-process.png" alt="Process Info" />
+<img src="05-threads.png" alt="Process Info With Threads" /></p>
+<ul>
+<li>Threads contain a minimum of information:
+<ul>
+<li>Stack Pointer.</li>
+<li>Registers.</li>
+<li>Scheduling Properties ("Policy" or priority).</li>
+<li>Thread-Specific data.</li>
+</ul>
+</li>
+</ul>
+<p>A thread:</p>
+<ul>
+<li>Exists within a process.</li>
+<li>Uses the process' resources</li>
+<li>Has its own independent control flow</li>
+<li>Duplicates only the essential resources it needs to be independently
+schedulable.</li>
+<li>May share the process resources with other threads.</li>
+</ul>
+<p>Since threads within the same process share resources:</p>
+<ul>
+<li>Changes made to shared system resources will be seen by all threads.</li>
+<li>Two pointers with the same value point to the same data.</li>
+<li>Reading/Writing to the same memory locations is possible, requires explicit
+synchronization by the programmer.</li>
+</ul>
+<h2 id="thread-scheduling"><a class="header" href="#thread-scheduling">Thread Scheduling</a></h2>
+<ul>
+<li>
+<p>Non deterministic in thread order.</p>
+</li>
+<li>
+<p>Can't guarantee same program execution.</p>
+</li>
+<li>
+<p>Most non-determinism is <em>not</em> bad.</p>
+<ul>
+<li>Often benign with no negative impact.</li>
+</ul>
+</li>
+<li>
+<p>When it is bad: SQA-concurrency testing needed.</p>
+</li>
+<li>
+<p>Some interleavings exhibit bugs, some schedules may not.</p>
+<ul>
+<li>Test concurrency with many different schedules.</li>
+</ul>
+</li>
+<li>
+<p>Three broad levels affect thread scheduling</p>
+<ul>
+<li>Hardware</li>
+<li>OS (low-level software)</li>
+<li>application level (high-level software)</li>
+</ul>
+</li>
+</ul>
+<h2 id="what-impacts-thread-scheduling"><a class="header" href="#what-impacts-thread-scheduling">What impacts thread scheduling?</a></h2>
+<ul>
+<li>Num of Processors.</li>
+<li>Hardware architecture.</li>
+<li>Scheduling algorithm (OS)</li>
+<li>Computer Workload/other running processes.</li>
+</ul>
+<p>How do we cause different schedules to occur?</p>
+<ul>
+<li>
+<p>Implicit methods:</p>
+<ul>
+<li>Run on different hardware.</li>
+<li>Run on different OS's.</li>
+<li>Vary computer workload.</li>
+</ul>
+</li>
+<li>
+<p>Explicit methods:</p>
+<ul>
+<li>Manual code instrumentation (sleep, wait).</li>
+<li>Automatic code instrumentation (e.g. OSCAR).</li>
+<li>Hook into interpreter (e.g. JVM) to vary threads.</li>
+</ul>
+</li>
+</ul>
+<h2 id="what-are-pthreads"><a class="header" href="#what-are-pthreads">What are Pthreads?</a></h2>
+<ul>
+<li>A set of C library standardizing over hardware vendor's implementation of
+threads (at least historically).
+<ul>
+<li>See <code>pthread.h</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="why-pthreads"><a class="header" href="#why-pthreads">Why Pthreads?</a></h2>
+<ul>
+<li>Can be created and managed with less overhead than processes.</li>
+<li>Distribute computations across cores.</li>
+<li>Performance benefits over certain inter-process communication methods.
+<ul>
+<li>Shared memory requires at least one memory copy operation.</li>
+<li>Threads exist in the same address space within a single process so data
+"transfer" can simply be passing a pointer.</li>
+</ul>
+</li>
+<li>Overlaping computations with I/O.</li>
+<li>Priority based scheduling.</li>
+<li>Asynchronous event handling (indeterminate frequency and duration) ex. A web
+server both transfering data and managing new requests.</li>
+</ul>
+<h2 id="designing-threaded-programs"><a class="header" href="#designing-threaded-programs">Designing Threaded Programs</a></h2>
+<p>There are many considerations:</p>
+<ul>
+<li>Parallel model.
+<ul>
+<li><strong>Manager/Worker</strong> - A single manager thread assigns work to other worker
+threads. The manager typically handles all input. Can have a static worker
+pool or a dynamic worker pool.</li>
+<li><strong>Pipeline</strong> - A task is broken into a series of suboperations. Each is handled
+in sequence, but concurrently, by different threads. Ex: Automobile
+assembly line.</li>
+<li><strong>Peer</strong> - Manager/Worker but the manager participates in the work.</li>
+</ul>
+</li>
+<li>Problem partitioning.</li>
+<li>Load balancing.</li>
+<li>Inter thread communications.</li>
+<li>Data dependencies.</li>
+<li>Synchronization and race conditions.</li>
+<li>Memory issues.</li>
+<li>I/O issues.</li>
+<li>Program complexity.</li>
+<li>Dev cost/effort/time.</li>
+</ul>
+<p>To take advantage of pthreads, a program must be able to be organized into
+discrete independent tasks that can execute concurrently. The following
+characteristics indicate suitability for pthreads:</p>
+<ul>
+<li>Blocking on potentially long I/O waits.</li>
+<li>Use of many CPU cycles in some places but not others.</li>
+<li>Must respond to asynchronous events.</li>
+<li>Some work is more important than other work.</li>
+</ul>
+<h2 id="shared-memory-model"><a class="header" href="#shared-memory-model">Shared Memory Model</a></h2>
+<ul>
+<li>All threads can access the same global shared memory.
+<ul>
+<li>Threads also have private data.</li>
+</ul>
+</li>
+<li>Programmers are responsible for synchronizing and protecting access to
+globally shared data.</li>
+</ul>
+<h2 id="thread-safeness"><a class="header" href="#thread-safeness">Thread-Safeness</a></h2>
+<ul>
+<li>An application's ability to execute multiple threads simultaneously without
+corrupting shared data or creating race conditions.</li>
+<li>Ex: Multiple threads calling a library function which access/modifies a
+global shared structure. This function is <em>not thread-safe</em>.</li>
+</ul>
+<h2 id="thread-limits"><a class="header" href="#thread-limits">Thread Limits</a></h2>
+<ul>
+<li>Maximum number of threads permitted.</li>
+<li>Default thread stack size.</li>
+<li>etc.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../y2s2/csci4060u/04-openmp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../y2s2/csci4060u/06-posix-api.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../y2s2/csci4060u/04-openmp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../y2s2/csci4060u/06-posix-api.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid.min.js"></script>
+        <script src="../../mermaid-init.js"></script>
+
+
+    </div>
+    </body>
+</html>
