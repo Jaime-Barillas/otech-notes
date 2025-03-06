@@ -1133,8 +1133,138 @@ specified conditions.</li>
 <li><code>pthread_create(thread_id, attr, fn, args)</code></li>
 <li><code>pthread_exit(status)</code></li>
 <li><code>pthread_cancel(thread_id)</code></li>
+<li><code>pthread_attr_t</code></li>
 <li><code>pthread_attr_init(attr)</code></li>
 <li><code>pthread_attr_destroy(attr)</code></li>
+<li><code>pthread_attr_setdetachstate()</code></li>
+<li><code>pthread_detach()</code></li>
+<li><code>pthread_attr_getstacksize(attr, stacksize)</code></li>
+<li><code>pthread_attr_setstacksize(attr, stacksize)</code></li>
+<li><code>pthread_attr_getstackaddr(attr, stackaddr)</code></li>
+<li><code>pthread_attr_setstackaddr(attr, stackaddr)</code></li>
+<li><code>pthread_self()</code></li>
+<li><code>pthread_equal(thread1, thread2)</code></li>
+<li><code>pthread_once(once_control, init_routine)</code></li>
+<li><code>pthread_mutex_t</code></li>
+<li><code>pthread_mutex_init(mutex, attr)</code></li>
+<li><code>pthread_mutex_destroy(mutex, attr)</code></li>
+<li><code>pthread_mutexattr_t</code></li>
+<li><code>pthread_mutexattr_init(attr)</code></li>
+<li><code>pthread_mutexattr_destroy(attr)</code></li>
+<li><code>pthread_mutex_lock(mutex)</code></li>
+<li><code>pthread_mutex_trylock(mutex)</code></li>
+<li><code>pthread_mutex_unlock(mutex)</code></li>
+<li><code>pthread_cond_t</code></li>
+<li><code>pthread_cond_init(cond, attr)</code></li>
+<li><code>pthread_cond_destroy(cond)</code></li>
+<li><code>pthread_condattr_t</code></li>
+<li><code>pthread_condattr_init(attr)</code></li>
+<li><code>pthread_condattr_destroy(attr)</code></li>
+<li><code>pthread_cond_wait(cond, mutex)</code></li>
+<li><code>pthread_cond_signal(cond)</code></li>
+<li><code>pthread_cond_broadcast(cond)</code></li>
+</ul>
+<p>Attributes include:</p>
+<ul>
+<li>Detached/Joinable state.</li>
+<li>Scheduling Inheritance.</li>
+<li>Scheduling Policy.</li>
+<li>Scheduling Parameters.</li>
+<li>Scheduling contention scope.</li>
+<li>Stack size.</li>
+<li>Stack address.</li>
+<li>Stack guard (overflow) size.</li>
+</ul>
+<h2 id="thread-binding-and-scheduling"><a class="header" href="#thread-binding-and-scheduling">Thread Binding and Scheduling</a></h2>
+<ul>
+<li>It is generally up to the imlementation or OS to decide where and when
+threads execute.</li>
+<li>pthreads does provide several functions to specify how threads are scheduled
+for execution (e.g. FIFO, Round-Robin, Other).</li>
+<li>pthreads does not provide functions for binding threads to specific cores,
+but non-standard (or OS specific) extensions may exist.</li>
+</ul>
+<h2 id="thread-termination"><a class="header" href="#thread-termination">Thread Termination</a></h2>
+<ul>
+<li>The thread returns normally from its starting function.</li>
+<li>The thread calls <code>pthread_exit()</code>.</li>
+<li>The thread is canceled by another thread via <code>pthread_cancel()</code>.</li>
+<li>The entire process is terminated due to <code>exec()</code> or <code>exit()</code>.</li>
+<li><code>main()</code> terminates first without calling <code>pthread_exit()</code> itself.
+<ul>
+<li>Calling <code>pthread_exit()</code> will cause <code>main</code> to block and wait for the
+threads it created to finish.</li>
+</ul>
+</li>
+</ul>
+<h2 id="mutexes"><a class="header" href="#mutexes">Mutexes</a></h2>
+<p>As used in pthreads:</p>
+<ul>
+<li>Only one thread can lock (or own) a mutex at any given time.</li>
+<li>For other threads to lock an owned mutex, the owning thread must unlock the
+mutex.</li>
+<li>Can be used to prevent race conditions.</li>
+<li>It is the programmer's responsibility to ensure that every thread that should
+use a mutex actually uses one.</li>
+<li>Implement synchronization by controlling thread access to data.</li>
+<li>There are three attributes defined by the standard:
+<ul>
+<li>Protocol - Specify the protocol used to prevent <em>priority inversions</em>.</li>
+<li>Prioceiling - The priority ceiling of a mutex.</li>
+<li>Process-Shared - Whether the mutex can be seen by threads in another
+process.</li>
+</ul>
+</li>
+<li>When more than one thread is waiting for a previously locked mutex that was
+just unlocked, the next thread to aquire the lock is dependent on the system
+scheduler (unless thread proiority scheduling is used).</li>
+</ul>
+<h2 id="condition-variables"><a class="header" href="#condition-variables">Condition Variables</a></h2>
+<ul>
+<li>Allow threads to synchronize based on the value of data.</li>
+<li>Without conditions, threads would have to continuously poll to check if the
+condition is met.
+<ul>
+<li>Can be resource consuming.</li>
+</ul>
+</li>
+<li>Always used in conjunction with a mutex lock.</li>
+<li>Use (roughly) this way:
+<ol>
+<li>Declare global data which requires synchronization.</li>
+<li>Initialize a condition variable object.</li>
+<li>Initialize an associated mutex.</li>
+<li>Create two threads.</li>
+<li>In thread A:
+<ul>
+<li>Lock the mutex.</li>
+<li>Check the value of the global variable.</li>
+<li>If the condition hasn't been met, call <code>pthread_cond_wait()</code>.
+<ul>
+<li>This will unlock the mutex and wait until the condition object has
+been signalled.</li>
+</ul>
+</li>
+<li>When signalled, the thread resumes and the mutex is locked again.</li>
+<li>Continue work, then unlock the mutex.</li>
+</ul>
+</li>
+<li>In thread B:
+<ul>
+<li>Lock the associated mutex.</li>
+<li>Change the value of the global variable that thread A is waiting on.</li>
+<li>If the new value fulfills the condition, signal via the condition
+variable object.</li>
+<li>Unlock the mutex.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>One attribute exists for condition variables: <code>process-shared</code>.
+<ul>
+<li>Allows the condition variable to be seen by threads in other processes.</li>
+</ul>
+</li>
 </ul>
 <p>trylock() into lock() slower than just lock() at
 sufficiently large number of threads compared to
@@ -10952,7 +11082,7 @@ around the shared data.</p>
 <h2 id="supporting-critical-sections"><a class="header" href="#supporting-critical-sections">Supporting Critical Sections</a></h2>
 <h3 id="mutual-exclusions"><a class="header" href="#mutual-exclusions">Mutual Exclusions</a></h3>
 <p>Only one process should execute code in their critical section at a time.</p>
-<h4 id="mutexes"><a class="header" href="#mutexes">Mutexes</a></h4>
+<h4 id="mutexes-1"><a class="header" href="#mutexes-1">Mutexes</a></h4>
 <p>Mutexes facilitate this: first <code>acquire()</code> a lock, later <code>release()</code> the lock.
 These two functions need to be atomic and may require hardware support. Trying
 to acquire an already acquired lock will cause "busy" waiting. this kind of
