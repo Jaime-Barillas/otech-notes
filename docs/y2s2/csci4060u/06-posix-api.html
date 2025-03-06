@@ -300,7 +300,30 @@ process.</li>
 <li>When more than one thread is waiting for a previously locked mutex that was
 just unlocked, the next thread to aquire the lock is dependent on the system
 scheduler (unless thread proiority scheduling is used).</li>
+<li><code>pthread_mutex_lock()</code> waits on a mutex.
+<ul>
+<li>Slower if there is additional non-multithreaded work to be done (has to
+wait for the thread to unblock).</li>
 </ul>
+</li>
+<li><code>pthread_mutex_trylock()</code> does not block.
+<ul>
+<li>More resource intensive when polling a mutex.</li>
+</ul>
+</li>
+<li><code>trylock()</code> into <code>lock()</code>.
+<ul>
+<li>If any additional non-multithreaded work can be done after the first
+<code>trylock()</code>, some time can be saved compared to <code>lock()</code>.</li>
+<li>More overhead than just <code>lock()</code> so can be slower when many threads are
+used unless their is sufficient additional work to balance out the
+overhead.</li>
+</ul>
+</li>
+</ul>
+<p>trylock() into lock() slower than just lock() at
+sufficiently large number of threads compared to
+additional work. Thread/lock/resource <strong>contention</strong>.</p>
 <h2 id="condition-variables"><a class="header" href="#condition-variables">Condition Variables</a></h2>
 <ul>
 <li>Allow threads to synchronize based on the value of data.</li>
@@ -348,9 +371,6 @@ variable object.</li>
 </ul>
 </li>
 </ul>
-<p>trylock() into lock() slower than just lock() at
-sufficiently large number of threads compared to
-additional work. Thread/lock/resource <strong>contention</strong>.</p>
 
                     </main>
 

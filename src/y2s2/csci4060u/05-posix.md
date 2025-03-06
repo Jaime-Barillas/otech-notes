@@ -58,7 +58,7 @@ Since threads within the same process share resources:
 + Scheduling algorithm (OS)
 + Computer Workload/other running processes.
 
-How do we cause different schedules to occur?
+## How do we cause different schedules to occur?
 + Implicit methods:
   - Run on different hardware.
   - Run on different OS's.

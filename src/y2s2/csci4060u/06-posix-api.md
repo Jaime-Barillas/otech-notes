@@ -104,6 +104,21 @@ As used in pthreads:
 + When more than one thread is waiting for a previously locked mutex that was
   just unlocked, the next thread to aquire the lock is dependent on the system
   scheduler (unless thread proiority scheduling is used).
++ `pthread_mutex_lock()` waits on a mutex.
+  - Slower if there is additional non-multithreaded work to be done (has to
+    wait for the thread to unblock).
++ `pthread_mutex_trylock()` does not block.
+  - More resource intensive when polling a mutex.
++ `trylock()` into `lock()`.
+  - If any additional non-multithreaded work can be done after the first
+    `trylock()`, some time can be saved compared to `lock()`.
+  - More overhead than just `lock()` so can be slower when many threads are
+    used unless their is sufficient additional work to balance out the
+    overhead.
+
+trylock() into lock() slower than just lock() at
+sufficiently large number of threads compared to
+additional work. Thread/lock/resource **contention**.
 
 ## Condition Variables
 
@@ -134,6 +149,3 @@ As used in pthreads:
 + One attribute exists for condition variables: `process-shared`.
   - Allows the condition variable to be seen by threads in other processes.
 
-trylock() into lock() slower than just lock() at
-sufficiently large number of threads compared to
-additional work. Thread/lock/resource **contention**.
